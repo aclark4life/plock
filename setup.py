@@ -6,7 +6,7 @@ setup(
         # "EntryPoint must be in 'name=module:attrs [extras]' format"
         'console_scripts': 'install-plone=install:install',
     },
-    install_requires=[
+    tests_requires=[
         'nose',
     ],
     license='Whatever license Plone is',
