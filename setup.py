@@ -1,3 +1,4 @@
+from setuptools import find_packages
 from setuptools import setup
 
 
@@ -11,5 +12,6 @@ setup(
     ],
     license='Whatever license Plone is',
     name='plock',
+    packages=find_packages(),
     test_suite = 'nose.collector',
 )
