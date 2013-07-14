@@ -7,11 +7,15 @@ setup(
         # "EntryPoint must be in 'name=module:attrs [extras]' format"
         'console_scripts': 'install-plone=plock.install:install',
     },
-    tests_require=[
-        'nose',
+    install_requires=[
+        'sh',
+        'zc.buildout',
     ],
     license='Whatever license Plone is',
     name='plock',
     packages=find_packages(),
+    tests_require=[
+        'nose',
+    ],
     test_suite = 'nose.collector',
 )
