@@ -29,7 +29,7 @@ def install():
         'buildout:directory=.', '-U', '-c', URL,
         _bg=True)
     count = 0
-    while(len(os.listdir('eggs-directory')) < 238):
+    while(len(os.listdir('eggs-directory')) < 235):
         count += 1
         num = len(os.listdir('eggs-directory'))
         if count % 5 == 0:

@@ -5,7 +5,10 @@ from setuptools import setup
 setup(
     entry_points={
         # "EntryPoint must be in 'name=module:attrs [extras]' format"
-        'console_scripts': 'install-plone=plock.install:install',
+        'console_scripts': [
+            'plone-install=plock.install:install',
+            'plone-run=plock.run:run',
+        ],
     },
     install_requires=[
         'sh',
