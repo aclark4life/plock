@@ -9,6 +9,7 @@ setup(
     install_requires=[
         'nose',
     ],
-    name='plock',
     license='Whatever license Plone is',
+    name='plock',
+    test_suite = 'nose.collector',
 )
