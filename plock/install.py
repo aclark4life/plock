@@ -19,7 +19,7 @@ def install():
     """
     Install Plone with Buildout
     """
-    sys.stdout.write("Installing Plone. This may take a while")
+    sys.stdout.write("Installing Plone. This may take a while...")
     sys.stdout.flush()
     buildout = sh.Command("bin/buildout")
     create_dirs()
@@ -29,13 +29,15 @@ def install():
         'buildout:directory=.', '-U', '-c', URL,
         _bg=True)
     count = 0
-    while(len(os.listdir('eggs-directory')) < 200):
+    while(len(os.listdir('eggs-directory')) < 238):
         count += 1
         num = len(os.listdir('eggs-directory'))
         if count % 5 == 0:
             sys.stdout.write("(%d)" % num)
         else:
+            time.sleep(3)
             sys.stdout.write(".")
         sys.stdout.flush()
-        time.sleep(3)
+    sys.stdout.write(".")
     download.wait()
+    print(". done.")
