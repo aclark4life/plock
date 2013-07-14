@@ -21,4 +21,5 @@ setup(
         'nose',
     ],
     test_suite = 'nose.collector',
+    version='0.0.1',
 )
