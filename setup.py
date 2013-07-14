@@ -5,7 +5,7 @@ from setuptools import setup
 setup(
     entry_points={
         # "EntryPoint must be in 'name=module:attrs [extras]' format"
-        'console_scripts': 'install-plone=install:install',
+        'console_scripts': 'install-plone=plock.install:install',
     },
     tests_require=[
         'nose',
