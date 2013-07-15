@@ -34,7 +34,7 @@ def install():
     buildout = sh.Command("bin/buildout")
     if eval(EXPERT):  # Don't ignore .buildout.cfg
         buildout(CMD2)
-    else:
+    else:  # Ignore .buildout.cfg
         create_dirs()
         download = buildout(CMD1, _bg=True)
         count = 0
