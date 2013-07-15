@@ -29,7 +29,7 @@ def install():
     sys.stdout.write("Installing Plone. This may take a while...")
     sys.stdout.flush()
     buildout = sh.Command("bin/buildout")
-    if eval(EXPERT):
+    if eval(EXPERT):  # Don't ignore .buildout.cfg
         buildout(CMD2)
     else:
         create_dirs()
