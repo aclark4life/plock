@@ -4,9 +4,14 @@ import sh
 import sys
 import time
 
-EXPERT = os.environ.get('PLOCK_EXPERT')
 
-CFG = 'https://raw.github.com/pythonpackages/buildout-plone/master/4.3.x'
+EXPERT = os.environ.get('PLOCK_EXPERT')
+try:
+    EXPERT = eval(EXPERT)
+except:
+    EXPERT = False
+
+CFG = 'https://raw.github.com/pythonpackages/buildout-plone/master/latest'
 
 CMD1 = ('buildout:download-cache=download-cache',
         'buildout:eggs-directory=eggs-directory',
@@ -32,7 +37,7 @@ def install():
     sys.stdout.write("Installing Plone. This may take a while...")
     sys.stdout.flush()
     buildout = sh.Command("bin/buildout")
-    if eval(EXPERT):  # Don't ignore .buildout.cfg
+    if EXPERT:  # Don't ignore .buildout.cfg
         buildout(CMD2)
     else:  # Ignore .buildout.cfg
         create_dirs()
