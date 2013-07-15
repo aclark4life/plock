@@ -3,7 +3,7 @@ plock
 
 Plock is Plone for the Python Crowd
 
-.. Note:: Plock requires access to the internet during installation of Plone. If you want to download everything and install offline, try Plone's Unified Installer.
+.. Note:: Installing Plone with Plock requires internet access. If you want to download Plone and install offline, try `Plone's Unified Installer <http://plone.org/download>`_.
 
 Installation
 ------------

@@ -3,6 +3,7 @@ from setuptools import setup
 
 
 setup(
+    description="Plock is Plone for the Python Crowd",
     entry_points={
         # "EntryPoint must be in 'name=module:attrs [extras]' format"
         'console_scripts': [
@@ -14,6 +15,7 @@ setup(
         'zc.buildout',
     ],
     license='Whatever license Plone is',
+    long_description=open('README.rst').read(),
     name='plock',
     packages=find_packages(),
     tests_require=[
