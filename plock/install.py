@@ -36,9 +36,9 @@ def install():
         download = buildout(CMD1, _bg=True)
         count = 0
         while(len(os.listdir('eggs-directory')) < 235):
-            count += 1
+            count += 1  # Count eggs
             num = len(os.listdir('eggs-directory'))
-            if count % 5 == 0:
+            if count % 5 == 0:  # Print status
                 sys.stdout.write("(%d)" % num)
             else:
                 time.sleep(3)
