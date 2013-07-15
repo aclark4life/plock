@@ -16,6 +16,9 @@ CMD2 = ('buildout:directory=.', '-c', CFG)
 
 
 def create_dirs():
+    """
+    Create Buildout dirs
+    """
     dirs = ('download-cache', 'eggs-directory')
     for d in dirs:
         if not os.path.exists(d):
