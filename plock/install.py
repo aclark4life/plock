@@ -26,7 +26,7 @@ def install():
     download = buildout(
         'buildout:download-cache=download-cache',
         'buildout:eggs-directory=eggs-directory',
-        'buildout:directory=.', '-c', URL,
+        'buildout:directory=.', '-U', '-c', URL,
         _bg=True)
     count = 0
     while(len(os.listdir('eggs-directory')) < 235):
