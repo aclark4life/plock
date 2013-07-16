@@ -15,7 +15,10 @@ setup(
         'zc.buildout',
     ],
     license='Whatever license Plone is',
-    long_description=open('README.rst').read(),
+    long_description=(
+        open('README.rst').read() + '\n' +
+        open('HISTORY.txt').read()
+    ),
     name='plock',
     packages=find_packages(),
     tests_require=[
