@@ -3,6 +3,12 @@ from setuptools import setup
 
 
 setup(
+    author="Alex Clark",
+    author_email="aclark@aclark.net",
+    classifiers=[
+        'Framework :: Plone :: 4.3',
+        'Programming Language :: Python :: 2.7',
+    ],
     description="Plock is Plone for the Python Crowd",
     entry_points={
         # "EntryPoint must be in 'name=module:attrs [extras]' format"
@@ -14,6 +20,7 @@ setup(
         'sh',
         'zc.buildout',
     ],
+    keywords="pip plone",
     license='Whatever license Plone is',
     long_description=(
         open('README.rst').read() + '\n' +
@@ -25,5 +32,7 @@ setup(
         'nose',
     ],
     test_suite = 'nose.collector',
+    url='https://github.com/aclark4life/plock',
     version='0.0.1',
+    zip_safe=False,
 )
