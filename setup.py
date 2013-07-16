@@ -9,7 +9,7 @@ setup(
         'Framework :: Plone :: 4.3',
         'Programming Language :: Python :: 2.7',
     ],
-    description="Plock is Plone for the Python Crowd",
+    description="Plock is a Plone Installer for the Pip-loving Crowd",
     entry_points={
         # "EntryPoint must be in 'name=module:attrs [extras]' format"
         'console_scripts': [
