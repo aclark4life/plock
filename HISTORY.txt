@@ -5,7 +5,6 @@ Changelog
 ------------------
 
 - Write local ``buildout.cfg``
-- Rename ``install-plone`` to ``plock``
 
 0.0.1 (2013-07-15)
 ------------------

@@ -13,7 +13,7 @@ setup(
     entry_points={
         # "EntryPoint must be in 'name=module:attrs [extras]' format"
         'console_scripts': [
-            'plock=plock.install:install',
+            'install-plone=plock.install:install',
         ],
     },
     install_requires=[

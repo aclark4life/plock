@@ -13,5 +13,5 @@ Installation
 Installing Plone with Plock looks like this::
 
     $ pip install plock
-    $ bin/plock
+    $ bin/install-plone
     $ bin/plone fg
