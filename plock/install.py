@@ -11,13 +11,22 @@ try:
 except:
     EXPERT = False
 
-CFG = 'https://raw.github.com/pythonpackages/buildout-plone/master/latest'
+CFG = """\
+[buildout]
+extends = https://raw.github.com/pythonpackages/buildout-plone/master/latest
+"""
 
-CMD1 = ('buildout:download-cache=download-cache',
-        'buildout:eggs-directory=eggs-directory',
-        'buildout:directory=.', '-U', '-c', CFG)
 
-CMD2 = ('buildout:directory=.', '-c', CFG)
+CMD = ('buildout:download-cache=download-cache',
+       'buildout:eggs-directory=eggs-directory',
+       '-U')
+
+
+def create_cfg():
+    if not os.path.exists('buildout.cfg'):
+        cfg = open('buildout.cfg', 'w')
+        cfg.write(CFG)
+        cfg.close
 
 
 def create_dirs():
@@ -36,12 +45,13 @@ def install():
     """
     sys.stdout.write("Installing Plone. This may take a while...")
     sys.stdout.flush()
+    create_cfg()
     buildout = sh.Command("bin/buildout")
     if EXPERT:  # Don't ignore .buildout.cfg
-        buildout(CMD2)
+        buildout()
     else:  # Ignore .buildout.cfg
         create_dirs()
-        download = buildout(CMD1, _bg=True)
+        download = buildout(CMD, _bg=True)
         count = 0
         while(len(os.listdir('eggs-directory')) < 235):
             count += 1  # Count eggs
