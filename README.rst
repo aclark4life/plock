@@ -15,3 +15,36 @@ Installing Plone with Plock looks like this::
     $ pip install plock
     $ bin/install-plone
     $ bin/plone fg
+
+Configuration
+-------------
+
+Plock creates a ``buildout.cfg`` file for you that looks like this::
+
+    [buildout]
+    extends = https://raw.github.com/pythonpackages/buildout-plone/master/latest
+
+    [plone]
+    eggs +=
+    # Add-ons go here e.g.:
+    #    Products.PloneFormGen
+
+Add-ons
+~~~~~~~
+
+To install add-ons, add them to the ``eggs +=`` parameter e.g.::
+
+    [buildout]
+    extends = https://raw.github.com/pythonpackages/buildout-plone/master/latest
+
+    [plone]
+    eggs +=
+        Products.PloneFormGen
+
+Stop Plone and run Buildout::
+
+    $ bin/buildout
+
+Start Plone::
+
+    $ bin/plone fg
