@@ -1,10 +1,11 @@
 Changelog
 =========
 
-0.0.2 (2013-07-17)
+0.0.2 (2013-07-19)
 ------------------
 
-- Write local ``buildout.cfg``
+- Provide add-on installation instructions
+- Write local ``buildout.cfg`` instead of relying on -c remote_cfg.cfg
 
 0.0.1 (2013-07-15)
 ------------------
