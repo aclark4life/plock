@@ -1,7 +1,7 @@
 plock
 =====
 
-Plock is a Plone Installer for the Python-Pip-loving Crowd
+Plock is a Plone Installer for the Pip-loving Crowd
 
 .. Note:: Installing Plone with Plock requires an internet connection. If you want to install Plone offline, try `Plone's Unified Installer <http://plone.org/download>`_.
 
