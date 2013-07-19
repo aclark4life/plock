@@ -19,7 +19,7 @@ Installing Plone with Plock looks like this::
 Configuration
 -------------
 
-Plock creates a ``buildout.cfg`` file for you that looks like this::
+Plone uses `Buildout <https://pypi.python.org/pypi/zc.buildout>`_ to manage installation and configuration. Plock creates a ``buildout.cfg`` file for you that looks like this::
 
     [buildout]
     extends = https://raw.github.com/pythonpackages/buildout-plone/master/latest
