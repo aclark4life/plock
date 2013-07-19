@@ -19,7 +19,7 @@ Installing Plone with Plock looks like this::
 Configuration
 -------------
 
-Plone uses `Buildout <https://pypi.python.org/pypi/zc.buildout>`_ to manage installation and configuration. Plock creates a ``buildout.cfg`` file for you that looks like this::
+Plone uses `Buildout <https://pypi.python.org/pypi/zc.buildout>`_ to manage its installation and configuration. Plock creates a ``buildout.cfg`` file for you that looks like this::
 
     [buildout]
     extends = https://raw.github.com/pythonpackages/buildout-plone/master/latest
@@ -31,6 +31,8 @@ Plone uses `Buildout <https://pypi.python.org/pypi/zc.buildout>`_ to manage inst
 
 Add-ons 
 ~~~~~~~
+
+.. Note:: See: https://pypi.python.org/pypi?:action=browse&show=all&c=563 for a list of add-ons compatible with Plone 4.3.
 
 To install add-ons, add the desired Python package name(s) to the ``eggs +=`` parameter e.g.::
 
