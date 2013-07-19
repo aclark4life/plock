@@ -29,10 +29,10 @@ Plock creates a ``buildout.cfg`` file for you that looks like this::
     # Add-ons go here e.g.:
     #    Products.PloneFormGen
 
-Add-ons
+Add-ons 
 ~~~~~~~
 
-To install add-ons, add them to the ``eggs +=`` parameter e.g.::
+To install add-ons, add the desired Python package name(s) to the ``eggs +=`` parameter e.g.::
 
     [buildout]
     extends = https://raw.github.com/pythonpackages/buildout-plone/master/latest
@@ -48,3 +48,5 @@ Stop Plone and run Buildout::
 Start Plone::
 
     $ bin/plone fg
+
+Install the add-on(s) in Plone via Site Setup -> Add-ons.
