@@ -28,6 +28,9 @@ CMD = ('buildout:download-cache=download-cache',
 
 
 def create_cfg():
+    """
+    Create Buildout config
+    """
     if not os.path.exists('buildout.cfg'):
         cfg = open('buildout.cfg', 'w')
         cfg.write(CFG)
