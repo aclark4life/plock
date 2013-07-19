@@ -14,6 +14,11 @@ except:
 CFG = """\
 [buildout]
 extends = https://raw.github.com/pythonpackages/buildout-plone/master/latest
+
+[plone]
+eggs +=
+# Add-ons go here e.g.:
+#    Products.PloneFormGen
 """
 
 
