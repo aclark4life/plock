@@ -29,7 +29,7 @@ setup(
     license='Whatever license Plone is',
     long_description=(
         open('README.rst').read() + '\n' +
-        open('HISTORY.txt').read()
+        open('CHANGES.txt').read()
     ),
     name='plock',
     packages=find_packages(),
