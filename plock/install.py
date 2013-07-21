@@ -1,4 +1,5 @@
 # encoding: utf-8
+import argparse
 import os
 import sh
 import sys
@@ -27,6 +28,13 @@ CMD = ('buildout:download-cache=download-cache',
        '-U')
 
 
+parser = argparse.ArgumentParser(
+    description="Plock is a Plone Installer for the Pip-Loving Crowd")
+
+parser.add_argument(
+    "-l", "--list-addons", action="store_true", help="List add-ons from PyPI")
+
+
 def create_cfg():
     """
     Create Buildout config
@@ -51,6 +59,7 @@ def install():
     """
     Install Plone with Buildout
     """
+    args = parser.parse_args()
     sys.stdout.write("Installing Plone. This may take a while...")
     sys.stdout.flush()
     create_cfg()
