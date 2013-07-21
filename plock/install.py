@@ -1,38 +1,12 @@
 # encoding: utf-8
-import argparse
+from .config import ARGP
+from .config import CFG
+from .config import CMD
+from .config import EXPERT
 import os
 import sh
 import sys
 import time
-
-
-EXPERT = os.environ.get('PLOCK_EXPERT')
-try:
-    EXPERT = eval(EXPERT)
-except:
-    EXPERT = False
-
-CFG = """\
-[buildout]
-extends = https://raw.github.com/pythonpackages/buildout-plone/master/latest
-
-[plone]
-eggs +=
-# Add-ons go here e.g.:
-#    Products.PloneFormGen
-"""
-
-
-CMD = ('buildout:download-cache=download-cache',
-       'buildout:eggs-directory=eggs-directory',
-       '-U')
-
-
-parser = argparse.ArgumentParser(
-    description="Plock is a Plone Installer for the Pip-Loving Crowd")
-
-parser.add_argument(
-    "-l", "--list-addons", action="store_true", help="List add-ons from PyPI")
 
 
 def create_cfg():
@@ -59,7 +33,10 @@ def install():
     """
     Install Plone with Buildout
     """
-    args = parser.parse_args()
+    args = ARGP.parse_args()
+    if args.list_addons:
+        print("List addons")
+        exit()
     sys.stdout.write("Installing Plone. This may take a while...")
     sys.stdout.flush()
     create_cfg()
