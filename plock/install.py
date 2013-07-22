@@ -35,7 +35,7 @@ def install():
     """
     args = ARGP.parse_args()
     if args.list_addons:
-        print("List addons")
+        list_addons()
         exit()
     sys.stdout.write("Installing Plone. This may take a while...")
     sys.stdout.flush()
@@ -58,3 +58,7 @@ def install():
             sys.stdout.flush()
         download.wait()
     print(" done.")
+
+
+def list_addons():
+    print "List addons"
