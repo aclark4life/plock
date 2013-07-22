@@ -34,7 +34,11 @@ Plone uses `Buildout <https://pypi.python.org/pypi/zc.buildout>`_ to manage its 
 Add-ons 
 ~~~~~~~
 
-.. Note:: See https://pypi.python.org/pypi?:action=browse&show=all&c=563 for a complete list of add-ons compatible with Plone 4.3.
+.. Warning:: Plock lists packages on PyPI with a description, keyword, or summary containing "plone". Results may include packages that are not installable in the current release of Plone. This issue may be addressed in a future release of plock.
+
+To list available add-ons::
+
+    $ bin/install-plone --list-addons
 
 To install add-ons, add the desired Python package name(s) to the ``eggs +=`` parameter e.g.::
 

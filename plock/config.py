@@ -3,7 +3,7 @@ import argparse
 import os
 
 
-ADDONS = "%s - %s"
+ADDONS = "%s) %s - %s"
 
 ARGP = argparse.ArgumentParser(
     description="Plock is a Plone Installer for the Pip-Loving Crowd")
@@ -36,4 +36,4 @@ OPER = 'AND'
 
 PYPI = CheeseShop()
 
-SPEC = {'description': 'plone', 'summary': 'plone'}
+SPEC = {'description': 'plone', 'keyword': 'plone', 'summary': 'plone'}

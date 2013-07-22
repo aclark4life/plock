@@ -8,6 +8,7 @@ from .config import OPER
 from .config import PYPI
 from .config import SPEC
 import collections
+import locale
 import os
 import sh
 import sys
@@ -38,6 +39,7 @@ def install():
     """
     Install Plone with Buildout
     """
+    locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
     args = ARGP.parse_args()
     if args.list_addons:
         list_addons()
@@ -66,6 +68,10 @@ def install():
 
 
 def list_addons():
+    """
+    List add-ons from PyPI
+    """
+    count = 0
     results = collections.OrderedDict()
     for package in PYPI.search(SPEC, OPER):
         if 'name' in package and 'summary' in package:
@@ -73,4 +79,16 @@ def list_addons():
             summary = package['summary']
             results[name] = summary
     for name, summary in results.items():
-        print(ADDONS % (name.ljust(40), summary.ljust(40)))
+        count += 1
+        print(
+            ADDONS % (locale_format(count), name.ljust(40), summary.ljust(40)))
+
+
+def locale_format(num):
+    """
+    Given a number e.g. 3000 return formatted number e.g. 3,000.
+    """
+    try:
+        return locale.format("%d", num, grouping=True)
+    except:
+        return num
