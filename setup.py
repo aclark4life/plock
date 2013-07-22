@@ -23,6 +23,7 @@ setup(
     },
     install_requires=[
         'sh',
+        'yolk',
         'zc.buildout',
     ],
     keywords="pip plone",

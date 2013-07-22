@@ -1,8 +1,13 @@
 # encoding: utf-8
+from .config import ADDONS
 from .config import ARGP
 from .config import CFG
 from .config import CMD
 from .config import EXPERT
+from .config import OPER
+from .config import PYPI
+from .config import SPEC
+import collections
 import os
 import sh
 import sys
@@ -61,4 +66,11 @@ def install():
 
 
 def list_addons():
-    print "List addons"
+    results = collections.OrderedDict()
+    for package in PYPI.search(SPEC, OPER):
+        if 'name' in package and 'summary' in package:
+            name = package['name']
+            summary = package['summary']
+            results[name] = summary
+    for name, summary in results.items():
+        print(ADDONS % (name.ljust(40), summary.ljust(40)))

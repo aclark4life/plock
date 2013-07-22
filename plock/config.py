@@ -1,6 +1,9 @@
+from yolk.pypi import CheeseShop
 import argparse
 import os
 
+
+ADDONS = "%s - %s"
 
 ARGP = argparse.ArgumentParser(
     description="Plock is a Plone Installer for the Pip-Loving Crowd")
@@ -28,3 +31,9 @@ eggs +=
 CMD = ('buildout:download-cache=download-cache',
        'buildout:eggs-directory=eggs-directory',
        '-U')
+
+OPER = 'AND'
+
+PYPI = CheeseShop()
+
+SPEC = {'description': 'plone', 'summary': 'plone'}
