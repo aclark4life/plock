@@ -12,7 +12,7 @@ Installation
 
 .. Note:: Plock supports the latest release (and only the latest release) of Plone, currently Plone 4.3.
 
-Installing Plone with Plock looks like this::
+Installing and running Plone with Plock looks like this::
 
     $ pip install plock
     $ bin/install-plone

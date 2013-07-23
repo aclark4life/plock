@@ -48,9 +48,11 @@ def install():
     sys.stdout.flush()
     create_cfg()
     buildout = sh.Command("bin/buildout")
-    if EXPERT:  # Don't ignore .buildout.cfg
+    if EXPERT:  # Allow Buildout dirs to be
+        # specified by .buildout.cfg
         buildout()
-    else:  # Ignore .buildout.cfg
+    else:  # Explicitly create and use Buildout dirs
+        # in the current working directory.
         create_dirs()
         download = buildout(CMD, _bg=True)
         count = 0
