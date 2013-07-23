@@ -27,7 +27,12 @@ def create_cfg():
 
 def create_dirs():
     """
-    Create Buildout dirs
+    Create Buildout dirs. Match directory name with section parameter name
+    e.g. download-cache = download-cache, eggs-directory = eggs-directory.
+    Note: a download cache must be defined to be used; there is no
+    default value, or caching enabled, if the parameter is not defined.
+    Eggs directory is set by default to "eggs" if the parameter is not
+    defined in buildout.cfg (which it typically is not).
     """
     dirs = ('download-cache', 'eggs-directory')
     for d in dirs:
