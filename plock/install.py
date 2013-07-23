@@ -1,5 +1,5 @@
 # encoding: utf-8
-from .config import ADDONS
+from .config import ADDON
 from .config import ARGP
 from .config import CFG
 from .config import CMD
@@ -81,7 +81,7 @@ def list_addons():
     for name, summary in results.items():
         count += 1
         print(
-            ADDONS % (locale_format(count), name.ljust(40), summary.ljust(40)))
+            ADDON % (locale_format(count), name.ljust(40), summary.ljust(40)))
 
 
 def locale_format(num):

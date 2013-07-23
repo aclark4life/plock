@@ -3,7 +3,7 @@ import argparse
 import os
 
 
-ADDONS = "%s) %s - %s"
+ADDON = "%s) %s - %s"
 
 ARGP = argparse.ArgumentParser(
     description="Plock is a Plone Installer for the Pip-Loving Crowd")
