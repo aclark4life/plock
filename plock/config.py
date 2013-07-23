@@ -29,8 +29,7 @@ eggs +=
 """
 
 CMD = ('buildout:download-cache=download-cache',
-       'buildout:eggs-directory=eggs-directory',
-       '-U')
+       'buildout:eggs-directory=eggs-directory')
 
 OPER = 'AND'
 
