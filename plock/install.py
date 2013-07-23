@@ -49,7 +49,7 @@ def install():
     create_cfg()
     buildout = sh.Command("bin/buildout")
     if EXPERT:  # Allow Buildout dirs to be
-        # specified by .buildout.cfg
+        # specified by .buildout/default.cfg
         buildout()
     else:  # Explicitly create and use Buildout dirs
         # in the current working directory.
