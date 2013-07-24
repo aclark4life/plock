@@ -45,6 +45,7 @@ def install():
     """
     Install Plone with Buildout
     """
+    locale_format('asdf')
     args = ARGP.parse_args()
     if args.install_addons:
         install_addons(args)
@@ -98,7 +99,8 @@ def locale_format(num):
     """
     try:
         return locale.format("%d", num, grouping=True)
-    except:
+    except TypeError:
+        # XXX Keep going
         return num
 
 
