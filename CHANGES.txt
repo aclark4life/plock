@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.0.6 (Unreleased)
+------------------
+
+- Bug fixes:
+    - Make sure addons list is sorted
+
 0.0.5 (2013-07-24)
 ------------------
 
