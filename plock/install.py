@@ -18,13 +18,11 @@ import time
 
 class Installer():
     """
-    "Plock" Plone Installer
+    Plock: A Plone Installer for the Pip-Loving Crowd
     """
-
 
     def __init__(self):
         self._BACKUP = None
-
 
     def create_cfg(self):
         """
@@ -34,7 +32,6 @@ class Installer():
             cfg = open('buildout.cfg', 'w')
             cfg.write(CFG)
             cfg.close
-
 
     def create_dirs(self):
         """
@@ -49,7 +46,6 @@ class Installer():
         for d in dirs:
             if not os.path.exists(d):
                 os.mkdir(d)
-
 
     def install_plone(self):
         """
@@ -71,7 +67,6 @@ class Installer():
         if first_time:
             self.install_addons(args)
         print(" done.")
-
 
     def install_addons(self, args):
         """
@@ -97,7 +92,6 @@ class Installer():
         CFGP.write(buildout_cfg)
         buildout_cfg.close()
 
-
     def list_addons(self):
         """
         List add-ons from PyPI
@@ -112,8 +106,9 @@ class Installer():
         for name, summary in results.items():
             count += 1
             print(
-                ADDON % (locale_format(count), name.ljust(40), summary.ljust(40)))
-
+                ADDON % (
+                    self.locale_format(
+                        count), name.ljust(40), summary.ljust(40)))
 
     def locale_format(self, num):
         """
@@ -124,7 +119,6 @@ class Installer():
         except TypeError:
             # XXX Keep going
             return num
-
 
     def run_buildout(self):
         buildout = sh.Command("bin/buildout")
