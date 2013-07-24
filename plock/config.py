@@ -20,8 +20,6 @@ BUILDOUT_OPT = (
     'buildout:download-cache=download-cache',
     'buildout:eggs-directory=eggs-directory')
 
-PYPI = CheeseShop()
-
 SEARCH_OPER = 'AND'
 SEARCH_SPEC = {'description': 'plone', 'keyword': 'plone', 'summary': 'plone'}
 
@@ -38,3 +36,5 @@ argument_parser.add_argument(
     "-r", "--raw", action="store_true", help="Raw output")
 
 config_parser = configparser.SafeConfigParser()
+
+pypi = CheeseShop()
