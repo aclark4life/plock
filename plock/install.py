@@ -105,6 +105,7 @@ class Installer():
                     lambda a: a != u'${version:packages}', existing_addons)
 
                 addons = addons + existing_addons
+                addons = set(addons)
 
         config_parser.set('plone', 'eggs', '\n' + '\n'.join(addons))
         buildout_cfg = open('buildout.cfg', 'w')
