@@ -92,6 +92,20 @@ class Installer():
         config_parser.read('buildout.cfg')
         if not config_parser.has_section('plone'):
             config_parser.add_section('plone')
+        else:
+            if args.preserve:
+                existing_addons = config_parser.get('plone', 'eggs')
+                existing_addons = existing_addons.split('\n')
+
+                # http://stackoverflow.com/a/1157160/185820
+                existing_addons = filter(lambda a: a != u'', existing_addons)
+                existing_addons = filter(
+                    lambda a: a != u'${base:packages}', existing_addons)
+                existing_addons = filter(
+                    lambda a: a != u'${version:packages}', existing_addons)
+
+                addons = addons + existing_addons
+
         config_parser.set('plone', 'eggs', '\n' + '\n'.join(addons))
         buildout_cfg = open('buildout.cfg', 'w')
         config_parser.write(buildout_cfg)

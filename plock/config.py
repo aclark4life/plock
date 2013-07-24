@@ -32,6 +32,12 @@ argument_parser.add_argument(
 argument_parser.add_argument(
     "-l", "--list-addons", action="store_true", help="List add-ons from PyPI")
 
+# This option makes it possible to --install-addons without completely
+# replacing the current list of addons in buildout.cfg, which is the
+# default behavior.
+argument_parser.add_argument(
+    "-p", "--preserve", action="store_true", help="Preserve add-ons")
+
 argument_parser.add_argument(
     "-r", "--raw", action="store_true", help="Raw output")
 
