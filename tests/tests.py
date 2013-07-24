@@ -2,8 +2,9 @@ from nose import with_setup
 
 
 def test_locale_format():
-    from plock.install import locale_format
+    from plock.install import Installer
     import locale
+    plock = Installer()
     locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
-    result = locale_format(3000)
+    result = plock.locale_format(3000)
     assert result == "3,000"
