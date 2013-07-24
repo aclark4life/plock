@@ -70,6 +70,8 @@ def install_addons(args):
     for package in args.install_addons:
         addons.append(package)
     CFGP.read('buildout.cfg')
+    if not CFGP.has_section('plone'):
+        CFGP.add_section('plone')
     CFGP.set('plone', 'eggs', '\n' + '\n'.join(addons))
     buildout_cfg = open('buildout.cfg', 'w')
     CFGP.write(buildout_cfg)

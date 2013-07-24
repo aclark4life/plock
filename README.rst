@@ -16,7 +16,7 @@ Installing and running Plone with Plock looks like this::
 
     $ pip install plock
     $ bin/install-plone
-    $ bin/plone start
+    $ bin/plone fg
 
 Configuration
 -------------
@@ -39,8 +39,4 @@ To install add-ons, add the desired Python package name(s) to the command line e
 
     $ bin/install-plone --install-addons Products.PloneFormGen
 
-Restart Plone::
-
-    $ bin/plone restart
-
-Install the add-on(s) in Plone via Site Setup -> Add-ons.
+Restart Plone and install the add-on(s) in Plone via Site Setup -> Add-ons.

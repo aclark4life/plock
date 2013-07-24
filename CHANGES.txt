@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.0.4 (2013-07-23)
+------------------
+
+- Provide updated add-on installation instructions
+- Install add-ons with bin/install-plone --install-addons PACKAGE(S)
+
 0.0.3 (2013-07-22)
 ------------------
 
