@@ -53,7 +53,7 @@ Restart Plone and install the add-on(s) in Plone via Site Setup -> Add-ons. Afte
 Why
 ---
 
-Why bother building Plock on top of Buildout? Plock is a work around for ``pip install Plone`` which works but requires a lengthy requirements.txt, and lacks additional features provided by Buildout that are necessary to use ``pip install Plone`` effectively.
+Why bother building Plock on top of Buildout? Plock is a work around for ``pip install Plone`` which works but requires a lengthy requirements.txt, and lacks additional features provided by Buildout that are needed to use ``pip install Plone`` effectively.
 
 Pip
 ~~~
