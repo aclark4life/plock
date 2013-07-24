@@ -45,10 +45,11 @@ def install():
     """
     Install Plone with Buildout
     """
+    first_time = False
     locale_format('asdf')
     args = ARGP.parse_args()
     if args.install_addons:
-        install_addons(args)
+        first_time = install_addons(args)
     if args.list_addons:
         locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
         list_addons()
@@ -57,6 +58,8 @@ def install():
     sys.stdout.flush()
     create_cfg()
     run_buildout()
+    if first_time:
+        install_addons(args)
     print(" done.")
 
 
@@ -64,6 +67,11 @@ def install_addons(args):
     """
     Install add-ons from PyPI
     """
+    if not os.path.exists('buildout.cfg'):
+        # It's the first time the installer has run so we need
+        # to write buildout.cfg before adding a plone section.
+        # Return and come back later.
+        return True
     addons = []
     addons.append('${base:packages}')
     addons.append('${version:packages}')
