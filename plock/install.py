@@ -63,11 +63,13 @@ class Installer():
                 self.list_addons()
             exit()
         if args.raw:
-            print "Use --raw with --list-addons."
+            print "Usage: bin/install-plone --list-addons --raw"
             exit(1)
 
         if args.preserve and not args.install_addons:
-            print "Use --preserve with --install-addons."
+            usage = "Usage: bin/install-plone --install-addons PACKAGE(S)"
+            usage += " --preserve"
+            print(usage)
             exit(1)
 
         sys.stdout.write("Installing Plone. This may take a while...")
