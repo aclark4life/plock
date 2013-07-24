@@ -1,13 +1,13 @@
 # encoding: utf-8
-from .config import ADDON
-from .config import ARGP
-from .config import CFGP
-from .config import CFG
+from .config import ADDON_FORMAT_STRING
+from .config import BUILDOUT_CFG
 from .config import CMD
 from .config import EXPERT
 from .config import OPER
 from .config import PYPI
 from .config import SPEC
+from .config import argument_parser
+from .config import config_parser
 import collections
 import locale
 import os
@@ -30,7 +30,7 @@ class Installer():
         """
         if not os.path.exists('buildout.cfg'):
             cfg = open('buildout.cfg', 'w')
-            cfg.write(CFG)
+            cfg.write(BUILDOUT_CFG)
             cfg.close
 
     def create_dirs(self):
@@ -52,7 +52,7 @@ class Installer():
         Install Plone with Buildout
         """
         first_time = False
-        args = ARGP.parse_args()
+        args = argument_parser.parse_args()
         if args.install_addons:
             first_time = self.install_addons(args)
         if args.list_addons:
@@ -89,12 +89,12 @@ class Installer():
         addons.append('${version:packages}')
         for package in args.install_addons:
             addons.append(package)
-        CFGP.read('buildout.cfg')
-        if not CFGP.has_section('plone'):
-            CFGP.add_section('plone')
-        CFGP.set('plone', 'eggs', '\n' + '\n'.join(addons))
+        config_parser.read('buildout.cfg')
+        if not config_parser.has_section('plone'):
+            config_parser.add_section('plone')
+        config_parser.set('plone', 'eggs', '\n' + '\n'.join(addons))
         buildout_cfg = open('buildout.cfg', 'w')
-        CFGP.write(buildout_cfg)
+        config_parser.write(buildout_cfg)
         buildout_cfg.close()
 
     def list_addons(self, raw=False):
@@ -114,7 +114,7 @@ class Installer():
                 print(name)
             else:
                 print(
-                    ADDON % (
+                    ADDON_FORMAT_STRING % (
                         self.locale_format(
                             count), name.ljust(40), summary.ljust(40)))
 
