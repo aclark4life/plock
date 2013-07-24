@@ -58,9 +58,9 @@ Why bother building Plock on top of Buildout? Plock is a work around for ``pip i
 Pip
 ~~~
 
-Why bother supporting pip? Simply put: to advance the state of Plone such that Buildout can be used, but not required.
+Why bother supporting pip? To advance the state of Plone such that Buildout can be used, but not required.
 
 Buildout
 ~~~~~~~~
 
-Why make Buildout optional? Because the author is interested in marketing Plone to Python Programmers who are generally more familiar with pip than Buildout.
+Why make Buildout optional? To market Plone to Python Programmers who are generally more familiar with pip than Buildout.
