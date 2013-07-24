@@ -49,3 +49,8 @@ Restart Plone and install the add-on(s) in Plone via Site Setup -> Add-ons. Afte
         ${base:packages}
         ${version:packages}
         Products.PloneFormGen
+
+Why
+---
+
+Why bother building on top of Buildout? Good question: Plock is a work around for the period of time between when the latest Plock is released and when ``pip install Plone`` works reliably which could be soon or never, depending on who you ask. It technically works already, but you need to maintain a requirements.txt for each Plone release and there are additional conveniences Buildout provides that must be replaced.
