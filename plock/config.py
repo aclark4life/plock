@@ -5,20 +5,20 @@ import os
 
 ADDON_FORMAT_STRING = "%s) %s - %s"
 
-EXPERT = os.environ.get('PLOCK_EXPERT')
-
+EXPERT_MODE = os.environ.get('PLOCK_EXPERT')
 try:
-    EXPERT = eval(EXPERT)
+    EXPERT_MODE = eval(EXPERT_MODE)
 except:
-    EXPERT = False
+    EXPERT_MODE = False
 
 BUILDOUT_CFG = """\
 [buildout]
 extends = https://raw.github.com/pythonpackages/buildout-plone/master/latest
 """
 
-CMD = ('buildout:download-cache=download-cache',
-       'buildout:eggs-directory=eggs-directory')
+BUILDOUT_OPT = (
+    'buildout:download-cache=download-cache',
+    'buildout:eggs-directory=eggs-directory')
 
 OPER = 'AND'
 

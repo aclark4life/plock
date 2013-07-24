@@ -1,8 +1,8 @@
 # encoding: utf-8
 from .config import ADDON_FORMAT_STRING
 from .config import BUILDOUT_CFG
-from .config import CMD
-from .config import EXPERT
+from .config import BUILDOUT_OPT
+from .config import EXPERT_MODE
 from .config import OPER
 from .config import PYPI
 from .config import SPEC
@@ -131,13 +131,13 @@ class Installer():
     def run_buildout(self):
         buildout = sh.Command("bin/buildout")
         try:
-            if EXPERT:  # Allow Buildout dirs to be
+            if EXPERT_MODE:  # Allow Buildout dirs to be
                 # specified by .buildout/default.cfg
                 buildout()
             else:  # Explicitly create and use Buildout dirs
                 # in the current working directory.
                 self.create_dirs()
-                download = buildout(CMD, _bg=True)
+                download = buildout(BUILDOUT_OPT, _bg=True)
                 count = 0
                 while(len(os.listdir('eggs-directory')) < 235):
                     count += 1  # Count eggs
