@@ -53,4 +53,14 @@ Restart Plone and install the add-on(s) in Plone via Site Setup -> Add-ons. Afte
 Why
 ---
 
-Why bother building on top of Buildout? Good question: Plock is a work around for the period of time between when the latest Plock is released and when ``pip install Plone`` works reliably which could be soon or never, depending on who you ask. It technically works already, but you need to maintain a requirements.txt for each Plone release and there are additional conveniences Buildout provides that must be replaced.
+Why bother building on top of Buildout? Good question: Plock is a work around for ``pip install Plone`` which works now but requires a lengthy requirements.txt, and lacks additional conveniences provided by Buildout that must be replaced in order for ``pip install Plone`` to work properly.
+
+Pip
+~~~
+
+Why bother supporting pip? Simply put: to advance the state of Plone such that Buildout can be used, but not required.
+
+Buildout
+~~~~~~~~
+
+Why make Buildout optional? Because the author is interested in marketing Plone to Python Programmers who are generally more familiar with pip than Buildout.
