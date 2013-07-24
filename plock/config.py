@@ -20,11 +20,10 @@ BUILDOUT_OPT = (
     'buildout:download-cache=download-cache',
     'buildout:eggs-directory=eggs-directory')
 
-OPER = 'AND'
-
 PYPI = CheeseShop()
 
-SPEC = {'description': 'plone', 'keyword': 'plone', 'summary': 'plone'}
+SEARCH_OPER = 'AND'
+SEARCH_SPEC = {'description': 'plone', 'keyword': 'plone', 'summary': 'plone'}
 
 argument_parser = argparse.ArgumentParser(
     description="Plock is a Plone Installer for the Pip-Loving Crowd")

@@ -3,9 +3,9 @@ from .config import ADDON_FORMAT_STRING
 from .config import BUILDOUT_CFG
 from .config import BUILDOUT_OPT
 from .config import EXPERT_MODE
-from .config import OPER
 from .config import PYPI
-from .config import SPEC
+from .config import SEARCH_OPER
+from .config import SEARCH_SPEC
 from .config import argument_parser
 from .config import config_parser
 import collections
@@ -103,7 +103,7 @@ class Installer():
         """
         count = 0
         results = collections.OrderedDict()
-        for package in PYPI.search(SPEC, OPER):
+        for package in PYPI.search(SEARCH_SPEC, SEARCH_OPER):
             if 'name' in package and 'summary' in package:
                 name = package['name']
                 summary = package['summary']
