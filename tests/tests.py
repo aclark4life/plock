@@ -1,6 +1,3 @@
-from nose import with_setup
-
-
 def test_locale_format():
     from plock.install import Installer
     import locale
