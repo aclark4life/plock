@@ -63,7 +63,7 @@ class Installer():
                 self.list_addons()
             exit()
         if args.raw:
-            print "Usage: bin/install-plone --list-addons --raw"
+            print("Usage: bin/install-plone --list-addons --raw")
             exit(1)
 
         if args.preserve and not args.install_addons:
@@ -172,7 +172,7 @@ class Installer():
                     sys.stdout.flush()
                 download.wait()
         except sh.ErrorReturnCode_1:
-            print " error!"
+            print(" error!")
             if not self._BACKUP is None:
                 buildout_cfg = open('buildout.cfg', 'w')
                 buildout_cfg.write(self._BACKUP)
