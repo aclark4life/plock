@@ -1,6 +1,15 @@
 Changelog
 =========
 
+0.0.5 (2013-07-24)
+------------------
+
+- New features:
+    - Added --raw for use with --list-addons
+- Bug fixes:
+    - bin/install-plone with --install-addons PACKAGE(S) can now be run the first time to install both Plone and add-ons.
+    - bin/install-plone --install-addons PACKAGE(S) saves a copy of buildout.cfg and reverts to it if a Buildout run fails.
+
 0.0.4 (2013-07-23)
 ------------------
 
