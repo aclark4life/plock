@@ -52,14 +52,19 @@ class Installer():
         Install Plone with Buildout
         """
         first_time = False
-        self.locale_format('asdf')
         args = ARGP.parse_args()
         if args.install_addons:
             first_time = self.install_addons(args)
         if args.list_addons:
             locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
-            self.list_addons()
+            if args.raw:
+                self.list_addons(raw=True)
+            else:
+                self.list_addons()
             exit()
+        if args.raw:
+            print "Use with --list-addons."
+            exit(1)
         sys.stdout.write("Installing Plone. This may take a while...")
         sys.stdout.flush()
         self.create_cfg()
@@ -92,7 +97,7 @@ class Installer():
         CFGP.write(buildout_cfg)
         buildout_cfg.close()
 
-    def list_addons(self):
+    def list_addons(self, raw=False):
         """
         List add-ons from PyPI
         """
@@ -105,10 +110,13 @@ class Installer():
                 results[name] = summary
         for name, summary in results.items():
             count += 1
-            print(
-                ADDON % (
-                    self.locale_format(
-                        count), name.ljust(40), summary.ljust(40)))
+            if raw:
+                print(name)
+            else:
+                print(
+                    ADDON % (
+                        self.locale_format(
+                            count), name.ljust(40), summary.ljust(40)))
 
     def locale_format(self, num):
         """

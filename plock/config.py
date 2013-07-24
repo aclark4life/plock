@@ -15,6 +15,9 @@ ARGP.add_argument(
 ARGP.add_argument(
     "-l", "--list-addons", action="store_true", help="List add-ons from PyPI")
 
+ARGP.add_argument(
+    "-r", "--raw", action="store_true", help="Raw output")
+
 EXPERT = os.environ.get('PLOCK_EXPERT')
 
 try:
