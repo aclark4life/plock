@@ -16,20 +16,15 @@ Installing and running Plone with Plock looks like this::
 
     $ pip install plock
     $ bin/install-plone
-    $ bin/plone fg
+    $ bin/plone {fg, start}
 
 Configuration
 -------------
 
-Plone uses `Buildout <https://pypi.python.org/pypi/zc.buildout>`_ to manage its installation and configuration. Plock creates a ``buildout.cfg`` file for you that looks like this::
+Plone uses `Buildout <https://pypi.python.org/pypi/zc.buildout>`_ to manage its installation and configuration. Plock creates a ``buildout.cfg`` file for you that initially looks like this::
 
     [buildout]
     extends = https://raw.github.com/pythonpackages/buildout-plone/master/latest
-
-    [plone]
-    eggs +=
-    # Add-ons go here e.g.:
-    #    Products.PloneFormGen
 
 Add-ons 
 ~~~~~~~
@@ -40,21 +35,12 @@ To list available add-ons::
 
     $ bin/install-plone --list-addons
 
-To install add-ons, add the desired Python package name(s) to the ``eggs +=`` parameter e.g.::
+To install add-ons, add the desired Python package name(s) to the command line e.g.::
 
-    [buildout]
-    extends = https://raw.github.com/pythonpackages/buildout-plone/master/latest
+    $ bin/install-plone --install-addons Products.PloneFormGen
 
-    [plone]
-    eggs +=
-        Products.PloneFormGen
+Restart Plone::
 
-Stop Plone and run Buildout::
-
-    $ bin/buildout
-
-Start Plone::
-
-    $ bin/plone fg
+    $ bin/plone restart
 
 Install the add-on(s) in Plone via Site Setup -> Add-ons.

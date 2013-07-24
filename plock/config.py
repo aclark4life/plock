@@ -1,5 +1,6 @@
 from yolk.pypi import CheeseShop
 import argparse
+import configparser
 import os
 
 
@@ -7,6 +8,9 @@ ADDON = "%s) %s - %s"
 
 ARGP = argparse.ArgumentParser(
     description="Plock is a Plone Installer for the Pip-Loving Crowd")
+
+ARGP.add_argument(
+    "-i", "--install-addons", help="Install add-ons from PyPI", nargs="*")
 
 ARGP.add_argument(
     "-l", "--list-addons", action="store_true", help="List add-ons from PyPI")
@@ -21,12 +25,9 @@ except:
 CFG = """\
 [buildout]
 extends = https://raw.github.com/pythonpackages/buildout-plone/master/latest
-
-[plone]
-eggs +=
-# Add-ons go here e.g.:
-#    Products.PloneFormGen
 """
+
+CFGP = configparser.SafeConfigParser()
 
 CMD = ('buildout:download-cache=download-cache',
        'buildout:eggs-directory=eggs-directory')

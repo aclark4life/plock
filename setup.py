@@ -22,6 +22,7 @@ setup(
         ],
     },
     install_requires=[
+        'configparser',
         'sh',
         'yolk',
         'zc.buildout',

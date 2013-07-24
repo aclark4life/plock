@@ -1,6 +1,7 @@
 # encoding: utf-8
 from .config import ADDON
 from .config import ARGP
+from .config import CFGP
 from .config import CFG
 from .config import CMD
 from .config import EXPERT
@@ -44,34 +45,34 @@ def install():
     """
     Install Plone with Buildout
     """
-    locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
     args = ARGP.parse_args()
+    if args.install_addons:
+        install_addons(args)
     if args.list_addons:
+        locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
         list_addons()
         exit()
     sys.stdout.write("Installing Plone. This may take a while...")
     sys.stdout.flush()
     create_cfg()
-    buildout = sh.Command("bin/buildout")
-    if EXPERT:  # Allow Buildout dirs to be
-        # specified by .buildout/default.cfg
-        buildout()
-    else:  # Explicitly create and use Buildout dirs
-        # in the current working directory.
-        create_dirs()
-        download = buildout(CMD, _bg=True)
-        count = 0
-        while(len(os.listdir('eggs-directory')) < 235):
-            count += 1  # Count eggs
-            num = len(os.listdir('eggs-directory'))
-            if count % 5 == 0:  # Print status
-                sys.stdout.write("(%d)" % num)
-            else:
-                time.sleep(3)
-                sys.stdout.write(".")
-            sys.stdout.flush()
-        download.wait()
+    run_buildout()
     print(" done.")
+
+
+def install_addons(args):
+    """
+    Install add-ons from PyPI
+    """
+    addons = []
+    addons.append('${base:packages}')
+    addons.append('${version:packages}')
+    for package in args.install_addons:
+        addons.append(package)
+    CFGP.read('buildout.cfg')
+    CFGP.set('plone', 'eggs', '\n' + '\n'.join(addons))
+    buildout_cfg = open('buildout.cfg', 'w')
+    CFGP.write(buildout_cfg)
+    buildout_cfg.close()
 
 
 def list_addons():
@@ -99,3 +100,30 @@ def locale_format(num):
         return locale.format("%d", num, grouping=True)
     except:
         return num
+
+
+def run_buildout():
+    buildout = sh.Command("bin/buildout")
+    try:
+        if EXPERT:  # Allow Buildout dirs to be
+            # specified by .buildout/default.cfg
+            buildout()
+        else:  # Explicitly create and use Buildout dirs
+            # in the current working directory.
+            create_dirs()
+            download = buildout(CMD, _bg=True)
+            count = 0
+            while(len(os.listdir('eggs-directory')) < 235):
+                count += 1  # Count eggs
+                num = len(os.listdir('eggs-directory'))
+                if count % 5 == 0:  # Print status
+                    sys.stdout.write("(%d)" % num)
+                else:
+                    time.sleep(3)
+                    sys.stdout.write(".")
+                sys.stdout.flush()
+            download.wait()
+    except sh.ErrorReturnCode_1:
+        print " error!"
+        exit(1)
+
