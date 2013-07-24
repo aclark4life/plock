@@ -113,6 +113,8 @@ class Installer():
 
                 addons = addons + existing_addons
                 addons = set(addons)
+                addons = list(addons)
+                addons.sort()
 
         config_parser.set('plone', 'eggs', '\n' + '\n'.join(addons))
         buildout_cfg = open('buildout.cfg', 'w')
