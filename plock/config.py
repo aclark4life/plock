@@ -18,7 +18,8 @@ extends = https://raw.github.com/pythonpackages/buildout-plone/master/latest
 
 BUILDOUT_OPT = (
     'buildout:download-cache=download-cache',
-    'buildout:eggs-directory=eggs-directory')
+    'buildout:eggs-directory=eggs-directory',
+    '-U',)
 
 SEARCH_OPER = 'AND'
 SEARCH_SPEC = {'description': 'plone', 'keyword': 'plone', 'summary': 'plone'}
