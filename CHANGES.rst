@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.0.8 (2013-07-25)
+------------------
+
+- New features:
+    - Added --write-config to write buildout.cfg and exit.
+
 0.0.7 (2013-07-24)
 ------------------
 

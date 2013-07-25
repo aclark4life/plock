@@ -33,6 +33,9 @@ argument_parser.add_argument(
 argument_parser.add_argument(
     "-l", "--list-addons", action="store_true", help="List add-ons from PyPI")
 
+argument_parser.add_argument(
+    "-w", "--write-config", action="store_true", help="Write buildout.cfg")
+
 # This option makes it possible to --install-addons without completely
 # replacing the current list of addons in buildout.cfg, which is the
 # default behavior.

@@ -72,6 +72,11 @@ class Installer():
             print(usage)
             exit(1)
 
+        if args.write_config:
+            self.create_cfg()
+            print "Wrote buildout.cfg."
+            exit(0)
+
         sys.stdout.write("Installing Plone. This may take a while...")
         sys.stdout.flush()
         self.create_cfg()
