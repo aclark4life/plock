@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.0.9 (2013-07-25)
+------------------
+
+- Bug fixes:
+    - Don't print "Wrote buildout.cfg" if buildout.cfg exists.
+
 0.0.8 (2013-07-25)
 ------------------
 

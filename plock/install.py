@@ -32,6 +32,8 @@ class Installer():
             cfg = open('buildout.cfg', 'w')
             cfg.write(BUILDOUT_CFG)
             cfg.close
+            return True
+        return False
 
     def create_dirs(self):
         """
@@ -73,9 +75,12 @@ class Installer():
             exit(1)
 
         if args.write_config:
-            self.create_cfg()
-            print "Wrote buildout.cfg."
-            exit(0)
+            if self.create_cfg():
+                print "Wrote buildout.cfg."
+                exit(0)
+            else:
+                print "Failed to write buildout.cfg: it already exists."
+                exit(1)
 
         sys.stdout.write("Installing Plone. This may take a while...")
         sys.stdout.flush()

@@ -3,4 +3,5 @@ pre:
 	flake8 tests/*.py
 	check-manifest
 	pyroma .
+	bin/python setup.py test
 	viewdoc
