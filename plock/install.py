@@ -1,8 +1,11 @@
 # encoding: utf-8
+from .config import 4_3_1_CFG
 from .config import ADDON_FORMAT_STRING
+from .config import BASE_CFG
 from .config import BUILDOUT_CFG
 from .config import BUILDOUT_OPT
 from .config import EXPERT_MODE
+from .config import LATEST_CFG
 from .config import SEARCH_OPER
 from .config import SEARCH_SPEC
 from .config import argument_parser
@@ -29,10 +32,25 @@ class Installer():
         Create Buildout config
         """
         if not os.path.exists('buildout.cfg'):
+
+            cfg = open('4.3.1-versions.cfg', 'w')
+            cfg.write(4_3_1_CFG)
+            cfg.close()
+
+            cfg = open('base.cfg', 'w')
+            cfg.write(BASE_CFG)
+            cfg.close()
+
+            cfg = open('latest.cfg', 'w')
+            cfg.write(LATEST_CFG)
+            cfg.close()
+
             cfg = open('buildout.cfg', 'w')
             cfg.write(BUILDOUT_CFG)
             cfg.close
+
             return True
+
         return False
 
     def create_dirs(self):
@@ -65,11 +83,11 @@ class Installer():
                 self.list_addons()
             exit()
         if args.raw:
-            print("Usage: bin/install-plone --list-addons --raw")
+            print("Usage: plock --list-addons --raw")
             exit(1)
 
         if args.preserve and not args.install_addons:
-            usage = "Usage: bin/install-plone --install-addons PACKAGE(S)"
+            usage = "Usage: plock --add-on ADD_ON(S)"
             usage += " --preserve"
             print(usage)
             exit(1)

@@ -15,9 +15,16 @@ Installation
 Installing and running Plone with Plock looks like this::
 
     $ virtualenv-2.7 .
-    $ bin/pip install plock
-    $ bin/plock
-    $ bin/plone fg
+    $ source bin/activate
+
+::
+
+    $ pip install plock
+    $ plock
+
+::
+
+    $ plone fg
 
 Configuration
 -------------
