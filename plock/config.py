@@ -13,7 +13,7 @@ except:
 
 BUILDOUT_CFG = """\
 [buildout]
-extends = release.cfg
+extends = latest.cfg
 """
 
 BUILDOUT_OPT = (
