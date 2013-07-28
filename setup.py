@@ -18,7 +18,7 @@ setup(
     entry_points={
         # "EntryPoint must be in 'name=module:attrs [extras]' format"
         'console_scripts': [
-            'install-plone=plock.install:install',
+            'plock=plock.install:install',
         ],
     },
     install_requires=[
@@ -27,7 +27,7 @@ setup(
         'yolk',
         'zc.buildout',
     ],
-    keywords="pip plone",
+    keywords="buildout pip plone virtualenv zope",
     license='Whatever license Plone is',
     long_description=(
         open('README.rst').read() + '\n' +
