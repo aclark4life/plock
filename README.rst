@@ -41,16 +41,16 @@ Add-ons
 
 To list available add-ons::
 
-    $ bin/install-plone --list-addons
+    $ plock --list-addons
 
 To install add-ons, add the desired Python package name(s) to the command line e.g.::
 
-    $ bin/install-plone --install-addons Products.PloneFormGen
+    $ plock --add-on Products.PloneFormGen
 
 Restart Plone and install the add-on(s) in Plone via Site Setup -> Add-ons. After you install add-ons with Plock your ``buildout.cfg`` file will look like this::
 
     [buildout]
-    extends = https://raw.github.com/pythonpackages/buildout-plone/master/latest
+    extends = latest.cfg
 
     [plone]
     eggs = 
