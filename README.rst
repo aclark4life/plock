@@ -8,7 +8,7 @@ Installation
 
 .. Note:: Installing Plone with Plock requires an internet connection. If you want to install off-line, try the `Unified Installer <http://plone.org/download>`_.
 
-.. Note:: Plock supports the latest release (and only the latest release) of Plone, currently: Plone 4.3.
+.. Note:: Plock supports the latest release (and only the latest release) of Plone, currently Plone 4.3.
 
 Installing and running Plone with Plock looks like this::
 
@@ -30,7 +30,9 @@ Configuration
 Plone uses `Buildout <https://pypi.python.org/pypi/zc.buildout>`_ to manage its installation and configuration. Plock creates a ``buildout.cfg`` file for you that (initially) looks like this::
 
     [buildout]
-    extends = https://raw.github.com/pythonpackages/buildout-plone/master/latest
+    extends = latest.cfg
+
+``latest.cfg`` extends several other configuration files in the current working directory.
 
 Add-ons 
 ~~~~~~~
