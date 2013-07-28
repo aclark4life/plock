@@ -28,7 +28,7 @@ argument_parser = argparse.ArgumentParser(
     description="Plock is a Plone Installer for the Pip-Loving Crowd")
 
 argument_parser.add_argument(
-    "-i", "--install-addons", help="Install add-ons from PyPI", nargs="*")
+    "-i", "--add-on", help="Install add-ons from PyPI", nargs="*")
 
 argument_parser.add_argument(
     "-l", "--list-addons", action="store_true", help="List add-ons from PyPI")

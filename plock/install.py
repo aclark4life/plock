@@ -55,7 +55,7 @@ class Installer():
         """
         first_time = False
         args = argument_parser.parse_args()
-        if args.install_addons:
+        if args.add_on:
             first_time = self.install_addons(args)
         if args.list_addons:
             locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
