@@ -1,5 +1,5 @@
 # encoding: utf-8
-from .config import 4_3_1_CFG
+from .config import _4_3_1_CFG
 from .config import ADDON_FORMAT_STRING
 from .config import BASE_CFG
 from .config import BUILDOUT_CFG
@@ -34,7 +34,7 @@ class Installer():
         if not os.path.exists('buildout.cfg'):
 
             cfg = open('4.3.1-versions.cfg', 'w')
-            cfg.write(4_3_1_CFG)
+            cfg.write(_4_3_1_CFG)
             cfg.close()
 
             cfg = open('base.cfg', 'w')

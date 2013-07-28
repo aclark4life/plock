@@ -51,7 +51,7 @@ config_parser = configparser.SafeConfigParser()
 pypi = CheeseShop()
 
 # 4.3.1-versions.cfg
-4_3_1_CFG = """\
+_4_3_1_CFG = """\
 [versions]
 # ZopeApp
 zope.app.applicationcontrol = 3.5.10
@@ -528,7 +528,7 @@ packages =
     Plone
 
 [plone]
-eggs = 
+eggs =
     ${base:packages}
 products =
 recipe = plone.recipe.zope2instance
@@ -548,12 +548,12 @@ setuptools = 0.9.8
 # latest.cfg
 LATEST_CFG = """\
 [buildout]
-extends = 
+extends =
     4.3.1-versions.cfg
     base.cfg
 
 [plone]
-eggs = 
+eggs =
     ${base:packages}
     ${version:packages}
 
