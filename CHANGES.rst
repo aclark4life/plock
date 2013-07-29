@@ -5,7 +5,7 @@ Changelog
 ------------------
 
 - Make "secure"
-    - All Buildout configuration files for Plone, Zope2, and the ZTK are include.
+    - All Buildout configuration files for Plone, Zope2, and the ZTK are included in plock; this eliminates the possibility of a MITM-attack via remote extends (now you just have to trust PyPI and dist.plone.org.)
 
 - Changed features:
     - Renamed script: ``install-plone`` to ``plock``.
