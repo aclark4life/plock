@@ -13,7 +13,7 @@ except:
 
 BUILDOUT_CFG = """\
 [buildout]
-extends = latest.cfg
+extends = release.cfg
 """
 
 BUILDOUT_OPT = (
@@ -545,8 +545,8 @@ zc.buildout = 2.2.0
 setuptools = 0.9.8
 """
 
-# latest.cfg
-LATEST_CFG = """\
+# release.cfg
+RELEASE_CFG = """\
 [buildout]
 extends =
     4.3.1-versions.cfg

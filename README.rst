@@ -30,9 +30,9 @@ Configuration
 Plone uses `Buildout <https://pypi.python.org/pypi/zc.buildout>`_ to manage its installation and configuration. Plock creates a ``buildout.cfg`` file for you that initially looks like this::
 
     [buildout]
-    extends = latest.cfg
+    extends = release.cfg
 
-``latest.cfg`` extends several other configuration files in the current working directory.
+``release.cfg`` extends several other configuration files in the current working directory.
 
 Add-ons 
 ~~~~~~~
@@ -50,7 +50,7 @@ To install add-ons, add the desired Python package name(s) to the command line e
 Restart Plone and install the add-on(s) in Plone via Site Setup -> Add-ons. After you install add-ons with Plock your ``buildout.cfg`` file will look like this::
 
     [buildout]
-    extends = latest.cfg
+    extends = release.cfg
 
     [plone]
     eggs = 

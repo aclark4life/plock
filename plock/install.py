@@ -5,7 +5,7 @@ from .config import BASE_CFG
 from .config import BUILDOUT_CFG
 from .config import BUILDOUT_OPT
 from .config import EXPERT_MODE
-from .config import LATEST_CFG
+from .config import RELEASE_CFG
 from .config import SEARCH_OPER
 from .config import SEARCH_SPEC
 from .config import argument_parser
@@ -41,8 +41,8 @@ class Installer():
             cfg.write(BASE_CFG)
             cfg.close()
 
-            cfg = open('latest.cfg', 'w')
-            cfg.write(LATEST_CFG)
+            cfg = open('release.cfg', 'w')
+            cfg.write(RELEASE_CFG)
             cfg.close()
 
             cfg = open('buildout.cfg', 'w')

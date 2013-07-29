@@ -4,6 +4,9 @@ Changelog
 0.1.0 (2013-07-28)
 ------------------
 
+- Make "secure"
+    - All Buildout configuration files for Plone, Zope2, and the ZTK are include.
+
 - Changed features:
     - Renamed script: ``install-plone`` to ``plock``.
     - Renamed arg: ``--install-addons`` to ``---add-on`` (to improve argparse-provided usage statement).
