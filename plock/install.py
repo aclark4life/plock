@@ -122,7 +122,7 @@ class Installer():
         addons = []
         addons.append('${base:packages}')
         addons.append('${version:packages}')
-        for package in args.install_addons:
+        for package in args.add_on:
             addons.append(package)
         config_parser.read('buildout.cfg')
         if not config_parser.has_section('plone'):
@@ -188,9 +188,9 @@ class Installer():
                 buildout()
             else:  # Explicitly create and use Buildout dirs
                 # in the current working directory.
+                count = 0
                 self.create_dirs()
                 download = buildout(BUILDOUT_OPT, _bg=True)
-                count = 0
                 while(len(os.listdir('eggs-directory')) < 235):
                     count += 1  # Count eggs
                     num = len(os.listdir('eggs-directory'))
