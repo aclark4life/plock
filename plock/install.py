@@ -181,7 +181,7 @@ class Installer():
             return num
 
     def run_buildout(self):
-        buildout = sh.Command("bin/buildout")
+        buildout = sh.Command("buildout")
         try:
             if EXPERT_MODE:  # Allow Buildout dirs to be
                 # specified by .buildout/default.cfg
