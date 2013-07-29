@@ -7,14 +7,6 @@ def test_argument_parser_items():
         assert arg in parse_args
 
 
-def test_argument_parser_preserve():
-    from plock.config import argument_parser
-    import sys
-    sys.argv = ['-p']  # XXX Remove "test" arg passed to setup.py
-    parse_args = argument_parser.parse_args()
-    import pdb ; pdb.set_trace()
-
-
 def test_locale_format():
     from plock.install import Installer
     import locale
@@ -26,5 +18,4 @@ def test_locale_format():
 
 if __name__ == '__main__':
     test_argument_parser_items()
-    test_argument_parser_preserve()
     test_locale_format()
