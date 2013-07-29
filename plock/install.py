@@ -1,5 +1,4 @@
 # encoding: utf-8
-from .config import _4_3_1_CFG
 from .config import ADDON_FORMAT_STRING
 from .config import BASE_CFG
 from .config import BUILDOUT_CFG
@@ -8,6 +7,7 @@ from .config import EXPERT_MODE
 from .config import RELEASE_CFG
 from .config import SEARCH_OPER
 from .config import SEARCH_SPEC
+from .config import VERSIONS_CFG
 from .config import argument_parser
 from .config import config_parser
 from .config import pypi
@@ -33,8 +33,8 @@ class Installer():
         """
         if not os.path.exists('buildout.cfg'):
 
-            cfg = open('4.3.1-versions.cfg', 'w')
-            cfg.write(_4_3_1_CFG)
+            cfg = open('versions.cfg', 'w')
+            cfg.write(VERSIONS_CFG)
             cfg.close()
 
             cfg = open('base.cfg', 'w')

@@ -50,8 +50,8 @@ config_parser = configparser.SafeConfigParser()
 
 pypi = CheeseShop()
 
-# 4.3.1-versions.cfg
-_4_3_1_CFG = """\
+# versions.cfg
+VERSIONS_CFG = """\
 [versions]
 # ZopeApp
 zope.app.applicationcontrol = 3.5.10
@@ -549,8 +549,8 @@ setuptools = 0.9.8
 RELEASE_CFG = """\
 [buildout]
 extends =
-    4.3.1-versions.cfg
     base.cfg
+    versions.cfg
 
 [plone]
 eggs =

@@ -40,6 +40,6 @@ setup(
     ],
     test_suite = 'nose.collector',
     url='https://github.com/aclark4life/plock',
-    version='0.1.0',
+    version='0.1.1',
     zip_safe=False,
 )
