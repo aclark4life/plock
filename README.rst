@@ -35,7 +35,7 @@ Plone uses `Buildout <https://pypi.python.org/pypi/zc.buildout>`_ to manage its 
     [buildout]
     extends = release.cfg
 
-``release.cfg`` extends several other configuration files in the current working directory.
+``release.cfg`` extends several other configuration files located in the current working directory (created by the installer).
 
 Add-ons 
 ~~~~~~~
