@@ -9,7 +9,7 @@ Changelog
 
 - Changed features:
     - Renamed script: ``install-plone`` to ``plock``.
-    - Renamed arg: ``--install-addons`` to ``---add-on`` (to improve argparse-provided usage statement).
+    - Renamed arg: ``--install-addons`` to ``--add-on`` (to improve argparse-provided usage statement).
 
 0.0.9 (2013-07-25)
 ------------------
