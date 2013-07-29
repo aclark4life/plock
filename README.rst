@@ -58,17 +58,25 @@ Restart Plone and install the add-on(s) in Plone via Site Setup -> Add-ons. Afte
         ${version:packages}
         Products.PloneFormGen
 
-Why
+FAQ
 ---
 
-Why bother building Plock on top of Buildout? Plock is a work around for ``pip install Plone`` which works but requires a lengthy requirements.txt, and lacks additional features provided by Buildout that are needed to use ``pip install Plone`` effectively.
+Why bother building Plock on top of Buildout? 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Pip
-~~~
+Plock is a work around for ``pip install Plone`` which works but requires a lengthy requirements.txt, and lacks additional features provided by Buildout that are needed to use ``pip install Plone`` effectively.
 
-Why bother supporting pip? To advance the state of Plone such that Buildout can be used, but not required.
+Why bother supporting pip? 
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Buildout
-~~~~~~~~
+To advance the state of Plone such that Buildout can be used, but not required.
 
-Why make Buildout optional? To market Plone to Python Programmers who are generally more familiar with pip than Buildout.
+Why make Buildout optional? 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To market Plone to Python Programmers who are generally more familiar with pip than Buildout.
+
+Why the name Plock?
+~~~~~~~~~~~~~~~~~~~
+
+Plock is a `single by the band Plone <http://www.youtube.com/watch?v=IlLzsF61n-8>`_.
