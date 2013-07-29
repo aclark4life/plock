@@ -4,7 +4,7 @@ Changelog
 0.1.2 (2013-07-29)
 ------------------
 
-- Document PLOCK_EXPERT environment variable to respect .buildout/default.cfg
+- Document PLOCK_EXPERT environment variable to respect ``.buildout/default.cfg``
 - Bug fixes:
     - Fixed ref to ``args.add_on`` via ``--preserve``
 
