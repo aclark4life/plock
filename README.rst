@@ -3,6 +3,8 @@ plock
 
 Plock is a Plone Installer for the Pip-loving Crowd
 
+.. image:: https://travis-ci.org/aclark4life/plock.png?branch=master
+
 Installation
 ------------
 
@@ -75,7 +77,7 @@ To advance the state of Plone such that Buildout can be used, but not required.
 Why make Buildout optional? 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To market Plone to Python Programmers who are generally more familiar with pip than Buildout.
+To market Plone to Python programmers who are generally more familiar with pip than Buildout.
 
 Why the name Plock?
 ~~~~~~~~~~~~~~~~~~~
