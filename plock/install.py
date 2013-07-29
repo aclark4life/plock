@@ -86,7 +86,7 @@ class Installer():
             print("Usage: plock --list-addons --raw")
             exit(1)
 
-        if args.preserve and not args.install_addons:
+        if args.preserve and not args.add_on:
             usage = "Usage: plock --add-on ADD_ON(S)"
             usage += " --preserve"
             print(usage)
