@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.1.3 (2013-07-31)
+------------------
+
+- New features:
+    - Added ``--zope2-only`` option to install Zope2 only.
+
 0.1.2 (2013-07-29)
 ------------------
 
