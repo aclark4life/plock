@@ -57,10 +57,10 @@ Changelog
 ------------------
 
 - New features:
-    - Added --raw, for use with --list-addons e.g. bin/install-plone --list--addons --raw
-    - Added --preserve for use with --install-addons e.g. bin/install-plone --install-addons Products.PloneFormGen --preserve
+    - Added ``--raw``, for use with ``--list-addons`` e.g. bin/install-plone --list--addons --raw
+    - Added ``--preserve`` for use with ``--install-addons`` e.g. bin/install-plone --install-addons Products.PloneFormGen --preserve
 - Bug fixes:
-    - bin/install-plone with --install-addons PACKAGE(S) can now be run the first time to install both Plone and add-ons.
+    - bin/install-plone --install-addons PACKAGE(S) can now be run the first time to install both Plone and add-ons.
     - bin/install-plone --install-addons PACKAGE(S) saves a copy of buildout.cfg and reverts changes if a Buildout run fails.
 
 0.0.4 (2013-07-23)
