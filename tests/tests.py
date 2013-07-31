@@ -1,4 +1,4 @@
-def test_argument_parser_items():
+def test_argument_parser_args():
     from plock.config import argument_parser
     import sys
     sys.argv = ['']  # XXX Remove "test" arg passed to setup.py
@@ -21,5 +21,5 @@ def test_locale_format():
 
 
 if __name__ == '__main__':
-    test_argument_parser_items()
+    test_argument_parser_args()
     test_locale_format()
