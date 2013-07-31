@@ -6,6 +6,8 @@ Changelog
 
 - New features:
     - Added ``--zope2-only`` option to install Zope2 only.
+- Bug fixes:
+    - Exit Plock when egg count remains the same for longer than or equal to PLOCK_TIMEOUT
 
 0.1.2 (2013-07-29)
 ------------------

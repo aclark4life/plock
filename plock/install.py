@@ -3,6 +3,7 @@ from .config import ADDON_FORMAT_STRING
 from .config import BASE_CFG
 from .config import BUILDOUT_CFG
 from .config import BUILDOUT_OPT
+from .config import EGGS_TOTAL
 from .config import EXPERT
 from .config import RELEASE_CFG
 from .config import SEARCH_OPER
@@ -28,6 +29,7 @@ class Installer():
 
     def __init__(self):
         self._BACKUP = None
+        self._EGGS_TOTAL = EGGS_TOTAL
 
     def create_cfg(self, zope2_only=False):
         """
@@ -108,6 +110,7 @@ class Installer():
 
         if args.zope2_only:
             zope2_only = True
+            self._EGGS_TOTAL = 70
 
         sys.stdout.write(
             "Plock is installing things. This may take a while...")
@@ -202,7 +205,7 @@ class Installer():
                 count = 0
                 self.create_dirs()
                 download = buildout(BUILDOUT_OPT, _bg=True)
-                while(len(os.listdir('eggs-directory')) < 235):  # Count eggs
+                while(len(os.listdir('eggs-directory')) < self._EGGS_TOTAL):
                     count += 1  # Print status control
 
                     num = len(os.listdir('eggs-directory'))
