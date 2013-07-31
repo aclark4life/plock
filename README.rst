@@ -109,4 +109,4 @@ Known Issues
 Experimental Zope2 support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If a non-PLOCK_EXPERT were to run ``plock -z`` successfully once, subsequent runs of plock will (with no arguments) continue to build Zope2. During this time, the egg total increases from 70 to 200+ and the built-in self-destruct will trigger.
+If a non-PLOCK_EXPERT were to run ``plock -z`` successfully once, subsequent runs of plock will (with no arguments) continue to build Zope2. During this time, the egg total increases from 70 to 200+ and the built-in self-destruct mechanism (PLOCK_TIMEOUT) will trigger.
