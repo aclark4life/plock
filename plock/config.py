@@ -5,11 +5,11 @@ import os
 
 ADDON_FORMAT_STRING = "%s) %s - %s"
 
-EXPERT_MODE = os.environ.get('PLOCK_EXPERT')
+EXPERT = os.environ.get('PLOCK_EXPERT')
 try:
-    EXPERT_MODE = eval(EXPERT_MODE)
-except:
-    EXPERT_MODE = False
+    EXPERT = eval(EXPERT)
+except TypeError, NameError:
+    EXPERT = False
 
 BUILDOUT_CFG = """\
 [buildout]
@@ -23,6 +23,12 @@ BUILDOUT_OPT = (
 
 SEARCH_OPER = 'AND'
 SEARCH_SPEC = {'description': 'plone', 'keyword': 'plone', 'summary': 'plone'}
+
+TIMEOUT = os.environ.get('PLOCK_TIMEOUT')
+try:
+    TIMEOUT = eval(TIMEOUT)
+except TypeError, NameError:
+    TIMEOUT = 30
 
 argument_parser = argparse.ArgumentParser(
     description="Plock is a Plone Installer for the Pip-Loving Crowd")

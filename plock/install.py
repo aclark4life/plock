@@ -3,10 +3,11 @@ from .config import ADDON_FORMAT_STRING
 from .config import BASE_CFG
 from .config import BUILDOUT_CFG
 from .config import BUILDOUT_OPT
-from .config import EXPERT_MODE
+from .config import EXPERT
 from .config import RELEASE_CFG
 from .config import SEARCH_OPER
 from .config import SEARCH_SPEC
+from .config import TIMEOUT
 from .config import VERSIONS_CFG
 from .config import ZOPE2_CFG
 from .config import argument_parser
@@ -191,8 +192,9 @@ class Installer():
 
     def run_buildout(self):
         buildout = sh.Command("buildout")
+        last = []  # saved iterations
         try:
-            if EXPERT_MODE:  # Allow Buildout dirs to be
+            if EXPERT:  # Allow Buildout dirs to be
                 # specified by .buildout/default.cfg
                 buildout()
             else:  # Explicitly create and use Buildout dirs
@@ -200,9 +202,19 @@ class Installer():
                 count = 0
                 self.create_dirs()
                 download = buildout(BUILDOUT_OPT, _bg=True)
-                while(len(os.listdir('eggs-directory')) < 235):
-                    count += 1  # Count eggs
+                while(len(os.listdir('eggs-directory')) < 235):  # Count eggs
+                    count += 1  # Print status control
+
                     num = len(os.listdir('eggs-directory'))
+
+                    last.append(num)
+                    for value in collections.Counter(last).values():
+                        if value >= TIMEOUT:
+                            # If the egg count doesn't change within
+                            # TIMEOUT number of saved iterations, punt!
+                            print("error: taking too long!")
+                            exit(1)
+
                     if count % 5 == 0:  # Print status
                         sys.stdout.write("(%d)" % num)
                     else:
