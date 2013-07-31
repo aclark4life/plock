@@ -108,7 +108,8 @@ class Installer():
         if args.zope2_only:
             zope2_only = True
 
-        sys.stdout.write("Plock is installing things. This may take a while...")
+        sys.stdout.write(
+            "Plock is installing things. This may take a while...")
         sys.stdout.flush()
         self.create_cfg(zope2_only=zope2_only)
         self.run_buildout()
