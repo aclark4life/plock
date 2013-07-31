@@ -3,8 +3,12 @@ def test_argument_parser_items():
     import sys
     sys.argv = ['']  # XXX Remove "test" arg passed to setup.py
     parse_args = argument_parser.parse_args()
-    for arg in ['add_on', 'list_addons', 'preserve', 'raw', 'write_config']:
+    args = ['add_on', 'list_addons', 'preserve', 'raw', 'write_config']
+    args.append('zope2_only')
+    for arg in args:
         assert arg in parse_args
+
+    assert len(args) == len(parse_args.__dict__.keys())
 
 
 def test_locale_format():

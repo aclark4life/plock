@@ -46,6 +46,9 @@ argument_parser.add_argument(
 argument_parser.add_argument(
     "-r", "--raw", action="store_true", help="Raw output")
 
+argument_parser.add_argument(
+    "-z", "--zope2-only", action="store_true", help="Install Zope2 only")
+
 config_parser = configparser.SafeConfigParser()
 
 pypi = CheeseShop()
@@ -564,4 +567,20 @@ zcml +=
 packages =
     plonetheme.diazo_sunburst
     zope2_bootstrap
+"""
+
+ZOPE2_CFG = """\
+[buildout]
+extends =
+    base.cfg
+    versions.cfg
+parts = zope2
+
+[zope2]
+eggs =
+    Zope2
+    zope2_bootstrap
+recipe = plone.recipe.zope2instance
+user = admin:admin
+zcml = zope2_bootstrap
 """

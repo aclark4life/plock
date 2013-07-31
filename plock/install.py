@@ -8,6 +8,7 @@ from .config import RELEASE_CFG
 from .config import SEARCH_OPER
 from .config import SEARCH_SPEC
 from .config import VERSIONS_CFG
+from .config import ZOPE2_CFG
 from .config import argument_parser
 from .config import config_parser
 from .config import pypi
@@ -27,7 +28,7 @@ class Installer():
     def __init__(self):
         self._BACKUP = None
 
-    def create_cfg(self):
+    def create_cfg(self, zope2_only=False):
         """
         Create Buildout config
         """
@@ -42,7 +43,10 @@ class Installer():
             cfg.close()
 
             cfg = open('release.cfg', 'w')
-            cfg.write(RELEASE_CFG)
+            if zope2_only:
+                cfg.write(ZOPE2_CFG)
+            else:
+                cfg.write(RELEASE_CFG)
             cfg.close()
 
             cfg = open('buildout.cfg', 'w')
@@ -72,6 +76,7 @@ class Installer():
         Install Plone with Buildout
         """
         first_time = False
+        zope2_only = False
         args = argument_parser.parse_args()
         if args.add_on:
             first_time = self.install_addons(args)
@@ -100,9 +105,12 @@ class Installer():
                 print "Failed to write buildout.cfg: it already exists."
                 exit(1)
 
-        sys.stdout.write("Installing Plone. This may take a while...")
+        if args.zope2_only:
+            zope2_only = True
+
+        sys.stdout.write("Plock is doing stuff. This may take a while...")
         sys.stdout.flush()
-        self.create_cfg()
+        self.create_cfg(zope2_only=zope2_only)
         self.run_buildout()
         if first_time:
             self.install_addons(args)
