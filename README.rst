@@ -64,11 +64,21 @@ Restart Plone and install the add-on(s) in Plone via Site Setup -> Add-ons. Afte
 Advanced
 ~~~~~~~~
 
+Buildout
+++++++++
+
 If you are already familiar with ``Buildout``, you may be using a ``~/.buildout/default.cfg`` file to define various settings such as the Buildout ``eggs-directory``. In this case, you probably want to use the eggs installed in your already-defined eggs-directory (rather than letting Plock create and populate a new eggs-directory). To configure such behavior, set PLOCK_EXPERT to True e.g.::
 
     $ export PLOCK_EXPERT=True
 
 Now Plock will respect your ``~/.buildout/default.cfg`` settings.
+
+Zope2
++++++
+
+If you'd like to install Zope2 only, you can do that with::
+
+    $ plock --zope2-only
 
 FAQ
 ---
