@@ -30,7 +30,7 @@ TIMEOUT = os.environ.get('PLOCK_TIMEOUT')
 try:
     TIMEOUT = eval(TIMEOUT)
 except TypeError, NameError:
-    TIMEOUT = 30
+    TIMEOUT = 45
 
 argument_parser = argparse.ArgumentParser(
     description="Plock is a Plone Installer for the Pip-Loving Crowd")
