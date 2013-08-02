@@ -1,7 +1,7 @@
 # encoding: utf-8
 from .config import ADDON_FORMAT_STRING
 from .config import BUILDOUT_CFG_BASE
-from .config import BUILDOUT_CFG_RELEASE
+from .config import BUILDOUT_CFG_PLONE
 from .config import BUILDOUT_CFG_VERSIONS
 from .config import BUILDOUT_CFG_ZOPE2
 from .config import BUILDOUT_CFG

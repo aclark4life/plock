@@ -62,7 +62,7 @@ config_parser = configparser.SafeConfigParser()
 pypi = CheeseShop()
 
 # versions.cfg
-VERSIONS_CFG = """\
+BUILDOUT_CFG_VERSIONS = """\
 [versions]
 # ZopeApp
 zope.app.applicationcontrol = 3.5.10
@@ -523,7 +523,7 @@ zc.relation                           = 1.0
 """
 
 # base.cfg
-BASE_CFG = """\
+BUILDOUT_CFG_BASE = """\
 [buildout]
 allow-hosts =
     *.plone.org
@@ -557,7 +557,7 @@ setuptools = 0.9.8
 """
 
 # release.cfg
-RELEASE_CFG = """\
+BUILDOUT_CFG_PLONE = """\
 [buildout]
 extends =
     base.cfg
@@ -577,7 +577,7 @@ packages =
     zope2_bootstrap
 """
 
-ZOPE2_CFG = """\
+BUILDOUT_CFG_ZOPE2 = """\
 [buildout]
 extends =
     base.cfg
