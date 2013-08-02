@@ -49,7 +49,7 @@ class Installer():
             if zope2_only:
                 cfg.write(BUILDOUT_CFG_ZOPE2)
             else:
-                cfg.write(BUILDOUT_CFG_RELEASE)
+                cfg.write(BUILDOUT_CFG_PLONE)
             cfg.close()
 
             cfg = open('buildout.cfg', 'w')
