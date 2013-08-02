@@ -1,16 +1,16 @@
 # encoding: utf-8
 from .config import ADDON_FORMAT_STRING
-from .config import BASE_CFG
+from .config import BUILDOUT_CFG_BASE
+from .config import BUILDOUT_CFG_RELEASE
+from .config import BUILDOUT_CFG_VERSIONS
+from .config import BUILDOUT_CFG_ZOPE2
 from .config import BUILDOUT_CFG
 from .config import BUILDOUT_OPT
 from .config import EGGS_TOTAL
 from .config import EXPERT
-from .config import RELEASE_CFG
 from .config import SEARCH_OPER
 from .config import SEARCH_SPEC
 from .config import TIMEOUT
-from .config import VERSIONS_CFG
-from .config import ZOPE2_CFG
 from .config import argument_parser
 from .config import config_parser
 from .config import pypi
@@ -38,18 +38,18 @@ class Installer():
         if not os.path.exists('buildout.cfg'):
 
             cfg = open('versions.cfg', 'w')
-            cfg.write(VERSIONS_CFG)
+            cfg.write(BUILDOUT_CFG_VERSIONS)
             cfg.close()
 
             cfg = open('base.cfg', 'w')
-            cfg.write(BASE_CFG)
+            cfg.write(BUILDOUT_CFG_BASE)
             cfg.close()
 
             cfg = open('release.cfg', 'w')
             if zope2_only:
-                cfg.write(ZOPE2_CFG)
+                cfg.write(BUILDOUT_CFG_ZOPE2)
             else:
-                cfg.write(RELEASE_CFG)
+                cfg.write(BUILDOUT_CFG_RELEASE)
             cfg.close()
 
             cfg = open('buildout.cfg', 'w')
