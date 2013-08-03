@@ -63,11 +63,11 @@ class Installer():
             if zope2_only:
                 if not config_parser.has_section('zope2'):
                     print(" existing configuration is not Zope2: error!")
-                    exit()
+                    exit(1)
             else:
                 if not config_parser.has_section('plone'):
                     print(" existing configuration is not Plone: error!")
-                    exit()
+                    exit(1)
 
         return False
 
