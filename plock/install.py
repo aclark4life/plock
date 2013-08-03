@@ -57,6 +57,17 @@ class Installer():
             cfg.close
 
             return True
+        else:
+            # Prevent inadvertently switching from Plone to Zope2 or vice versa
+            config_parser.read('release.cfg')
+            if zope2_only:
+                if not config_parser.has_section('zope2'):
+                    print(" existing configuration is not Zope2: error!")
+                    exit()
+            else:
+                if not config_parser.has_section('plone'):
+                    print(" existing configuration is not Plone: error!")
+                    exit()
 
         return False
 
