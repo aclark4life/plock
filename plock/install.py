@@ -124,7 +124,7 @@ class Installer():
             self._EGGS_TOTAL = 70
 
         sys.stdout.write(
-            "Plock is making funny noises. This may take a while...")
+            "Plock is making noises. This may take a while...")
         sys.stdout.flush()
         self.create_cfg(zope2_only=zope2_only)
         self.run_buildout()
