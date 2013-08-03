@@ -47,9 +47,9 @@ class Installer():
 
             cfg = open('release.cfg', 'w')
             if zope2_only:
-                cfg.write(BUILDOUT_CFG_ZOPE2)
+                cfg.write(BUILDOUT_CFG_ZOPE2 % ('base.cfg', 'versions.cfg'))
             else:
-                cfg.write(BUILDOUT_CFG_PLONE)
+                cfg.write(BUILDOUT_CFG_PLONE % ('base.cfg', 'versions.cfg'))
             cfg.close()
 
             cfg = open('buildout.cfg', 'w')
