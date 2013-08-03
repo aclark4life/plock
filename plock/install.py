@@ -11,7 +11,7 @@ from .config import EXPERT
 from .config import SEARCH_OPER
 from .config import SEARCH_SPEC
 from .config import TIMEOUT
-from .config import argument_parser
+from .config import arg_parser
 from .config import config_parser
 from .config import pypi
 import collections
@@ -75,13 +75,12 @@ class Installer():
             if not os.path.exists(d):
                 os.mkdir(d)
 
-    def install_plone(self):
+    def install_plone(self, args):
         """
         Install Plone with Buildout
         """
         first_time = False
         zope2_only = False
-        args = argument_parser.parse_args()
         if args.add_on:
             first_time = self.install_addons(args)
         if args.list_addons:
@@ -237,4 +236,5 @@ class Installer():
 
 def install():
     plock = Installer()
-    plock.install_plone()
+    args = arg_parser.parse_args()
+    plock.install_plone(args)

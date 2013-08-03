@@ -32,29 +32,32 @@ try:
 except TypeError, NameError:
     TIMEOUT = 45
 
-argument_parser = argparse.ArgumentParser(
+arg_parser = argparse.ArgumentParser(
     description="Plock is a Plone Installer for the Pip-Loving Crowd")
 
-argument_parser.add_argument(
+arg_parser.add_argument(
+    "DIRECTORY", help="Install Plone here")
+
+arg_parser.add_argument(
     "-i", "--add-on", help="Install add-ons from PyPI", nargs="*")
 
-argument_parser.add_argument(
+arg_parser.add_argument(
     "-l", "--list-addons", action="store_true", help="List add-ons from PyPI")
 
-argument_parser.add_argument(
+arg_parser.add_argument(
     "-w", "--write-config", action="store_true", help="Write buildout.cfg")
 
 # This option makes it possible to install addons (with --add-on) without
 # completely
 # replacing the current list of addons in buildout.cfg, which is the
 # default behavior.
-argument_parser.add_argument(
+arg_parser.add_argument(
     "-p", "--preserve", action="store_true", help="Preserve add-ons")
 
-argument_parser.add_argument(
+arg_parser.add_argument(
     "-r", "--raw", action="store_true", help="Raw output")
 
-argument_parser.add_argument(
+arg_parser.add_argument(
     "-z", "--zope2-only", action="store_true", help="Install Zope2 only")
 
 config_parser = configparser.SafeConfigParser()
