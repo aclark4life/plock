@@ -1,8 +1,8 @@
 def test_argument_parser_args():
-    from plock.config import argument_parser
+    from plock.config import arg_parser
     import sys
     sys.argv = ['']  # XXX Remove "test" arg passed to setup.py
-    parse_args = argument_parser.parse_args()
+    parse_args = arg_parser.parse_args()
     args = ['add_on', 'list_addons', 'preserve', 'raw', 'write_config']
     args.append('zope2_only')
     for arg in args:
