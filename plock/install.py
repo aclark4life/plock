@@ -64,6 +64,7 @@ class Installer():
         """
         Create Buildout dirs. Match directory name with section parameter name
         e.g. download-cache = download-cache, eggs-directory = eggs-directory.
+
         Note: a download cache must be defined to be used; there is no
         default value, or caching enabled, if the parameter is not defined.
         Eggs directory is set by default to "eggs" if the parameter is not
