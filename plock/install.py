@@ -31,10 +31,18 @@ class Installer():
         self._BACKUP = None
         self._EGGS_TOTAL = EGGS_TOTAL
 
-    def create_cfg(self, zope2_only=False):
+    def create_cfg(self, insecure=False, zope2_only=False):
         """
         Create Buildout config
         """
+
+        if insecure:
+            base_cfg = 'base.cfg'
+            versions_cfg = 'versions.cfg'
+        else:
+            base_cfg = 'base.cfg'
+            versions_cfg = 'versions.cfg'
+
         if not os.path.exists('buildout.cfg'):
 
             cfg = open('versions.cfg', 'w')
@@ -47,9 +55,9 @@ class Installer():
 
             cfg = open('release.cfg', 'w')
             if zope2_only:
-                cfg.write(BUILDOUT_CFG_ZOPE2 % ('base.cfg', 'versions.cfg'))
+                cfg.write(BUILDOUT_CFG_ZOPE2 % (base_cfg, versions_cfg))
             else:
-                cfg.write(BUILDOUT_CFG_PLONE % ('base.cfg', 'versions.cfg'))
+                cfg.write(BUILDOUT_CFG_PLONE % (base_cfg, versions_cfg))
             cfg.close()
 
             cfg = open('buildout.cfg', 'w')
@@ -91,6 +99,8 @@ class Installer():
         Install Plone with Buildout
         """
         first_time = False
+        directory = args.DIRECTORY
+        insecure = False
         zope2_only = False
         if args.add_on:
             first_time = self.install_addons(args)
@@ -123,10 +133,16 @@ class Installer():
             zope2_only = True
             self._EGGS_TOTAL = 70
 
+        if args.insecure:
+            insecure = True
+
         sys.stdout.write(
             "Plock is making noises. This may take a while...")
         sys.stdout.flush()
-        self.create_cfg(zope2_only=zope2_only)
+
+        os.chdir(directory)
+
+        self.create_cfg(insecure=insecure, zope2_only=zope2_only)
         self.run_buildout()
         if first_time:
             self.install_addons(args)
