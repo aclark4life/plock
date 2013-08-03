@@ -36,6 +36,7 @@ setup(
     name='plock',
     packages=find_packages(),
     tests_require=[
+        'coverage',
         'nose-cover3',
         'nose',
     ],
