@@ -42,6 +42,9 @@ arg_parser.add_argument(
     "-i", "--add-on", help="Install add-ons from PyPI", nargs="*")
 
 arg_parser.add_argument(
+    "--insecure", action="store_true", help="Use hosted configuration files")
+
+arg_parser.add_argument(
     "-l", "--list-addons", action="store_true", help="List add-ons from PyPI")
 
 arg_parser.add_argument(
@@ -563,8 +566,8 @@ setuptools = 0.9.8
 BUILDOUT_CFG_PLONE = """\
 [buildout]
 extends =
-    base.cfg
-    versions.cfg
+    %s
+    %s
 
 [plone]
 eggs =
@@ -583,8 +586,8 @@ packages =
 BUILDOUT_CFG_ZOPE2 = """\
 [buildout]
 extends =
-    base.cfg
-    versions.cfg
+    %s
+    %s
 parts = zope2
 
 [zope2]
