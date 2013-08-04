@@ -39,6 +39,9 @@ arg_parser.add_argument(
     "DIRECTORY", help="Install Plone here")
 
 arg_parser.add_argument(
+    "-e", "--expert", action="store_true", help="Read .buildout/default.cfg")
+
+arg_parser.add_argument(
     "-i", "--add-on", help="Install add-ons from PyPI", nargs="*")
 
 arg_parser.add_argument(
