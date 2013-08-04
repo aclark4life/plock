@@ -528,6 +528,11 @@ z3c.relationfield                     = 0.6.2
 zc.relation                           = 1.0
 """
 
+# For insecure mode, when we trust noone has altered the remote hosted
+# configuration.
+BUILDOUT_CFG_BASE_URL = "https://raw.github.com/pythonpackages/buildout-plone"
+BUILDOUT_CFG_BASE_URL += "/master/base.cfg"
+
 # base.cfg
 BUILDOUT_CFG_BASE = """\
 [buildout]
@@ -562,6 +567,11 @@ zc.buildout = 2.2.0
 setuptools = 0.9.8
 """
 
+# For insecure mode, when we trust noone has altered the remote hosted
+# configuration.
+BUILDOUT_CFG_PLONE_URL = "https://raw.github.com/pythonpackages/buildout-plone"
+BUILDOUT_CFG_PLONE_URL += "/master/4.3.x"
+
 # release.cfg
 BUILDOUT_CFG_PLONE = """\
 [buildout]
@@ -582,6 +592,11 @@ packages =
     plonetheme.diazo_sunburst
     zope2_bootstrap
 """
+
+# For insecure mode, when we trust noone has altered the remote hosted
+# configuration.
+BUILDOUT_CFG_ZOPE2_URL = "https://raw.github.com/pythonpackages/buildout-zope2"
+BUILDOUT_CFG_ZOPE2_URL += "/master/2.13.x"
 
 BUILDOUT_CFG_ZOPE2 = """\
 [buildout]

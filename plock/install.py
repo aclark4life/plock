@@ -1,9 +1,12 @@
 # encoding: utf-8
 from .config import ADDON_FORMAT_STRING
 from .config import BUILDOUT_CFG_BASE
+from .config import BUILDOUT_CFG_BASE_URL
 from .config import BUILDOUT_CFG_PLONE
+from .config import BUILDOUT_CFG_PLONE_URL
 from .config import BUILDOUT_CFG_VERSIONS
 from .config import BUILDOUT_CFG_ZOPE2
+from .config import BUILDOUT_CFG_ZOPE2_URL
 from .config import BUILDOUT_CFG
 from .config import BUILDOUT_OPT
 from .config import EGGS_TOTAL
@@ -37,11 +40,11 @@ class Installer():
         """
 
         if insecure:
-            base_cfg = 'base.cfg'
-            versions_cfg = 'versions.cfg'
+            base_cfg = BUILDOUT_CFG_BASE_URL
+            release_cfg = BUILDOUT_CFG_PLONE_URL
         else:
             base_cfg = 'base.cfg'
-            versions_cfg = 'versions.cfg'
+            release_cfg = 'release.cfg'
 
         if not os.path.exists('buildout.cfg'):
 
@@ -55,9 +58,10 @@ class Installer():
 
             cfg = open('release.cfg', 'w')
             if zope2_only:
-                cfg.write(BUILDOUT_CFG_ZOPE2 % (base_cfg, versions_cfg))
+                release_cfg = BUILDOUT_CFG_ZOPE2_URL
+                cfg.write(BUILDOUT_CFG_ZOPE2 % (base_cfg, release_cfg))
             else:
-                cfg.write(BUILDOUT_CFG_PLONE % (base_cfg, versions_cfg))
+                cfg.write(BUILDOUT_CFG_PLONE % (base_cfg, release_cfg))
             cfg.close()
 
             cfg = open('buildout.cfg', 'w')

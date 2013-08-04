@@ -102,13 +102,3 @@ Why the name Plock?
 ~~~~~~~~~~~~~~~~~~~
 
 Plock is a `single by the band Plone <http://www.youtube.com/watch?v=IlLzsF61n-8>`_.
-
-Known Issues
-------------
-
-Experimental Zope2 support
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- If a non-PLOCK_EXPERT were to run ``plock -z`` successfully once, subsequent runs of plock (with no arguments) will continue to build Zope2. During this time, the egg total increases from 70 to 200+ and the built-in self-destruct mechanism (PLOCK_TIMEOUT) will trigger.
-
-- Add-ons are not supported for Zope2
