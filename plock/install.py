@@ -284,7 +284,7 @@ class Installer():
                             # If the egg count doesn't change within
                             # TIMEOUT number of saved iterations, punt!
                             print("error: taking too long!\n")
-                            print("Try increasing PLOCK_TIMEOUT length")
+                            print("Try increasing PLOCK_TIMEOUT length.")
                             exit(1)
 
                     if count % 5 == 0:  # Print status
@@ -295,7 +295,8 @@ class Installer():
                     sys.stdout.flush()
                 download.wait()
         except sh.ErrorReturnCode_1:
-            print(" error!")
+            print(" error: buildout run failed.\n")
+            print("Run buildout manually to see error.")
             if not self._BACKUP is None:
                 buildout_cfg = open('buildout.cfg', 'w')
                 buildout_cfg.write(self._BACKUP)
