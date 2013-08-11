@@ -1,12 +1,18 @@
 import unittest
 
-class IntegerArithmenticTestCase(unittest.TestCase):
-    def testAdd(self):  ## test method names begin 'test*'
-        self.assertEqual((1 + 2), 3)
-        self.assertEqual(0 + 1, 1)
-    def testMultiply(self):
-        self.assertEqual((0 * 10), 0)
-        self.assertEqual((5 * 8), 40)
+
+class PlockTests(unittest.TestCase):
+
+    def test_install_plone(self):
+        from mock import Mock
+        from plock.install import Installer
+        from tempfile import mkdtemp
+        
+        plock = Installer()
+        mock = Mock()
+        mock.DIRECTORY = mkdtemp()
+        plock.install_plone(mock)
+
 
 if __name__ == '__main__':
     unittest.main()

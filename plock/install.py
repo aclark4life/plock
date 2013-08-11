@@ -197,7 +197,7 @@ class Installer():
         self._BACKUP = open('buildout.cfg').read()
         addons = []
         addons.append('${base:packages}')
-        addons.append('${version:packages}')
+        addons.append('${addon:packages}')
         for package in args.add_on:
             addons.append(package)
         cfg_parser.read('buildout.cfg')
@@ -213,7 +213,7 @@ class Installer():
                 existing_addons = filter(
                     lambda a: a != u'${base:packages}', existing_addons)
                 existing_addons = filter(
-                    lambda a: a != u'${version:packages}', existing_addons)
+                    lambda a: a != u'${addon:packages}', existing_addons)
 
                 addons = addons + existing_addons
                 addons = set(addons)
