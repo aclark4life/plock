@@ -7,6 +7,13 @@ from setuptools import find_packages
 from setuptools import setup
 
 
+tests_require=[
+    'coverage',
+    'nose-cover3',
+    'nose',
+]
+
+
 setup(
     author="Alex Clark",
     author_email="aclark@aclark.net",
@@ -20,6 +27,9 @@ setup(
         'console_scripts': [
             'plock=plock.install:install',
         ],
+    },
+    extras_require={
+        'tests': tests_require,
     },
     install_requires=[
         'configparser',
@@ -35,12 +45,9 @@ setup(
     ),
     name='plock',
     packages=find_packages(),
-    tests_require=[
-        'coverage',
-        'nose-cover3',
-        'nose',
-    ],
+    setup_requires=tests_require,
     test_suite = 'nose.collector',
+    tests_require = tests_require,
     url='https://github.com/aclark4life/plock',
     version='0.1.3',
     zip_safe=False,
