@@ -47,6 +47,7 @@ class Installer():
     def __init__(self):
         self._BACKUP = None
         self._EGGS_TOTAL = EGGS_TOTAL
+        self._EXPERT = EXPERT
 
     def create_cfg(self, insecure=False, zope2_only=False):
         """
@@ -130,8 +131,8 @@ class Installer():
         """
         Install Plone with Buildout
         """
-        first_time = False
         directory = args.DIRECTORY
+        first_time = False
         insecure = False
         zope2_only = False
         if args.add_on:
