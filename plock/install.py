@@ -23,7 +23,8 @@ from .config import TIMEOUT
 from .config import VERSIONS_CFG
 
 from .config import arg_parser
-from .config import config_parser
+from .config import cfg_parser
+
 from .config import pypi
 
 import collections
@@ -80,13 +81,13 @@ class Installer():
             return True
         else:
             # Prevent inadvertently switching from Plone to Zope2 or vice versa
-            config_parser.read('release.cfg')
+            cfg_parser.read('release.cfg')
             if zope2_only:
-                if not config_parser.has_section('zope2'):
+                if not cfg_parser.has_section('zope2'):
                     print(" existing configuration is not Zope2: error!")
                     exit(1)
             else:
-                if not config_parser.has_section('plone'):
+                if not cfg_parser.has_section('plone'):
                     print(" existing configuration is not Plone: error!")
                     exit(1)
 
@@ -177,12 +178,12 @@ class Installer():
         addons.append('${version:packages}')
         for package in args.add_on:
             addons.append(package)
-        config_parser.read('buildout.cfg')
-        if not config_parser.has_section('plone'):
-            config_parser.add_section('plone')
+        cfg_parser.read('buildout.cfg')
+        if not cfg_parser.has_section('plone'):
+            cfg_parser.add_section('plone')
         else:
             if args.preserve:
-                existing_addons = config_parser.get('plone', 'eggs')
+                existing_addons = cfg_parser.get('plone', 'eggs')
                 existing_addons = existing_addons.split('\n')
 
                 # http://stackoverflow.com/a/1157160/185820
@@ -197,9 +198,9 @@ class Installer():
                 addons = list(addons)
                 addons.sort()
 
-        config_parser.set('plone', 'eggs', '\n' + '\n'.join(addons))
+        cfg_parser.set('plone', 'eggs', '\n' + '\n'.join(addons))
         buildout_cfg = open('buildout.cfg', 'w')
-        config_parser.write(buildout_cfg)
+        cfg_parser.write(buildout_cfg)
         buildout_cfg.close()
 
     def list_addons(self, raw=False):

@@ -66,7 +66,7 @@ arg_parser.add_argument(
 arg_parser.add_argument(
     "-z", "--zope2-only", action="store_true", help="Install Zope2 only")
 
-config_parser = configparser.SafeConfigParser()
+cfg_parser = configparser.SafeConfigParser()
 
 pypi = CheeseShop()
 
