@@ -17,7 +17,6 @@ extends = %s
 """
 
 BUILDOUT_OPT = (
-    'buildout:bin-directory=bin-directory',
     'buildout:download-cache=download-cache',
     'buildout:eggs-directory=eggs-directory',
     '-U',)

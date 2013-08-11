@@ -121,7 +121,7 @@ class Installer():
         Eggs directory is set by default to "eggs" if the parameter is not
         defined in buildout.cfg (which it typically is not).
         """
-        dirs = ('bin-directory', 'download-cache', 'eggs-directory')
+        dirs = ('download-cache', 'eggs-directory')
         for d in dirs:
             if not os.path.exists(d):
                 os.mkdir(d)
