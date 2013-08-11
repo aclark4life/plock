@@ -1,22 +1,29 @@
 # encoding: utf-8
 from .config import ADDON_FORMAT_STRING
-from .config import CFG_BASE_LOCAL
-from .config import CFG_BASE_REMOTE
-from .config import CFG_PLONE_LOCAL
-from .config import CFG_PLONE_REMOTE
-from .config import CFG_ZOPE2_LOCAL
-from .config import CFG_ZOPE2_REMOTE
+
 from .config import BUILDOUT_CFG
 from .config import BUILDOUT_OPT
+
+from .config import CFG_BASE_LOCAL
+from .config import CFG_BASE_REMOTE
+
+from .config import CFG_PLONE_LOCAL
+from .config import CFG_PLONE_REMOTE
+
+from .config import CFG_ZOPE2_LOCAL
+from .config import CFG_ZOPE2_REMOTE
+
 from .config import EGGS_TOTAL
 from .config import EXPERT
 from .config import SEARCH_OPER
 from .config import SEARCH_SPEC
 from .config import TIMEOUT
 from .config import VERSIONS_CFG
+
 from .config import arg_parser
 from .config import config_parser
 from .config import pypi
+
 import collections
 import locale
 import os
