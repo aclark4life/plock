@@ -89,6 +89,12 @@ class Installer():
                 cfg.close()
             return True
         else:
+            # Don't allow --insecure if buildout.cfg already exists
+            if insecure:
+                print(" configuration exists: error!\n")
+                print("Remove buildout.cfg then run plock with --insecure.")
+                exit(1)
+
             # Prevent inadvertently switching from Plone to Zope2 or vice versa
             cfg_parser.read('release.cfg')
             if zope2_only:
