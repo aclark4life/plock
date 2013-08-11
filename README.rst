@@ -15,9 +15,6 @@ Installation
 Installing and running Plone with Plock looks like this::
 
     $ virtualenv-2.7 .
-
-Optionally::
-
     $ source bin/activate
 
 ::
