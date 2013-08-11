@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.1.4 (2013-08-11)
+------------------
+
+- Bug fixes:
+    - Prevent inadvertently switching from Plone to Zope2 or vice versa
+
 0.1.3 (2013-07-31)
 ------------------
 
