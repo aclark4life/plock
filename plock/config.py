@@ -13,7 +13,7 @@ except TypeError, NameError:
 
 BUILDOUT_CFG = """\
 [buildout]
-extends = release.cfg
+extends = %s
 """
 
 BUILDOUT_OPT = (
@@ -533,11 +533,14 @@ zc.relation                           = 1.0
 
 # For insecure mode, when we trust noone has altered the remote hosted
 # configuration.
-BASE_REMOTE = "https://raw.github.com/pythonpackages/buildout-plone"
-BASE_REMOTE += "/master/base.cfg"
+REMOTE_PLONE = "https://raw.github.com/pythonpackages/buildout-plone"
+REMOTE_PLONE += "/master/4.3.x"
+
+REMOTE_ZOPE2 = "https://raw.github.com/pythonpackages/buildout-zope2"
+REMOTE_ZOPE2 += "/master/2.13.x"
 
 # base.cfg
-BASE_LOCAL = """\
+BASE_PLONE = """\
 [buildout]
 allow-hosts =
     *.plone.org
@@ -570,17 +573,44 @@ zc.buildout = 2.2.0
 setuptools = 0.9.8
 """
 
-# For insecure mode, when we trust noone has altered the remote hosted
-# configuration.
-PLONE_REMOTE = "https://raw.github.com/pythonpackages/buildout-plone"
-PLONE_REMOTE += "/master/4.3.x"
+BASE_ZOPE2 = """\
+[buildout]
+allow-hosts =
+    *.plone.org
+    *.python.org
+find-links =
+    http://dist.plone.org/thirdparty/docutils-0.9.1.tar.gz
+    http://dist.plone.org/thirdparty/elementtree-1.2.7-20070827-preview.zip
+parts = zope2
+
+[base]
+packages =
+    Pillow
+
+[zope2]
+eggs =
+    ${base:packages}
+products =
+recipe = plone.recipe.zope2instance
+user = admin:admin
+zcml =
+
+[versions]
+# Avoid templer
+ZopeSkel = 2.21.2
+
+# Use latest; i.e higher versions than Plone core uses
+Pillow = 2.1.0
+zc.buildout = 2.2.0
+setuptools = 0.9.8
+"""
 
 # release.cfg
-PLONE_LOCAL = """\
+RELEASE_PLONE = """\
 [buildout]
 extends =
-    %s
-    %s
+    base.cfg
+    versions.cfg
 
 [plone]
 eggs =
@@ -596,16 +626,11 @@ packages =
     zope2_bootstrap
 """
 
-# For insecure mode, when we trust noone has altered the remote hosted
-# configuration.
-ZOPE2_REMOTE = "https://raw.github.com/pythonpackages/buildout-zope2"
-ZOPE2_REMOTE += "/master/2.13.x"
-
-ZOPE2_LOCAL = """\
+RELEASE_ZOPE2 = """\
 [buildout]
 extends =
-    %s
-    %s
+    base.cfg
+    versions.cfg
 parts = zope2
 
 [zope2]

@@ -9,13 +9,17 @@ from .config import EGGS_TOTAL
 from .config import EXPERT
 
 # Extends
-from .config import BASE_LOCAL
-from .config import BASE_REMOTE
-from .config import PLONE_LOCAL
-from .config import PLONE_REMOTE
+from .config import BASE_PLONE
+from .config import BASE_ZOPE2
+
+from .config import RELEASE_PLONE
+from .config import RELEASE_ZOPE2
+
 from .config import VERSIONS_CFG
-from .config import ZOPE2_LOCAL
-from .config import ZOPE2_REMOTE
+
+# Extends (insecure)
+from .config import REMOTE_PLONE
+from .config import REMOTE_ZOPE2
 
 from .config import SEARCH_OPER
 from .config import SEARCH_SPEC
@@ -49,35 +53,40 @@ class Installer():
         Create Buildout config
         """
 
-        if insecure:
-            base_cfg = BASE_REMOTE
-            release_cfg = PLONE_REMOTE
-        else:
-            base_cfg = 'base.cfg'
-            release_cfg = 'release.cfg'
-
         if not os.path.exists('buildout.cfg'):
 
-            cfg = open('versions.cfg', 'w')
-            cfg.write(VERSIONS_CFG)
-            cfg.close()
+            if insecure:
+                cfg = open('buildout.cfg', 'w')
+                if zope2_only:
+                    release_remote = REMOTE_ZOPE2
+                else:
+                    release_remote = REMOTE_PLONE
+                cfg.write(BUILDOUT_CFG % release_remote)
+                cfg.close
 
-            cfg = open('base.cfg', 'w')
-            cfg.write(BASE_LOCAL)
-            cfg.close()
-
-            cfg = open('release.cfg', 'w')
-            if zope2_only:
-                release_cfg = ZOPE2_REMOTE
-                cfg.write(ZOPE2_LOCAL % (base_cfg, release_cfg))
             else:
-                cfg.write(PLONE_LOCAL % (base_cfg, release_cfg))
-            cfg.close()
+                if zope2_only:
+                    base_cfg = BASE_ZOPE2
+                    release_cfg = RELEASE_ZOPE2
+                else:
+                    base_cfg = BASE_PLONE
+                    release_cfg = RELEASE_PLONE
 
-            cfg = open('buildout.cfg', 'w')
-            cfg.write(BUILDOUT_CFG)
-            cfg.close
+                cfg = open('base.cfg', 'w')
+                cfg.write(base_cfg)
+                cfg.close()
 
+                cfg = open('buildout.cfg', 'w')
+                cfg.write(BUILDOUT_CFG % 'release.cfg')
+                cfg.close
+
+                cfg = open('release.cfg', 'w')
+                cfg.write(release_cfg)
+                cfg.close()
+
+                cfg = open('versions.cfg', 'w')
+                cfg.write(VERSIONS_CFG)
+                cfg.close()
             return True
         else:
             # Prevent inadvertently switching from Plone to Zope2 or vice versa

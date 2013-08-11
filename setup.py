@@ -29,9 +29,9 @@ setup(
             'plock=plock.install:install',
         ],
     },
-    extras_require={
-        'tests': tests_require,
-    },
+#    extras_require={
+#        'tests': tests_require,
+#    },
     install_requires=[
         'configparser',
         'sh',
@@ -46,10 +46,10 @@ setup(
     ),
     name='plock',
     packages=find_packages(),
-    setup_requires=tests_require,
+#    setup_requires=tests_require,
     test_suite = 'nose.collector',
     tests_require = tests_require,
     url='https://github.com/aclark4life/plock',
-    version='0.1.3',
+    version='0.1.4',
     zip_safe=False,
 )
