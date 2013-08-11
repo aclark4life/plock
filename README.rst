@@ -83,13 +83,13 @@ If you'd like to install Zope2 only, you can do that with::
 FAQ
 ---
 
-Why bother building Plock on top of Buildout? 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Why build Plock on top of Buildout? 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Plock is a work around for ``pip install Plone`` which works but requires a lengthy requirements.txt, and lacks additional features provided by Buildout that are needed to use ``pip install Plone`` effectively.
 
-Why bother supporting pip? 
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Why support pip? 
+~~~~~~~~~~~~~~~~
 
 To advance the state of Plone such that Buildout can be used, but not required.
 
