@@ -35,6 +35,10 @@ setup(
     ),
     name='plock',
     packages=find_packages(),
+    test_suite='nose.collector',
+    tests_require=[
+        'nose',
+    ],
     url='https://github.com/aclark4life/plock',
     version='0.1.4',
     zip_safe=False,
