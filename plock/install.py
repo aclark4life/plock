@@ -13,6 +13,7 @@ from .config import BASE_LOCAL
 from .config import BASE_REMOTE
 from .config import PLONE_LOCAL
 from .config import PLONE_REMOTE
+from .config import VERSIONS_CFG
 from .config import ZOPE2_LOCAL
 from .config import ZOPE2_REMOTE
 
@@ -20,7 +21,6 @@ from .config import SEARCH_OPER
 from .config import SEARCH_SPEC
 
 from .config import TIMEOUT
-from .config import VERSIONS_CFG
 
 from .config import arg_parser
 from .config import cfg_parser
