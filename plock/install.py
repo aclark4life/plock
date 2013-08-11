@@ -2,11 +2,10 @@
 from .config import ADDON_FORMAT_STRING
 from .config import CFG_BASE_LOCAL
 from .config import CFG_BASE_REMOTE
-from .config import BUILDOUT_CFG_PLONE
-from .config import BUILDOUT_CFG_PLONE_URL
-from .config import BUILDOUT_CFG_VERSIONS
-from .config import BUILDOUT_CFG_ZOPE2
-from .config import BUILDOUT_CFG_ZOPE2_URL
+from .config import CFG_PLONE_LOCAL
+from .config import CFG_PLONE_REMOTE
+from .config import CFG_ZOPE2_LOCAL
+from .config import CFG_ZOPE2_REMOTE
 from .config import BUILDOUT_CFG
 from .config import BUILDOUT_OPT
 from .config import EGGS_TOTAL
@@ -14,6 +13,7 @@ from .config import EXPERT
 from .config import SEARCH_OPER
 from .config import SEARCH_SPEC
 from .config import TIMEOUT
+from .config import VERSIONS_CFG
 from .config import arg_parser
 from .config import config_parser
 from .config import pypi
@@ -41,7 +41,7 @@ class Installer():
 
         if insecure:
             base_cfg = CFG_BASE_REMOTE
-            release_cfg = BUILDOUT_CFG_PLONE_URL
+            release_cfg = CFG_PLONE_REMOTE
         else:
             base_cfg = 'base.cfg'
             release_cfg = 'release.cfg'
@@ -49,7 +49,7 @@ class Installer():
         if not os.path.exists('buildout.cfg'):
 
             cfg = open('versions.cfg', 'w')
-            cfg.write(BUILDOUT_CFG_VERSIONS)
+            cfg.write(VERSIONS_CFG)
             cfg.close()
 
             cfg = open('base.cfg', 'w')
@@ -58,10 +58,10 @@ class Installer():
 
             cfg = open('release.cfg', 'w')
             if zope2_only:
-                release_cfg = BUILDOUT_CFG_ZOPE2_URL
-                cfg.write(BUILDOUT_CFG_ZOPE2 % (base_cfg, release_cfg))
+                release_cfg = CFG_ZOPE2_REMOTE
+                cfg.write(CFG_ZOPE2_LOCAL % (base_cfg, release_cfg))
             else:
-                cfg.write(BUILDOUT_CFG_PLONE % (base_cfg, release_cfg))
+                cfg.write(CFG_PLONE_LOCAL % (base_cfg, release_cfg))
             cfg.close()
 
             cfg = open('buildout.cfg', 'w')
