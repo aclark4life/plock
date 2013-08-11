@@ -609,8 +609,9 @@ setuptools = 0.9.8
 RELEASE_PLONE = """\
 [buildout]
 extends =
-    base.cfg
+# The order matters
     versions.cfg
+    base.cfg
 
 [plone]
 eggs =
@@ -629,8 +630,9 @@ packages =
 RELEASE_ZOPE2 = """\
 [buildout]
 extends =
-    base.cfg
+# The order matters
     versions.cfg
+    base.cfg
 parts = zope2
 
 [zope2]

@@ -48,6 +48,7 @@ class Installer():
         self._BACKUP = None
         self._EGGS_TOTAL = EGGS_TOTAL
         self._EXPERT = EXPERT
+        self.directory = None
 
     def create_cfg(self, insecure=False, zope2_only=False):
         """
@@ -131,7 +132,7 @@ class Installer():
         """
         Install Plone with Buildout
         """
-        directory = args.DIRECTORY
+        self.directory = os.path.realpath(args.DIRECTORY)
         first_time = False
         insecure = False
         zope2_only = False
@@ -176,8 +177,6 @@ class Installer():
         sys.stdout.write(
             "Plock is making noises. This may take a while...")
         sys.stdout.flush()
-
-        os.chdir(directory)
 
         self.create_cfg(insecure=insecure, zope2_only=zope2_only)
         self.run_buildout()
@@ -259,7 +258,8 @@ class Installer():
 
     def run_buildout(self):
         try:
-            buildout = sh.Command(os.path.join("bin", "buildout"))
+            buildout = sh.Command(
+                os.path.join(self.directory, "bin", "buildout"))
         except sh.CommandNotFound:
             print(" error: buildout command not found\n")
             exit(1)
