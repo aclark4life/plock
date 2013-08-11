@@ -533,11 +533,11 @@ zc.relation                           = 1.0
 
 # For insecure mode, when we trust noone has altered the remote hosted
 # configuration.
-CFG_BASE_REMOTE = "https://raw.github.com/pythonpackages/buildout-plone"
-CFG_BASE_REMOTE += "/master/base.cfg"
+BASE_REMOTE = "https://raw.github.com/pythonpackages/buildout-plone"
+BASE_REMOTE += "/master/base.cfg"
 
 # base.cfg
-CFG_BASE_LOCAL = """\
+BASE_LOCAL = """\
 [buildout]
 allow-hosts =
     *.plone.org
@@ -572,11 +572,11 @@ setuptools = 0.9.8
 
 # For insecure mode, when we trust noone has altered the remote hosted
 # configuration.
-CFG_PLONE_REMOTE = "https://raw.github.com/pythonpackages/buildout-plone"
-CFG_PLONE_REMOTE += "/master/4.3.x"
+PLONE_REMOTE = "https://raw.github.com/pythonpackages/buildout-plone"
+PLONE_REMOTE += "/master/4.3.x"
 
 # release.cfg
-CFG_PLONE_LOCAL = """\
+PLONE_LOCAL = """\
 [buildout]
 extends =
     %s
@@ -598,10 +598,10 @@ packages =
 
 # For insecure mode, when we trust noone has altered the remote hosted
 # configuration.
-CFG_ZOPE2_REMOTE = "https://raw.github.com/pythonpackages/buildout-zope2"
-CFG_ZOPE2_REMOTE += "/master/2.13.x"
+ZOPE2_REMOTE = "https://raw.github.com/pythonpackages/buildout-zope2"
+ZOPE2_REMOTE += "/master/2.13.x"
 
-CFG_ZOPE2_LOCAL = """\
+ZOPE2_LOCAL = """\
 [buildout]
 extends =
     %s

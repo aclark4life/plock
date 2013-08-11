@@ -4,14 +4,13 @@ from .config import ADDON_FORMAT_STRING
 from .config import BUILDOUT_CFG
 from .config import BUILDOUT_OPT
 
-from .config import CFG_BASE_LOCAL
-from .config import CFG_BASE_REMOTE
-
-from .config import CFG_PLONE_LOCAL
-from .config import CFG_PLONE_REMOTE
-
-from .config import CFG_ZOPE2_LOCAL
-from .config import CFG_ZOPE2_REMOTE
+# Extends
+from .config import BASE_LOCAL
+from .config import BASE_REMOTE
+from .config import PLONE_LOCAL
+from .config import PLONE_REMOTE
+from .config import ZOPE2_LOCAL
+from .config import ZOPE2_REMOTE
 
 from .config import EGGS_TOTAL
 from .config import EXPERT
@@ -47,8 +46,8 @@ class Installer():
         """
 
         if insecure:
-            base_cfg = CFG_BASE_REMOTE
-            release_cfg = CFG_PLONE_REMOTE
+            base_cfg = BASE_REMOTE
+            release_cfg = PLONE_REMOTE
         else:
             base_cfg = 'base.cfg'
             release_cfg = 'release.cfg'
@@ -60,15 +59,15 @@ class Installer():
             cfg.close()
 
             cfg = open('base.cfg', 'w')
-            cfg.write(CFG_BASE_LOCAL)
+            cfg.write(BASE_LOCAL)
             cfg.close()
 
             cfg = open('release.cfg', 'w')
             if zope2_only:
-                release_cfg = CFG_ZOPE2_REMOTE
-                cfg.write(CFG_ZOPE2_LOCAL % (base_cfg, release_cfg))
+                release_cfg = ZOPE2_REMOTE
+                cfg.write(ZOPE2_LOCAL % (base_cfg, release_cfg))
             else:
-                cfg.write(CFG_PLONE_LOCAL % (base_cfg, release_cfg))
+                cfg.write(PLONE_LOCAL % (base_cfg, release_cfg))
             cfg.close()
 
             cfg = open('buildout.cfg', 'w')
