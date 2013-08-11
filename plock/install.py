@@ -1,7 +1,7 @@
 # encoding: utf-8
 from .config import ADDON_FORMAT_STRING
-from .config import BUILDOUT_CFG_BASE
-from .config import BUILDOUT_CFG_BASE_URL
+from .config import CFG_BASE_LOCAL
+from .config import CFG_BASE_REMOTE
 from .config import BUILDOUT_CFG_PLONE
 from .config import BUILDOUT_CFG_PLONE_URL
 from .config import BUILDOUT_CFG_VERSIONS
@@ -40,7 +40,7 @@ class Installer():
         """
 
         if insecure:
-            base_cfg = BUILDOUT_CFG_BASE_URL
+            base_cfg = CFG_BASE_REMOTE
             release_cfg = BUILDOUT_CFG_PLONE_URL
         else:
             base_cfg = 'base.cfg'
@@ -53,7 +53,7 @@ class Installer():
             cfg.close()
 
             cfg = open('base.cfg', 'w')
-            cfg.write(BUILDOUT_CFG_BASE)
+            cfg.write(CFG_BASE_LOCAL)
             cfg.close()
 
             cfg = open('release.cfg', 'w')
