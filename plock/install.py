@@ -4,6 +4,10 @@ from .config import ADDON_FORMAT_STRING
 from .config import BUILDOUT_CFG
 from .config import BUILDOUT_OPT
 
+from .config import EGGS_TOTAL
+
+from .config import EXPERT
+
 # Extends
 from .config import BASE_LOCAL
 from .config import BASE_REMOTE
@@ -12,10 +16,9 @@ from .config import PLONE_REMOTE
 from .config import ZOPE2_LOCAL
 from .config import ZOPE2_REMOTE
 
-from .config import EGGS_TOTAL
-from .config import EXPERT
 from .config import SEARCH_OPER
 from .config import SEARCH_SPEC
+
 from .config import TIMEOUT
 from .config import VERSIONS_CFG
 
