@@ -74,7 +74,7 @@ If you are already familiar with ``Buildout``, you may be using a ``~/.buildout/
 
     $ export PLOCK_EXPERT=True
 
-Now Plock will respect your ``~/.buildout/default.cfg`` settings.
+Now Plock will respect your ``~/.buildout/default.cfg`` settings. Alternatively you can use the ``--expert`` command line argument to enable expert mode.
 
 Zope2
 +++++
