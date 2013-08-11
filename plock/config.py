@@ -607,6 +607,13 @@ setuptools = 0.9.8
 
 # release.cfg
 RELEASE_PLONE = """\
+[addon]
+packages =
+    plonetheme.diazo_sunburst
+    zope2_bootstrap
+zcml =
+    zope2_bootstrap
+
 [buildout]
 extends =
 # The order matters
@@ -616,18 +623,19 @@ extends =
 [plone]
 eggs =
     ${base:packages}
-    ${version:packages}
-
-zcml +=
-    zope2_bootstrap
-
-[version]
-packages =
-    plonetheme.diazo_sunburst
-    zope2_bootstrap
+    ${addon:packages}
+zcml = 
+    ${base:zcml}
+    ${addon:zcml}
 """
 
 RELEASE_ZOPE2 = """\
+[addon]
+packages = 
+    zope2_bootstrap
+zcml = 
+    zope2_bootstrap
+
 [buildout]
 extends =
 # The order matters
@@ -637,9 +645,11 @@ parts = zope2
 
 [zope2]
 eggs =
-    Zope2
-    zope2_bootstrap
+    ${base:packages}
+    ${addon:packages}
 recipe = plone.recipe.zope2instance
 user = admin:admin
-zcml = zope2_bootstrap
+zcml = 
+    ${base:zcml}
+    ${addon:zcml}
 """
