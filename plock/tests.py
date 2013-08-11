@@ -1,9 +1,12 @@
 import unittest
 
+class IntegerArithmenticTestCase(unittest.TestCase):
+    def testAdd(self):  ## test method names begin 'test*'
+        self.assertEqual((1 + 2), 3)
+        self.assertEqual(0 + 1, 1)
+    def testMultiply(self):
+        self.assertEqual((0 * 10), 0)
+        self.assertEqual((5 * 8), 40)
 
-class PlockTests(unittest.TestCase):
-
-    def test_create_cfg(self):
-        from plock.install import Installer
-        plock = Installer()
-        assert hasattr(plock, 'create_cfg')
+if __name__ == '__main__':
+    unittest.main()

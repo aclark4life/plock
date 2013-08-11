@@ -35,7 +35,7 @@ setup(
     ),
     name='plock',
     packages=find_packages(),
-    test_suite='nose.collector',
+    test_suite='plock.tests',
     tests_require=[
         'nose',
     ],
