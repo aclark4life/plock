@@ -61,7 +61,7 @@ Restart Plone and install the add-on(s) in Plone via Site Setup -> Add-ons. Afte
     [plone]
     eggs = 
         ${base:packages}
-        ${version:packages}
+        ${addon:packages}
         Products.PloneFormGen
 
 Advanced
