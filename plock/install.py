@@ -137,6 +137,10 @@ class Installer():
         zope2_only = False
         if args.add_on:
             first_time = self.install_addons(args)
+
+        if args.expert:  # Override env var setting
+            self._EXPERT = True
+
         if args.list_addons:
             locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
             if args.raw:
@@ -261,7 +265,7 @@ class Installer():
             exit(1)
         last = []  # saved iterations
         try:
-            if EXPERT:  # Allow Buildout dirs to be
+            if self._EXPERT:  # Allow Buildout dirs to be
                 # specified by .buildout/default.cfg
                 buildout()
             else:  # Explicitly create and use Buildout dirs
