@@ -4,6 +4,8 @@ Changelog
 0.1.4 (2013-08-11)
 ------------------
 
+- New features:
+    - Add ``--expert`` command line argument
 - Bug fixes:
     - Prevent inadvertently switching from Plone to Zope2 or vice versa
 

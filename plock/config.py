@@ -627,16 +627,16 @@ extends =
 eggs =
     ${base:packages}
     ${addon:packages}
-zcml = 
+zcml =
     ${base:zcml}
     ${addon:zcml}
 """
 
 RELEASE_ZOPE2 = """\
 [addon]
-packages = 
+packages =
     zope2_bootstrap
-zcml = 
+zcml =
     zope2_bootstrap
 
 [buildout]
@@ -652,7 +652,7 @@ eggs =
     ${addon:packages}
 recipe = plone.recipe.zope2instance
 user = admin:admin
-zcml = 
+zcml =
     ${base:zcml}
     ${addon:zcml}
 """
