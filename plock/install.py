@@ -91,19 +91,21 @@ class Installer():
         else:
             # Don't allow --insecure if buildout.cfg already exists
             if insecure:
-                print(" configuration exists: error!\n")
-                print("Remove buildout.cfg then run plock with --insecure.")
+                print(" error: configuration exists!\n")
+                print("Remove buildout.cfg and try again.")
                 exit(1)
 
             # Prevent inadvertently switching from Plone to Zope2 or vice versa
             cfg_parser.read('release.cfg')
             if zope2_only:
                 if not cfg_parser.has_section('zope2'):
-                    print(" existing configuration is not Zope2: error!")
+                    print(" error: configuration exists.\n")
+                    print("Remove buildout.cfg and try again.")
                     exit(1)
             else:
                 if not cfg_parser.has_section('plone'):
-                    print(" existing configuration is not Plone: error!")
+                    print(" error: configuration exists.\n")
+                    print("Remove buildout.cfg and try again.")
                     exit(1)
 
         return False
@@ -111,14 +113,15 @@ class Installer():
     def create_dirs(self):
         """
         Create Buildout dirs. Match directory name with section parameter name
-        e.g. download-cache = download-cache, eggs-directory = eggs-directory.
+        e.g. download-cache = download-cache, eggs-directory = eggs-directory,
+        etc.
 
         Note: a download cache must be defined to be used; there is no
         default value, or caching enabled, if the parameter is not defined.
         Eggs directory is set by default to "eggs" if the parameter is not
         defined in buildout.cfg (which it typically is not).
         """
-        dirs = ('download-cache', 'eggs-directory')
+        dirs = ('bin-directory', 'download-cache', 'eggs-directory')
         for d in dirs:
             if not os.path.exists(d):
                 os.mkdir(d)
@@ -250,7 +253,11 @@ class Installer():
             return num
 
     def run_buildout(self):
-        buildout = sh.Command("buildout")
+        try:
+            buildout = sh.Command(os.path.join("bin", "buildout"))
+        except sh.CommandNotFound:
+            print(" error: buildout command not found\n")
+            exit(1)
         last = []  # saved iterations
         try:
             if EXPERT:  # Allow Buildout dirs to be
@@ -271,7 +278,8 @@ class Installer():
                         if value >= TIMEOUT:
                             # If the egg count doesn't change within
                             # TIMEOUT number of saved iterations, punt!
-                            print("error: taking too long!")
+                            print("error: taking too long!\n")
+                            print("Try increasing PLOCK_TIMEOUT length")
                             exit(1)
 
                     if count % 5 == 0:  # Print status

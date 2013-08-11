@@ -35,7 +35,7 @@ Plone uses `Buildout <https://pypi.python.org/pypi/zc.buildout>`_ to manage its 
     [buildout]
     extends = release.cfg
 
-``release.cfg`` extends several other configuration files located in the current working directory (created by the Plock Installer). Use ``--insecure`` to extend remote hosted (and possibly newer) configuration files. That will make your ``buildout.cfg`` file look like this::
+That ``release.cfg`` extends several other configuration files located in the current working directory (created by the Plock Installer). Or use ``--insecure`` to extend remotely hosted (and possibly newer) configuration files. That will make your ``buildout.cfg`` file look like this::
 
     [buildout]
     extends = https://raw.github.com/pythonpackages/buildout-plone/master/4.3.x
