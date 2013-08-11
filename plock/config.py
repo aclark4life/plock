@@ -71,7 +71,7 @@ config_parser = configparser.SafeConfigParser()
 pypi = CheeseShop()
 
 # versions.cfg
-BUILDOUT_CFG_VERSIONS = """\
+VERSIONS_CFG = """\
 [versions]
 # ZopeApp
 zope.app.applicationcontrol = 3.5.10
@@ -533,11 +533,11 @@ zc.relation                           = 1.0
 
 # For insecure mode, when we trust noone has altered the remote hosted
 # configuration.
-BUILDOUT_CFG_BASE_URL = "https://raw.github.com/pythonpackages/buildout-plone"
-BUILDOUT_CFG_BASE_URL += "/master/base.cfg"
+CFG_BASE_REMOTE = "https://raw.github.com/pythonpackages/buildout-plone"
+CFG_BASE_REMOTE += "/master/base.cfg"
 
 # base.cfg
-BUILDOUT_CFG_BASE = """\
+CFG_BASE_LOCAL = """\
 [buildout]
 allow-hosts =
     *.plone.org
@@ -572,11 +572,11 @@ setuptools = 0.9.8
 
 # For insecure mode, when we trust noone has altered the remote hosted
 # configuration.
-BUILDOUT_CFG_PLONE_URL = "https://raw.github.com/pythonpackages/buildout-plone"
-BUILDOUT_CFG_PLONE_URL += "/master/4.3.x"
+CFG_PLONE_REMOTE = "https://raw.github.com/pythonpackages/buildout-plone"
+CFG_PLONE_REMOTE += "/master/4.3.x"
 
 # release.cfg
-BUILDOUT_CFG_PLONE = """\
+CFG_PLONE_LOCAL = """\
 [buildout]
 extends =
     %s
@@ -598,10 +598,10 @@ packages =
 
 # For insecure mode, when we trust noone has altered the remote hosted
 # configuration.
-BUILDOUT_CFG_ZOPE2_URL = "https://raw.github.com/pythonpackages/buildout-zope2"
-BUILDOUT_CFG_ZOPE2_URL += "/master/2.13.x"
+CFG_ZOPE2_REMOTE = "https://raw.github.com/pythonpackages/buildout-zope2"
+CFG_ZOPE2_REMOTE += "/master/2.13.x"
 
-BUILDOUT_CFG_ZOPE2 = """\
+CFG_ZOPE2_LOCAL = """\
 [buildout]
 extends =
     %s
