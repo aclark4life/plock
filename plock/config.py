@@ -554,6 +554,7 @@ parts = plone
 packages =
     Pillow
     Plone
+zcml =
 
 [plone]
 eggs =
@@ -586,6 +587,7 @@ parts = zope2
 [base]
 packages =
     Pillow
+zcml =
 
 [zope2]
 eggs =
@@ -594,6 +596,7 @@ products =
 recipe = plone.recipe.zope2instance
 user = admin:admin
 zcml =
+    ${base:zcml}
 
 [versions]
 # Avoid templer
