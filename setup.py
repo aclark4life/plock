@@ -10,8 +10,8 @@ from setuptools import setup
 tests_require=[
     'coverage',
     'mock',
-    'nose',
     'nose-cover3',
+    'nose',
 ]
 
 
