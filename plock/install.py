@@ -266,10 +266,9 @@ class Installer():
 
     def run_buildout(self, test=False):
         if not test:
-            import pdb ; pdb.set_trace()
             try:
-                buildout = sh.Command(
-                    os.path.join(self.directory, "bin", "buildout"))
+                # XXX Is bin/buildout a safe assumption? Probably not.
+                buildout = sh.Command(os.path.join("bin", "buildout"))
             except sh.CommandNotFound:
                 print(" error: buildout command not found\n")
                 exit(1)
