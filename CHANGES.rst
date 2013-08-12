@@ -8,6 +8,7 @@ Changelog
     - Add ``--expert`` command line argument
 - Bug fixes:
     - Prevent inadvertently switching from Plone to Zope2 or vice versa
+    - Configure buildout command relative to current working directory, instead of relying on source bin/activate
 
 0.1.3 (2013-07-31)
 ------------------
