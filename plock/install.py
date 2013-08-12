@@ -45,7 +45,7 @@ class Installer():
     """
 
     def __init__(self):
-        self._BACKUP = None
+        self.backup = None
         self._EXPERT = EXPERT
         self.directory = None
         self.eggs_total = EGGS_TOTAL
@@ -194,7 +194,7 @@ class Installer():
             # Return and come back later.
             return True
 
-        self._BACKUP = open('buildout.cfg').read()
+        self.backup = open('buildout.cfg').read()
         addons = []
         addons.append('${base:packages}')
         addons.append('${addon:packages}')
@@ -298,9 +298,9 @@ class Installer():
             except sh.ErrorReturnCode_1:
                 print(" error: buildout run failed.\n")
                 print("Run buildout manually to see error.")
-                if not self._BACKUP is None:
+                if not self.backup is None:
                     buildout_cfg = open('buildout.cfg', 'w')
-                    buildout_cfg.write(self._BACKUP)
+                    buildout_cfg.write(self.backup)
                     buildout_cfg.close()
                 exit(1)
 
