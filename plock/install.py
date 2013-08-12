@@ -71,14 +71,14 @@ class Installer():
 
             else:
                 if zope2_only:
-                    base_cfg = BASE_ZOPE2
-                    release_cfg = RELEASE_ZOPE2
+                    BASE_CFG = BASE_ZOPE2
+                    RELEASE_CFG = RELEASE_ZOPE2
                 else:
-                    base_cfg = BASE_PLONE
-                    release_cfg = RELEASE_PLONE
+                    BASE_CFG = BASE_PLONE
+                    RELEASE_CFG = RELEASE_PLONE
 
                 cfg = open(base_cfg, 'w')
-                cfg.write(base_cfg)
+                cfg.write(BASE_CFG)
                 cfg.close()
 
                 cfg = open(buildout_cfg, 'w')
@@ -86,7 +86,7 @@ class Installer():
                 cfg.close
 
                 cfg = open(release_cfg, 'w')
-                cfg.write(release_cfg)
+                cfg.write(RELEASE_CFG)
                 cfg.close()
 
                 cfg = open(versions_cfg, 'w')
