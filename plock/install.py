@@ -46,9 +46,9 @@ class Installer():
 
     def __init__(self):
         self._BACKUP = None
-        self._EGGS_TOTAL = EGGS_TOTAL
         self._EXPERT = EXPERT
         self.directory = None
+        self.eggs_total = EGGS_TOTAL
 
     def create_cfg(self, insecure=False, zope2_only=False):
         """
@@ -128,7 +128,7 @@ class Installer():
             if not os.path.exists(d):
                 os.mkdir(d)
 
-    def install_plone(self, args):
+    def install_plone(self, args, test=False):
         """
         Install Plone with Buildout
         """
@@ -169,7 +169,7 @@ class Installer():
 
         if args.zope2_only:
             zope2_only = True
-            self._EGGS_TOTAL = 70
+            self.eggs_total = 70
 
         if args.insecure:
             insecure = True
@@ -179,7 +179,7 @@ class Installer():
         sys.stdout.flush()
 
         self.create_cfg(insecure=insecure, zope2_only=zope2_only)
-        self.run_buildout()
+        self.run_buildout(test=test)
         if first_time:
             self.install_addons(args)
         print(" done.")
@@ -256,52 +256,53 @@ class Installer():
             # XXX Keep going
             return num
 
-    def run_buildout(self):
-        try:
-            buildout = sh.Command(
-                os.path.join(self.directory, "bin", "buildout"))
-        except sh.CommandNotFound:
-            print(" error: buildout command not found\n")
-            exit(1)
-        last = []  # saved iterations
-        try:
-            if self._EXPERT:  # Allow Buildout dirs to be
-                # specified by .buildout/default.cfg
-                buildout()
-            else:  # Explicitly create and use Buildout dirs
-                # in the current working directory.
-                count = 0
-                self.create_dirs()
-                download = buildout(BUILDOUT_OPT, _bg=True)
-                while(len(os.listdir('eggs-directory')) < self._EGGS_TOTAL):
-                    count += 1  # Print status control
+    def run_buildout(self, test=False):
+        if not test:
+            try:
+                buildout = sh.Command(
+                    os.path.join(self.directory, "bin", "buildout"))
+            except sh.CommandNotFound:
+                print(" error: buildout command not found\n")
+                exit(1)
+            last = []  # saved iterations
+            try:
+                if self._EXPERT:  # Allow Buildout dirs to be
+                    # specified by .buildout/default.cfg
+                    buildout()
+                else:  # Explicitly create and use Buildout dirs
+                    # in the current working directory.
+                    count = 0
+                    self.create_dirs()
+                    download = buildout(BUILDOUT_OPT, _bg=True)
+                    while(len(os.listdir('eggs-directory')) < self.eggs_total):
+                        count += 1  # Print status control
 
-                    num = len(os.listdir('eggs-directory'))
+                        num = len(os.listdir('eggs-directory'))
 
-                    last.append(num)
-                    for value in collections.Counter(last).values():
-                        if value >= TIMEOUT:
-                            # If the egg count doesn't change within
-                            # TIMEOUT number of saved iterations, punt!
-                            print("error: taking too long!\n")
-                            print("Try increasing PLOCK_TIMEOUT length.")
-                            exit(1)
+                        last.append(num)
+                        for value in collections.Counter(last).values():
+                            if value >= TIMEOUT:
+                                # If the egg count doesn't change within
+                                # TIMEOUT number of saved iterations, punt!
+                                print("error: taking too long!\n")
+                                print("Try increasing PLOCK_TIMEOUT length.")
+                                exit(1)
 
-                    if count % 5 == 0:  # Print status
-                        sys.stdout.write("(%d)" % num)
-                    else:
-                        time.sleep(3)
-                        sys.stdout.write(".")
-                    sys.stdout.flush()
-                download.wait()
-        except sh.ErrorReturnCode_1:
-            print(" error: buildout run failed.\n")
-            print("Run buildout manually to see error.")
-            if not self._BACKUP is None:
-                buildout_cfg = open('buildout.cfg', 'w')
-                buildout_cfg.write(self._BACKUP)
-                buildout_cfg.close()
-            exit(1)
+                        if count % 5 == 0:  # Print status
+                            sys.stdout.write("(%d)" % num)
+                        else:
+                            time.sleep(3)
+                            sys.stdout.write(".")
+                        sys.stdout.flush()
+                    download.wait()
+            except sh.ErrorReturnCode_1:
+                print(" error: buildout run failed.\n")
+                print("Run buildout manually to see error.")
+                if not self._BACKUP is None:
+                    buildout_cfg = open('buildout.cfg', 'w')
+                    buildout_cfg.write(self._BACKUP)
+                    buildout_cfg.close()
+                exit(1)
 
 
 def install():
