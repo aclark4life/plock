@@ -46,8 +46,8 @@ class Installer():
 
     def __init__(self):
         self.backup = None
-        self.expert = EXPERT
         self.directory = None
+        self.expert = EXPERT
         self.eggs_total = EGGS_TOTAL
 
     def create_cfg(self, insecure=False, zope2_only=False):
