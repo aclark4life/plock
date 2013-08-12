@@ -54,11 +54,14 @@ class Installer():
         """
         Create Buildout config
         """
+        base_cfg = os.path.join(self.directory, 'base.cfg')
+        buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
+        release_cfg = os.path.join(self.directory, 'release.cfg')
 
-        if not os.path.exists('buildout.cfg'):
+        if not os.path.exists(buildout_cfg):
 
             if insecure:
-                cfg = open('buildout.cfg', 'w')
+                cfg = open(buildout_cfg, 'w')
                 if zope2_only:
                     release_remote = REMOTE_ZOPE2
                 else:
@@ -74,19 +77,19 @@ class Installer():
                     base_cfg = BASE_PLONE
                     release_cfg = RELEASE_PLONE
 
-                cfg = open('base.cfg', 'w')
+                cfg = open(base_cfg, 'w')
                 cfg.write(base_cfg)
                 cfg.close()
 
-                cfg = open('buildout.cfg', 'w')
+                cfg = open(buildout_cfg, 'w')
                 cfg.write(BUILDOUT_CFG % 'release.cfg')
                 cfg.close
 
-                cfg = open('release.cfg', 'w')
+                cfg = open(release_cfg, 'w')
                 cfg.write(release_cfg)
                 cfg.close()
 
-                cfg = open('versions.cfg', 'w')
+                cfg = open(versions_cfg, 'w')
                 cfg.write(VERSIONS_CFG)
                 cfg.close()
             return True
@@ -178,7 +181,7 @@ class Installer():
             "Plock is making noises. This may take a while...")
         sys.stdout.flush()
 
-        os.chdir(self.directory)
+#        os.chdir(self.directory)
 
         self.create_cfg(insecure=insecure, zope2_only=zope2_only)
         self.run_buildout(test=test)
@@ -196,7 +199,9 @@ class Installer():
             # Return and come back later.
             return True
 
-        self.backup = open('buildout.cfg').read()
+        buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
+
+        self.backup = open(buildout_cfg).read()
         addons = []
         addons.append('${base:packages}')
         addons.append('${addon:packages}')
@@ -223,9 +228,9 @@ class Installer():
                 addons.sort()
 
         cfg_parser.set('plone', 'eggs', '\n' + '\n'.join(addons))
-        buildout_cfg = open('buildout.cfg', 'w')
-        cfg_parser.write(buildout_cfg)
-        buildout_cfg.close()
+        cfg = open(buildout_cfg, 'w')
+        cfg_parser.write(cfg)
+        cfg.close()
 
     def list_addons(self, raw=False):
         """
@@ -260,6 +265,7 @@ class Installer():
 
     def run_buildout(self, test=False):
         if not test:
+            import pdb ; pdb.set_trace()
             try:
                 buildout = sh.Command(
                     os.path.join(self.directory, "bin", "buildout"))
@@ -301,9 +307,10 @@ class Installer():
                 print(" error: buildout run failed.\n")
                 print("Run buildout manually to see error.")
                 if not self.backup is None:
-                    buildout_cfg = open('buildout.cfg', 'w')
-                    buildout_cfg.write(self.backup)
-                    buildout_cfg.close()
+                    buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
+                    cfg = open(buildout_cfg, 'w')
+                    cfg.write(self.backup)
+                    cfg.close()
                 exit(1)
 
 
