@@ -40,6 +40,6 @@ setup(
         'nose',
     ],
     url='https://github.com/aclark4life/plock',
-    version='0.1.4',
+    version='0.1.5',
     zip_safe=False,
 )

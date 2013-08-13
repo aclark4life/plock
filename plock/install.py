@@ -267,8 +267,14 @@ class Installer():
     def run_buildout(self, test=False):
         if not test:
             try:
-                # XXX Is bin/buildout a safe assumption? Probably not.
-                buildout = sh.Command(os.path.join("bin", "buildout"))
+                # If you have run source bin/activate or you
+                # are an expert and can figure out your own
+                # PATH, try running "buildout".
+                if os.environ.get('VIRTUAL_ENV') or self.expert:
+                    buildout = sh.Command("buildout")
+                else:
+                    # Try running bin/buildout
+                    buildout = sh.Command(os.path.join("bin", "buildout"))
             except sh.CommandNotFound:
                 print(" error: buildout command not found\n")
                 exit(1)
