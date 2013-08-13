@@ -282,9 +282,13 @@ class Installer():
             try:
                 if self.expert:  # Allow Buildout dirs to be
                     # specified by .buildout/default.cfg
-                    buildout()
+                    buildout_opt = (
+                        "-c", os.path.join(self.directory, "buildout.cfg"))
+                    buildout(buildout_opt)
                 else:  # Explicitly create and use Buildout dirs
                     # in the current working directory.
+                    BUILDOUT_OPT.append([
+                        "-c", os.path.join(self.directory, "buildout.cfg")])
                     count = 0
                     self.create_dirs()
                     download = buildout(BUILDOUT_OPT, _bg=True)

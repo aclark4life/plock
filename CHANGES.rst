@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.1.6 (2013-08-12)
+------------------
+
+- Bug fixes:
+    - Fix Buildout command execution
+
 0.1.5 (2013-08-12)
 ------------------
 

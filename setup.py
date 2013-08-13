@@ -7,6 +7,9 @@ from setuptools import find_packages
 from setuptools import setup
 
 
+VERSION = '0.1.6'
+
+
 setup(
     author="Alex Clark",
     author_email="aclark@aclark.net",
@@ -40,6 +43,6 @@ setup(
         'nose',
     ],
     url='https://github.com/aclark4life/plock',
-    version='0.1.5',
+    version=VERSION,
     zip_safe=False,
 )

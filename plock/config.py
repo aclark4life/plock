@@ -16,10 +16,10 @@ BUILDOUT_CFG = """\
 extends = %s
 """
 
-BUILDOUT_OPT = (
+BUILDOUT_OPT = [
     'buildout:download-cache=download-cache',
     'buildout:eggs-directory=eggs-directory',
-    '-U',)
+    '-U', ]
 
 EGGS_TOTAL = 235  # Number of eggs in working set
 
