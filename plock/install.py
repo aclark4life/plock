@@ -179,7 +179,7 @@ class Installer():
             insecure = True
 
         sys.stdout.write(
-            "Plock is making noises. This may take a while...")
+            "Plock is installing Plone. This may take a while...")
         sys.stdout.flush()
 
 #        os.chdir(self.directory)
