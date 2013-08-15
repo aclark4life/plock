@@ -36,7 +36,7 @@ arg_parser = argparse.ArgumentParser(
     description="Plock is a Plone Installer for the Pip-Loving Crowd")
 
 arg_parser.add_argument(
-    "DIRECTORY", help="Install Plone here")
+    "DIRECTORY", help="Install Plone here", nargs="?", default=os.getcwd())
 
 arg_parser.add_argument(
     "-e", "--expert", action="store_true", help="Read .buildout/default.cfg")
