@@ -145,7 +145,6 @@ zope.thread = 3.4
 zope.xmlpickle = 3.4.0
 zope.rdb = 3.5.0
 
-
 # ZTK
 zope.annotation = 3.5.0
 zope.applicationcontrol = 3.5.5
@@ -259,7 +258,6 @@ z3c.recipe.compattest = 0.12.2
 z3c.recipe.depgraph = 0.5
 zope.kgs = 1.2.0
 
-
 # Zope2-specific
 Zope2 = 2.13.21
 AccessControl = 2.13.13
@@ -300,10 +298,6 @@ repoze.tm2 = 1.0
 repoze.who = 2.0
 zope.testbrowser = 3.11.1
 
-
-
-
-
 # Zope overrides
 docutils = 0.9.1
 # Get support for @security decorators
@@ -316,7 +310,6 @@ Products.BTreeFolder2 = 2.13.3
 Sphinx = 1.1.3
 # required for recent z3c.form and chameleon
 zope.pagetemplate = 3.6.3
-
 
 # Build tools
 buildout.dumppickedversions = 0.5
@@ -359,7 +352,6 @@ repoze.xmliter = 0.5
 simplejson = 2.5.2
 six = 1.2.0
 WebOb = 1.0.8
-
 
 # Plone release
 Plone                                 = 4.3.2
@@ -537,7 +529,6 @@ plone.mocktestcase                    = 1.0b3
 z3c.objpath                           = 1.1
 z3c.relationfield                     = 0.6.2
 zc.relation                           = 1.0
-
 """
 
 # For insecure mode, when we trust noone has altered the remote hosted
