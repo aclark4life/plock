@@ -99,7 +99,7 @@ FAQ
 Why build Plock on top of Buildout? 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Plock is a work around for ``pip install Plone`` which works but requires a lengthy requirements.txt, and lacks additional features provided by Buildout that are needed to use ``pip install Plone`` effectively.
+Plock is a work around for ``pip install Plone`` which works but requires a lengthy requirements.txt, and lacks additional features provided by Buildout that are needed to use Plone. 
 
 Why support pip? 
 ~~~~~~~~~~~~~~~~
