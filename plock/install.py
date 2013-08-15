@@ -185,7 +185,8 @@ class Installer():
             insecure = True
 
         sys.stdout.write(
-            "Plock is installing Plone. This may take a while...")
+            "Plock is installing Plone in %s. This may take a while..."
+            % self.directory)
         sys.stdout.flush()
 
         self.create_cfg(insecure=insecure, zope2_only=zope2_only)
@@ -272,7 +273,7 @@ class Installer():
         if not test:
             try:
                 try:
-                    # Try buildout 
+                    # Try buildout
                     buildout = sh.Command("buildout")
                 except sh.CommandNotFound:
                     # Try bin/buildout
