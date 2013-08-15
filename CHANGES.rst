@@ -8,6 +8,7 @@ Changelog
     - Create target directory if it does not exist
     - Use Plock Pins instead of PythonPackages for hosted zc.buildout configurations
     - Add --no-expert to override PLOCK_EXPERT=True
+    - Fix --insecure warnings, warn if secure configuration exists and vice versa
 
 - Bug fixes
     - Don't break --list-addons
