@@ -41,7 +41,7 @@ import time
 
 class Installer():
     """
-    Plock: A Plone Installer for the Pip-Loving Crowd
+    Plock is a Plone Installer for the Pip-loving Crowd
     """
 
     def __init__(self):
@@ -328,6 +328,6 @@ class Installer():
 
 
 def install():
-    plock = Installer()
     args = arg_parser.parse_args()
+    plock = Installer()
     plock.install_plone(args)
