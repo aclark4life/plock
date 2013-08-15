@@ -5,6 +5,7 @@ Changelog
 ------------------
 
 - New features:
+    - Create target directory if it does not exist
     - Use Plock Pins instead of PythonPackages for zc.buildout configuration
 
 - Bug fixes
