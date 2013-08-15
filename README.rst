@@ -12,20 +12,20 @@ Installation
 
 .. Note:: Plock supports the latest release (and only the latest release) of Plone, currently Plone 4.3.
 
-Installing and running Plone with Plock looks like this::
+Installing and running Plone with Plock (inside a virtualenv) looks like this::
 
     $ virtualenv-2.7 .
     $ source bin/activate
 
 ::
 
-    $ pip install plock
-    $ plock .
+    (venv)$ pip install plock
+    (venv)$ plock .
     Plock is installing Plone. This may take a while.......(3)....(4)....(4)....(4)....(5)....(5)....(9)....(14)....(21)....(24)....(29)....(33)....(38)....(43)....(48)....(54)....(58)....(62)....(66)....(71)....(74)....(78)....(78)....(83)....(87)....(89)....(92)....(97)....(98)....(98)....(98)....(98)....(98)....(100)....(102)....(103)....(108)....(110)....(113)....(115)....(120)....(123)....(128)....(133)....(138)....(142)....(148)....(153)....(158)....(161)....(163)....(168)....(171)....(175)....(179)....(181)....(184)....(189)....(193)....(195)....(198)....(203)....(205)....(210)....(214)....(221)....(224)....(228)....(234). done.
 
 ::
 
-    $ plone fg
+    (venv)$ plone fg
 
 Configuration
 -------------
