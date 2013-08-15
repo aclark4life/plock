@@ -1,6 +1,15 @@
 Changelog
 =========
 
+0.1.6 (2013-08-14)
+------------------
+
+- New features:
+    - Use Plock Pins instead of PythonPackages for zc.buildout configuration
+
+- Bug fixes
+    - Don't break --list-addons
+
 0.1.6 (2013-08-12)
 ------------------
 
