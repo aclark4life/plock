@@ -42,7 +42,7 @@ setup(
     tests_require=[
         'nose',
     ],
-    url='https://github.com/aclark4life/plock',
+    url='https://github.com/plock/plock',
     version=VERSION,
     zip_safe=False,
 )
