@@ -152,6 +152,9 @@ class Installer():
         if args.expert:  # Override env var setting
             self.expert = True
 
+        if args.no_expert:  # Override env var setting
+            self.expert = False
+
         if args.list_addons:
             locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
             if args.raw:
