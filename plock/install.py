@@ -182,8 +182,6 @@ class Installer():
             "Plock is installing Plone. This may take a while...")
         sys.stdout.flush()
 
-#        os.chdir(self.directory)
-
         self.create_cfg(insecure=insecure, zope2_only=zope2_only)
         self.run_buildout(test=test)
         if first_time:
