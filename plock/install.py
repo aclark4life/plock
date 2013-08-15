@@ -137,9 +137,15 @@ class Installer():
         Install Plone with Buildout
         """
         self.directory = os.path.realpath(args.DIRECTORY)
+
+        # Create target directory if it does not exist
+        if not os.path.exists(self.directory):
+            os.mkdir(self.directory)
+
         first_time = False
         insecure = False
         zope2_only = False
+
         if args.add_on:
             first_time = self.install_addons(args)
 
