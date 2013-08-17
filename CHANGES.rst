@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.1.6 (2013-08-15)
+0.1.7 (2013-08-17)
 ------------------
 
 - New features:
@@ -9,6 +9,7 @@ Changelog
     - Use Plock Pins instead of PythonPackages for hosted zc.buildout configurations
     - Add --no-expert to override PLOCK_EXPERT=True
     - Fix --insecure warnings, warn if secure configuration exists and vice versa
+    - Add -v, --version to display version
 
 - Bug fixes
     - Don't break --list-addons
