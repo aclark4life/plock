@@ -54,7 +54,7 @@ arg_parser.add_argument(
     "-i", "--add-on", help="Install add-ons from PyPI", nargs="*")
 
 arg_parser.add_argument(
-    "--insecure", action="store_true", help="Use hosted configuration files")
+    "--insecure", action="store_true", help="Use online configuration files")
 
 arg_parser.add_argument(
     "-l", "--list-addons", action="store_true", help="List add-ons from PyPI")
