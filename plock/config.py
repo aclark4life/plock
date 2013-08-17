@@ -36,10 +36,12 @@ except TypeError, NameError:
 # http://stackoverflow.com/a/2073599/185820
 VERSION = pkg_resources.require("plock")[0].version
 
+# http://pymotw.com/2/argparse/
 arg_parser = argparse.ArgumentParser(
-    description="Plock is a Plone Installer for the Pip-Loving Crowd")
+    description="Plock is a Plone Installer for the Pip-Loving Crowd",
+    version=VERSION)
 
-arg_parser.add_argument('DIRECTORY', nargs='*', default=os.getcwd())
+arg_parser.add_argument('DIRECTORY', default=os.getcwd())
 
 arg_parser.add_argument(
     "-e", "--expert", action="store_true", help="Read .buildout/default.cfg")
@@ -56,10 +58,6 @@ arg_parser.add_argument(
 
 arg_parser.add_argument(
     "-l", "--list-addons", action="store_true", help="List add-ons from PyPI")
-
-# http://pymotw.com/2/argparse/
-arg_parser.add_argument(
-    '-v', '--version', action='version', version='%(prog)s '+VERSION)
 
 arg_parser.add_argument(
     "-w", "--write-config", action="store_true", help="Write buildout.cfg")
