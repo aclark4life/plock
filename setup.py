@@ -28,6 +28,7 @@ setup(
         'configparser',
         'sh',
         'yolk',
+        'virtualenv',
         'zc.buildout',
     ],
     keywords="buildout pip plone virtualenv zope",
