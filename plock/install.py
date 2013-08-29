@@ -142,8 +142,12 @@ class Installer():
         return False
 
     def create_venv(self):
-        virtualenv = self.check_available("virtualenv")
-        virtualenv(self.directory)
+        try:
+            virtualenv = self.check_available("virtualenv")
+            virtualenv(self.directory)
+            return True
+        except:
+            return False
 
     def create_dirs(self):
         """
@@ -204,7 +208,6 @@ class Installer():
         if args.virtualenv:
             if self.create_venv():
                 print "(created virtualenv)"
-                exit(0)
             else:
                 print "Failed to create virtualenv"
                 exit(1)
