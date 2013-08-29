@@ -70,6 +70,9 @@ arg_parser.add_argument(
     "-p", "--preserve", action="store_true", help="Preserve add-ons")
 
 arg_parser.add_argument(
+    "--virtualenv", action="store_true", help="Create virtualenv")
+
+arg_parser.add_argument(
     "-r", "--raw", action="store_true", help="Raw output")
 
 arg_parser.add_argument(

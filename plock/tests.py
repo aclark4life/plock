@@ -22,6 +22,7 @@ class PlockTests(unittest.TestCase):
         args.insecure = False
         args.list_addons = False
         args.preserve = False
+        args.virtualenv = False
         args.raw = False
         args.write_config = False
         args.zope2_only = False

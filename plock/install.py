@@ -50,6 +50,22 @@ class Installer():
         self.expert = EXPERT
         self.eggs_total = EGGS_TOTAL
 
+    def check_available(self, command):
+        """
+        Check to see if a command is available to run
+        """
+        try:
+            try:
+                # Try command
+                command = sh.Command(command)
+            except sh.CommandNotFound:
+                # Try bin/command
+                command = sh.Command(os.path.join("bin", command))
+        except sh.CommandNotFound:
+            print(" error: %s command not found\n" % command)
+            exit(1)
+        return command
+
     def create_cfg(self, insecure=False, zope2_only=False):
         """
         Create Buildout config
@@ -125,6 +141,10 @@ class Installer():
 
         return False
 
+    def create_venv(self):
+        virtualenv = self.check_available("virtualenv")
+        virtualenv(self.directory)
+
     def create_dirs(self):
         """
         Create Buildout dirs. Match directory name with section parameter name
@@ -180,6 +200,14 @@ class Installer():
             usage += " --preserve"
             print(usage)
             exit(1)
+
+        if args.virtualenv:
+            if self.create_venv():
+                print "(created virtualenv)"
+                exit(0)
+            else:
+                print "Failed to create virtualenv"
+                exit(1)
 
         if args.write_config:
             if self.create_cfg():
@@ -283,16 +311,7 @@ class Installer():
 
     def run_buildout(self, test=False):
         if not test:
-            try:
-                try:
-                    # Try buildout
-                    buildout = sh.Command("buildout")
-                except sh.CommandNotFound:
-                    # Try bin/buildout
-                    buildout = sh.Command(os.path.join("bin", "buildout"))
-            except sh.CommandNotFound:
-                print(" error: buildout command not found\n")
-                exit(1)
+            buildout = self.check_available("buildout")
             last = []  # saved iterations
             try:
                 if self.expert:  # Allow Buildout dirs to be
