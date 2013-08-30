@@ -355,9 +355,9 @@ class Installer():
 
     def sleep(self, *args):
         if args:
-            s=args[0]
+            s = args[0]
         else:
-            s=9  # 10 seconds
+            s = 9  # 10 seconds
         for i in range(s):
             sys.stdout.write(".")
             sys.stdout.flush()
