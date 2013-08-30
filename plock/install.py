@@ -315,7 +315,7 @@ class Installer():
                     buildout_opt = (
                         "-c", os.path.join(self.directory, "buildout.cfg"))
                     install = buildout(buildout_opt, _bg=True)
-                    self.sleep(5)
+                    self.sleep(12)
                     install.wait()
                 else:  # Explicitly create and use Buildout dirs
                     # in the current working directory.
@@ -353,9 +353,9 @@ class Installer():
                     cfg.close()
                 exit(1)
 
-    def sleep(self, *arg):
-        if arg:
-            s=arg[0]
+    def sleep(self, *args):
+        if args:
+            s=args[0]
         else:
             s=9  # 10 seconds
         for i in range(s):
@@ -367,8 +367,8 @@ class Installer():
         start_plone = sh.Command(os.path.join(self.directory, 'bin', 'plone'))
         sys.stdout.write("Plock is: starting Plone in %s." % self.directory)
         sys.stdout.flush()
-        self.sleep(10)
         run_plone = start_plone("fg", _bg=True)
+        self.sleep()
         print(" done.")
         print(
             "Plock is: running Plone on http://localhost:8080, CTRL-C to quit")
