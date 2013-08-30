@@ -355,7 +355,8 @@ class Installer():
 
     def run_plone(self):
         run_plone = sh.Command(os.path.join(self.directory, 'bin', 'plone'))
-        print("Plock is: running Plone on http://localhost:8080. CTRL-C to quit.")
+        print(
+            "Plock is: running Plone on http://localhost:8080. CTRL-C to quit")
         run_plone("fg")
 
 
