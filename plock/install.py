@@ -221,7 +221,7 @@ class Installer():
             insecure = True
 
         sys.stdout.write(
-            "Plock is: installing Plone in %s. This may take a while..."
+            "Plock is: installing Plone in %s."
             % self.directory)
         sys.stdout.flush()
 
@@ -314,14 +314,16 @@ class Installer():
                     # specified by .buildout/default.cfg
                     buildout_opt = (
                         "-c", os.path.join(self.directory, "buildout.cfg"))
-                    buildout(buildout_opt)
+                    install = buildout(buildout_opt, _bg=True)
+                    self.sleep(5)
+                    install.wait()
                 else:  # Explicitly create and use Buildout dirs
                     # in the current working directory.
                     BUILDOUT_OPT.append([
                         "-c", os.path.join(self.directory, "buildout.cfg")])
                     count = 0
                     self.create_dirs()
-                    download = buildout(BUILDOUT_OPT, _bg=True)
+                    install = buildout(BUILDOUT_OPT, _bg=True)
                     while(len(os.listdir('eggs-directory')) < self.eggs_total):
                         count += 1  # Print status control
 
@@ -339,10 +341,8 @@ class Installer():
                         if count % 5 == 0:  # Print status
                             sys.stdout.write("(%d)" % num)
                         else:
-                            time.sleep(3)
-                            sys.stdout.write(".")
-                        sys.stdout.flush()
-                    download.wait()
+                            self.sleep(3)
+                    install.wait()
             except sh.ErrorReturnCode_1:
                 print(" error: buildout run failed.\n")
                 print("Run buildout manually to see error.")
@@ -353,15 +353,30 @@ class Installer():
                     cfg.close()
                 exit(1)
 
-    def run_plone(self):
-        run_plone = sh.Command(os.path.join(self.directory, 'bin', 'plone'))
+    def sleep(self, *arg):
+        if arg:
+            s=arg[0]
+        else:
+            s=9  # 10 seconds
+        for i in range(s):
+            sys.stdout.write(".")
+            sys.stdout.flush()
+            time.sleep(1)
+
+    def start_plone(self):
+        start_plone = sh.Command(os.path.join(self.directory, 'bin', 'plone'))
+        sys.stdout.write("Plock is: starting Plone in %s." % self.directory)
+        sys.stdout.flush()
+        self.sleep(10)
+        run_plone = start_plone("fg", _bg=True)
+        print(" done.")
         print(
-            "Plock is: running Plone on http://localhost:8080. CTRL-C to quit")
-        run_plone("fg")
+            "Plock is: running Plone on http://localhost:8080, CTRL-C to quit")
+        run_plone.wait()
 
 
 def install():
     args = arg_parser.parse_args()
     plock = Installer()
     plock.install_plone(args)
-    plock.run_plone()
+    plock.start_plone()
