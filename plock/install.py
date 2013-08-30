@@ -205,13 +205,6 @@ class Installer():
             print(usage)
             exit(1)
 
-        if args.virtualenv:
-            if self.create_venv():
-                print "(created virtualenv)"
-            else:
-                print "Failed to create virtualenv"
-                exit(1)
-
         if args.write_config:
             if self.create_cfg():
                 print "Wrote buildout.cfg."
@@ -228,7 +221,7 @@ class Installer():
             insecure = True
 
         sys.stdout.write(
-            "Plock is installing Plone in %s. This may take a while..."
+            "Plock is: installing Plone in %s. This may take a while..."
             % self.directory)
         sys.stdout.flush()
 
@@ -360,8 +353,14 @@ class Installer():
                     cfg.close()
                 exit(1)
 
+    def run_plone(self):
+        run_plone = sh.Command(os.path.join(self.directory, 'bin', 'plone'))
+        print("Plock is: running Plone on http://localhost:8080. CTRL-C to quit.")
+        run_plone("fg")
+
 
 def install():
     args = arg_parser.parse_args()
     plock = Installer()
     plock.install_plone(args)
+    plock.run_plone()
