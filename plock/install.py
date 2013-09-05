@@ -66,7 +66,6 @@ class Installer():
         versions_cfg = os.path.join(self.directory, 'versions.cfg')
 
         if not os.path.exists(buildout_cfg):
-
             if insecure:
                 cfg = open(buildout_cfg, 'w')
                 if zope2_only:
@@ -141,14 +140,14 @@ class Installer():
 
     def create_dirs(self):
         """
-        Create Buildout dirs. Match directory name with section parameter name
-        e.g. download-cache = download-cache, eggs-directory = eggs-directory,
-        etc.
+        Create Buildout directories. Match directory name with section parameter 
+        name e.g. download-cache = download-cache,
+        eggs-directory = eggs-directory, etc.
 
         Note: a download cache must be defined to be used; there is no
-        default value, or caching enabled, if the parameter is not defined.
+        default value, or caching enabled if the parameter is not defined.
         Eggs directory is set by default to "eggs" if the parameter is not
-        defined in buildout.cfg (which it typically is not).
+        defined in buildout.cfg (which typically it is not).
         """
         dirs = ('download-cache', 'eggs-directory')
         for d in dirs:
