@@ -235,13 +235,14 @@ class Installer():
         """
         Install add-ons from PyPI
         """
-        if not os.path.exists('buildout.cfg'):
+
+        buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
+
+        if not os.path.exists(buildout_cfg):
             # It's the first time the installer has run so we need
             # to write buildout.cfg before adding a plone section.
             # Return and come back later.
             return True
-
-        buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
 
         self.backup = open(buildout_cfg).read()
         addons = []
