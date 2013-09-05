@@ -58,7 +58,7 @@ class Installer():
 
     def create_cfg(self, insecure=False, zope2_only=False):
         """
-        Create Buildout config
+        Create Buildout configuration files in self.directory
         """
         base_cfg = os.path.join(self.directory, 'base.cfg')
         buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
