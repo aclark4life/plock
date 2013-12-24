@@ -75,10 +75,6 @@ class Installer():
         else:
             cfg_parser.read('buildout.cfg')
             extends = cfg_parser.get('buildout', 'extends')
-            if not extends.startswith('http'):
-                print(" error: secure configuration exists!\n")
-                print("Remove buildout.cfg and try again.")
-                exit(1)
 
             # Prevent inadvertently switching from Plone to Zope2 or vice versa
             cfg_parser.read('release.cfg')
