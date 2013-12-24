@@ -168,7 +168,6 @@ zcml =
 [buildout]
 extends =
 # The order matters
-    versions.cfg
     base.cfg
 
 [plone]
@@ -190,7 +189,6 @@ zcml =
 [buildout]
 extends =
 # The order matters
-    versions.cfg
     base.cfg
 parts = zope2
 
