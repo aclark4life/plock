@@ -55,7 +55,7 @@ class Installer():
             exit(1)
         return command
 
-    def create_cfg(self, insecure=False, zope2_only=False):
+    def create_cfg(self, zope2_only=False):
         """
         Create Buildout configuration files in self.directory
         """
@@ -64,51 +64,21 @@ class Installer():
         release_cfg = os.path.join(self.directory, 'release.cfg')
 
         if not os.path.exists(buildout_cfg):
-            if insecure:
-                cfg = open(buildout_cfg, 'w')
-                if zope2_only:
-                    release_remote = REMOTE_ZOPE2
-                else:
-                    release_remote = REMOTE_PLONE
-                cfg.write(BUILDOUT_CFG % release_remote)
-                cfg.close
-
+            cfg = open(buildout_cfg, 'w')
+            if zope2_only:
+                release_remote = REMOTE_ZOPE2
             else:
-                if zope2_only:
-                    BASE_CFG = BASE_ZOPE2
-                    RELEASE_CFG = RELEASE_ZOPE2
-                else:
-                    BASE_CFG = BASE_PLONE
-                    RELEASE_CFG = RELEASE_PLONE
-
-                cfg = open(base_cfg, 'w')
-                cfg.write(BASE_CFG)
-                cfg.close()
-
-                cfg = open(buildout_cfg, 'w')
-                cfg.write(BUILDOUT_CFG % 'release.cfg')
-                cfg.close
-
-                cfg = open(release_cfg, 'w')
-                cfg.write(RELEASE_CFG)
-                cfg.close()
-
+                release_remote = REMOTE_PLONE
+            cfg.write(BUILDOUT_CFG % release_remote)
+            cfg.close
             return True
         else:
-            # Don't allow --insecure if buildout.cfg already exists and vice
-            # versa
             cfg_parser.read('buildout.cfg')
             extends = cfg_parser.get('buildout', 'extends')
-            if insecure:
-                if not extends.startswith('http'):
-                    print(" error: secure configuration exists!\n")
-                    print("Remove buildout.cfg and try again.")
-                    exit(1)
-            else:
-                if extends.startswith('http'):
-                    print(" error: insecure configuration exists!\n")
-                    print("Remove buildout.cfg and try again.")
-                    exit(1)
+            if not extends.startswith('http'):
+                print(" error: secure configuration exists!\n")
+                print("Remove buildout.cfg and try again.")
+                exit(1)
 
             # Prevent inadvertently switching from Plone to Zope2 or vice versa
             cfg_parser.read('release.cfg')
@@ -160,7 +130,6 @@ class Installer():
             os.mkdir(self.directory)
 
         first_time = False
-        insecure = False
         zope2_only = False
 
         if args.add_on:
@@ -201,15 +170,12 @@ class Installer():
             zope2_only = True
             self.eggs_total = 70
 
-        if args.insecure:
-            insecure = True
-
         sys.stdout.write(
             "Plock is: installing Plone in %s."
             % self.directory)
         sys.stdout.flush()
 
-        self.create_cfg(insecure=insecure, zope2_only=zope2_only)
+        self.create_cfg(zope2_only=zope2_only)
         self.run_buildout(test=test)
         if first_time:
             self.install_addons(args)
