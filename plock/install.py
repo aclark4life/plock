@@ -167,7 +167,7 @@ class Installer():
             self.eggs_total = 70
 
         sys.stdout.write(
-            "Plock is: installing Plone in %s."
+            "Plock is installing Plone (%s)."
             % self.directory)
         sys.stdout.flush()
 
@@ -312,13 +312,13 @@ class Installer():
 
     def start_plone(self):
         start_plone = sh.Command(os.path.join(self.directory, 'bin', 'plone'))
-        sys.stdout.write("Plock is: starting Plone in %s." % self.directory)
+        sys.stdout.write("Plock is starting Plone (%s fg)." % os.path.join(self.directory, 'bin', 'plone'))
         sys.stdout.flush()
         run_plone = start_plone("fg", _bg=True)
         self.sleep()
         print(" done.")
         print(
-            "Plock is: running Plone on http://localhost:8080, CTRL-C to quit")
+            "Plock is running Plone (http://localhost:8080): CTRL-C to quit")
         run_plone.wait()
 
 
