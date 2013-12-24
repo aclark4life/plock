@@ -54,9 +54,6 @@ arg_parser.add_argument(
     "-i", "--add-on", help="Install add-ons from PyPI", nargs="*")
 
 arg_parser.add_argument(
-    "--insecure", action="store_true", help="Use online configuration files")
-
-arg_parser.add_argument(
     "-l", "--list-addons", action="store_true", help="List add-ons from PyPI")
 
 arg_parser.add_argument(
@@ -82,8 +79,6 @@ cfg_parser = configparser.SafeConfigParser()
 
 pypi = CheeseShop()
 
-# For insecure mode, when we trust noone has altered the remote hosted
-# configuration.
 REMOTE_PLONE = "https://raw.github.com/plock/pins/master/plone-4.3"
 REMOTE_ZOPE2 = "https://raw.github.com/plock/pins/master/zope2-2.13"
 
