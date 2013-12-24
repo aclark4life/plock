@@ -15,7 +15,6 @@ from .config import RELEASE_PLONE
 from .config import RELEASE_ZOPE2
 from .config import REMOTE_PLONE  # Insecure!
 from .config import REMOTE_ZOPE2  # Insecure!
-from .config import VERSIONS_CFG
 
 from .config import arg_parser
 from .config import cfg_parser
@@ -63,7 +62,6 @@ class Installer():
         base_cfg = os.path.join(self.directory, 'base.cfg')
         buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
         release_cfg = os.path.join(self.directory, 'release.cfg')
-        versions_cfg = os.path.join(self.directory, 'versions.cfg')
 
         if not os.path.exists(buildout_cfg):
             if insecure:
@@ -95,9 +93,6 @@ class Installer():
                 cfg.write(RELEASE_CFG)
                 cfg.close()
 
-                cfg = open(versions_cfg, 'w')
-                cfg.write(VERSIONS_CFG)
-                cfg.close()
             return True
         else:
             # Don't allow --insecure if buildout.cfg already exists and vice
