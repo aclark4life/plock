@@ -55,9 +55,7 @@ class Installer():
         """
         Create Buildout configuration files in self.directory
         """
-        base_cfg = os.path.join(self.directory, 'base.cfg')
         buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
-        release_cfg = os.path.join(self.directory, 'release.cfg')
 
         if not os.path.exists(buildout_cfg):
             cfg = open(buildout_cfg, 'w')
