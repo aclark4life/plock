@@ -51,7 +51,7 @@ class Installer():
             exit(1)
         return command
 
-    def create_cfg(self, zope2_only=False):
+    def create_cfg(self):
         """
         Create Buildout configuration files in self.directory
         """
@@ -61,10 +61,7 @@ class Installer():
 
         if not os.path.exists(buildout_cfg):
             cfg = open(buildout_cfg, 'w')
-            if zope2_only:
-                release_remote = REMOTE_ZOPE2
-            else:
-                release_remote = REMOTE_PLONE
+            release_remote = REMOTE_PLONE
             cfg.write(BUILDOUT_CFG % release_remote)
             cfg.close
             return True
@@ -108,7 +105,6 @@ class Installer():
             os.mkdir(self.directory)
 
         first_time = False
-        zope2_only = False
 
         if args.add_on:
             first_time = self.install_addons(args)
@@ -144,16 +140,12 @@ class Installer():
                 print "Failed to write buildout.cfg: it already exists."
                 exit(1)
 
-        if args.zope2_only:
-            zope2_only = True
-            self.eggs_total = 70
-
         sys.stdout.write(
             "Plock is installing Plone (%s)."
             % self.directory)
         sys.stdout.flush()
 
-        self.create_cfg(zope2_only=zope2_only)
+        self.create_cfg()
         self.run_buildout(test=test)
         if first_time:
             self.install_addons(args)
