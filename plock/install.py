@@ -71,20 +71,6 @@ class Installer():
         else:
             cfg_parser.read('buildout.cfg')
             extends = cfg_parser.get('buildout', 'extends')
-
-            # Prevent inadvertently switching from Plone to Zope2 or vice versa
-            cfg_parser.read('release.cfg')
-            if zope2_only:
-                if not cfg_parser.has_section('zope2'):
-                    print(" error: configuration exists.\n")
-                    print("Remove buildout.cfg and try again.")
-                    exit(1)
-            else:
-                if not cfg_parser.has_section('plone'):
-                    print(" error: configuration exists.\n")
-                    print("Remove buildout.cfg and try again.")
-                    exit(1)
-
         return False
 
     def create_venv(self):

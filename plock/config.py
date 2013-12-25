@@ -72,12 +72,8 @@ arg_parser.add_argument(
 arg_parser.add_argument(
     "-r", "--raw", action="store_true", help="Raw output")
 
-arg_parser.add_argument(
-    "-z", "--zope2-only", action="store_true", help="Install Zope2 only")
-
 cfg_parser = configparser.SafeConfigParser()
 
 pypi = CheeseShop()
 
 REMOTE_PLONE = "https://raw.github.com/plock/pins/master/plone-4.3"
-REMOTE_ZOPE2 = "https://raw.github.com/plock/pins/master/zope2-2.13"
