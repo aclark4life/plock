@@ -9,12 +9,8 @@ from .config import SEARCH_SPEC
 from .config import TIMEOUT
 
 # Buildout Extends
-from .config import BASE_PLONE
-from .config import BASE_ZOPE2
-from .config import RELEASE_PLONE
-from .config import RELEASE_ZOPE2
-from .config import REMOTE_PLONE  # Insecure!
-from .config import REMOTE_ZOPE2  # Insecure!
+from .config import REMOTE_PLONE
+from .config import REMOTE_ZOPE2
 
 from .config import arg_parser
 from .config import cfg_parser
