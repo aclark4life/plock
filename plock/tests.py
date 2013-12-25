@@ -19,13 +19,11 @@ class PlockTests(unittest.TestCase):
         args.DIRECTORY = mkdtemp()
         args.add_on = None
         args.expert = False
-        args.insecure = False
         args.list_addons = False
         args.preserve = False
         args.virtualenv = False
         args.raw = False
         args.write_config = False
-        args.zope2_only = False
         plock.install_plone(args, test=True)
 
     def test_run_buildout(self):
