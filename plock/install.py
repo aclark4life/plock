@@ -74,7 +74,8 @@ class Installer():
 
     def create_dirs(self):
         """
-        Create Buildout directories. Match directory name with section parameter 
+        Create Buildout directories. Match directory name with section
+        parameter
         name e.g. download-cache = download-cache,
         eggs-directory = eggs-directory, etc.
 
@@ -141,7 +142,7 @@ class Installer():
         self.run_buildout(test=test)
         if first_time:
             self.install_addons(args)
-        print(" done. Now run:\n") 
+        print(" done. Now run:\n")
         print("%s/bin/plone fg\n" % self.directory)
 
     def install_addons(self, args):
