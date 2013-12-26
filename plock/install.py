@@ -283,14 +283,10 @@ class Installer():
 
     def start_plone(self):
         start_plone = sh.Command(os.path.join(self.directory, 'bin', 'plone'))
-        sys.stdout.write("Plock is starting Plone (%s fg)." % os.path.join(self.directory, 'bin', 'plone'))
-        sys.stdout.flush()
-        run_plone = start_plone("fg", _bg=True)
-        self.sleep()
-        print(" done.")
         print(
             "Plock is running Plone (http://localhost:8080): CTRL-C to quit")
-        run_plone.wait()
+        run_plone = start_plone("fg")
+        import pdb ; pdb.set_trace()
 
 
 def install():
