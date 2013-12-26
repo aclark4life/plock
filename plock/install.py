@@ -62,9 +62,6 @@ class Installer():
             cfg.write(BUILDOUT_CFG % release_remote)
             cfg.close
             return True
-        else:
-            cfg_parser.read('buildout.cfg')
-            extends = cfg_parser.get('buildout', 'extends')
         return False
 
     def create_venv(self):
