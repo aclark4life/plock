@@ -40,6 +40,7 @@ setup(
     packages=find_packages(),
     test_suite='plock.tests',
     tests_require=[
+        'mock',
         'nose',
     ],
     url='https://github.com/plock/plock',
