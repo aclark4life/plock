@@ -10,7 +10,6 @@ from .config import TIMEOUT
 
 # Buildout Extends
 from .config import REMOTE_PLONE
-from .config import REMOTE_ZOPE2
 
 from .config import arg_parser
 from .config import cfg_parser
