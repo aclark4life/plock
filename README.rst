@@ -86,13 +86,6 @@ If you are installing via a slow internet connection, you can adjust the timeout
 
     $ export PLOCK_TIMEOUT=60
 
-Zope2 only
-++++++++++
-
-If you'd like to install Zope2 only, you can do that with::
-
-    $ plock --zope2-only
-
 FAQ
 ---
 
