@@ -137,16 +137,15 @@ class Installer():
                 print "Failed to write buildout.cfg: it already exists."
                 exit(1)
 
-        sys.stdout.write(
-            "Plock is installing Plone (%s)."
-            % self.directory)
+        sys.stdout.write("Plock is installing Plone.")
         sys.stdout.flush()
 
         self.create_cfg()
         self.run_buildout(test=test)
         if first_time:
             self.install_addons(args)
-        print(" done.")
+        print(" done. Now run:\n") 
+        print("%s/bin/plone fg\n" % self.directory)
 
     def install_addons(self, args):
         """
@@ -281,16 +280,8 @@ class Installer():
             sys.stdout.flush()
             time.sleep(1)
 
-    def start_plone(self):
-        start_plone = sh.Command(os.path.join(self.directory, 'bin', 'plone'))
-        print(
-            "Plock is running Plone (http://localhost:8080): CTRL-C to quit")
-        run_plone = start_plone("fg")
-        import pdb ; pdb.set_trace()
-
 
 def install():
     args = arg_parser.parse_args()
     plock = Installer()
     plock.install_plone(args)
-    plock.start_plone()
