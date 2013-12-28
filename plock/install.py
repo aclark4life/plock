@@ -118,7 +118,6 @@ class Installer():
         if args.expert:  # Override env var setting
             self.expert = True
 
-
         if args.write_config:
             if self.create_cfg():
                 print "Wrote buildout.cfg."
