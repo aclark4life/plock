@@ -20,7 +20,6 @@ class PlockTests(unittest.TestCase):
         args.add_on = None
         args.expert = False
         args.list_addons = False
-        args.preserve = False
         args.raw = False
         args.write_config = False
         plock.install_plone(args, test=True)

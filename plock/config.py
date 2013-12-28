@@ -59,13 +59,6 @@ arg_parser.add_argument(
 arg_parser.add_argument(
     "-w", "--write-config", action="store_true", help="Write buildout.cfg")
 
-# This option makes it possible to install addons (with --add-on) without
-# completely
-# replacing the current list of addons in buildout.cfg, which is the
-# default behavior.
-arg_parser.add_argument(
-    "-p", "--preserve", action="store_true", help="Preserve add-ons")
-
 arg_parser.add_argument(
     "-r", "--raw", action="store_true", help="Raw output")
 
