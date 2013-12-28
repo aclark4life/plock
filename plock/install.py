@@ -64,14 +64,6 @@ class Installer():
             return True
         return False
 
-    def create_venv(self):
-        try:
-            virtualenv = self.check_available("virtualenv")
-            virtualenv(self.directory)
-            return True
-        except:
-            return False
-
     def create_dirs(self):
         """
         Create Buildout directories. Match directory name with section
