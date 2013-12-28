@@ -86,6 +86,20 @@ class Installer():
         Install Plone with Buildout
         """
 
+        if args.list_addons:
+            if args.install_dir:
+                print("Usage: plock -l")
+                exit()
+            locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
+            if args.raw:
+                self.list_addons(raw=True)
+            else:
+                self.list_addons()
+            exit()
+        if args.raw:
+            print("Usage: plock --list-addons --raw")
+            exit()
+
         if args.install_dir:
             self.directory = args.install_dir
         else:  # Quit if no install dir
@@ -104,19 +118,6 @@ class Installer():
         if args.expert:  # Override env var setting
             self.expert = True
 
-        if args.list_addons:
-            if args.install_dir:
-                print("Usage: plock -l")
-                exit()
-            locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
-            if args.raw:
-                self.list_addons(raw=True)
-            else:
-                self.list_addons()
-            exit()
-        if args.raw:
-            print("Usage: plock --list-addons --raw")
-            exit()
 
         if args.write_config:
             if self.create_cfg():
