@@ -15,6 +15,7 @@ Changelog
 
 - Removed features:
     - Remove --insecure
+    - Remove --virtualenv
     - Remove --zope2-only
 
 0.1.6 (2013-08-12)
