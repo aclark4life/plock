@@ -88,8 +88,9 @@ class Installer():
 
         if args.install_dir:
             self.directory = args.install_dir
-        else:
-            self.directory = os.getcwd()
+        else:  # Quit if no install dir
+            print("Usage: plock [install_dir]")
+            exit()
 
         # Create install directory if it does not exist
         if not os.path.exists(self.directory):
