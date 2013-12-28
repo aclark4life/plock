@@ -86,7 +86,10 @@ class Installer():
         Install Plone with Buildout
         """
 
-        self.directory = args.install_dir
+        if args.install_dir:
+            self.directory = args.install_dir
+        else:
+            self.directory = os.getcwd()
 
         # Create install directory if it does not exist
         if not os.path.exists(self.directory):
@@ -101,6 +104,9 @@ class Installer():
             self.expert = True
 
         if args.list_addons:
+            if args.install_dir:
+                print("Usage: plock -l")
+                exit()
             locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
             if args.raw:
                 self.list_addons(raw=True)
