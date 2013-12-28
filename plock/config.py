@@ -44,11 +44,7 @@ arg_parser = argparse.ArgumentParser(
 arg_parser.add_argument('install_dir', nargs='?', default=os.getcwd())
 
 arg_parser.add_argument(
-    "-e", "--expert", action="store_true", help="Read .buildout/default.cfg")
-
-arg_parser.add_argument(
-    "-n", "--no-expert", action="store_true",
-    help="Don't read .buildout/default.cfg")
+    "-e", "--expert", action="store_true", help="Expert mode")
 
 arg_parser.add_argument(
     "-i", "--add-on", help="Install add-ons from PyPI", nargs="*")
