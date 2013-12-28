@@ -47,7 +47,7 @@ arg_parser.add_argument(
     "-e", "--expert", action="store_true", help="Expert mode")
 
 arg_parser.add_argument(
-    "-i", "--add-on", help="Install add-ons from PyPI", nargs="*")
+    "-a", "--add-on", help="Install add-ons from PyPI", nargs="*")
 
 arg_parser.add_argument(
     "-l", "--list-addons", action="store_true", help="List add-ons from PyPI")
