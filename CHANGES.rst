@@ -5,13 +5,13 @@ Changelog
 ------------------
 
 - New features:
-    - Create target directory if it does not exist
-    - Use Plock Pins instead of PythonPackages for hosted zc.buildout configurations
-    - Add --no-expert to override PLOCK_EXPERT=True
+    - Create install_dir if it does not exist
+    - Use Plock Pins instead of PythonPackages as zc.buildout configuration host
     - Add -v, --version to display version
 
 - Bug fixes
     - Don't break --list-addons
+    - Don't break --install-addons
 
 - Removed features:
     - Remove --insecure
