@@ -1,18 +1,21 @@
 Changelog
 =========
 
-0.1.7 (2013-08-17)
+0.1.7 (2013-12-28)
 ------------------
 
 - New features:
     - Create target directory if it does not exist
     - Use Plock Pins instead of PythonPackages for hosted zc.buildout configurations
     - Add --no-expert to override PLOCK_EXPERT=True
-    - Fix --insecure warnings, warn if secure configuration exists and vice versa
     - Add -v, --version to display version
 
 - Bug fixes
     - Don't break --list-addons
+
+- Removed features:
+    - Remove --insecure
+    - Remove --zope2-only
 
 0.1.6 (2013-08-12)
 ------------------
