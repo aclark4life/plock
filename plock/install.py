@@ -153,11 +153,25 @@ class Installer():
         addons = []
         addons.append('${base:packages}')
         addons.append('${addon:packages}')
-        for package in args.add_on:
-            addons.append(package)
+        addons.append(args.add_on)
         cfg_parser.read('buildout.cfg')
         if not cfg_parser.has_section('plone'):
             cfg_parser.add_section('plone')
+
+        else:
+            # Preserve existing addons
+            existing_addons = cfg_parser.get('plone', 'eggs')
+            existing_addons = existing_addons.split('\n')
+            # http://stackoverflow.com/a/1157160/185820
+            existing_addons = filter(lambda a: a != u'', existing_addons)
+            existing_addons = filter(
+                lambda a: a != u'${base:packages}', existing_addons)
+            existing_addons = filter(
+                lambda a: a != u'${addon:packages}', existing_addons)
+            addons = addons + existing_addons
+            addons = set(addons)
+            addons = list(addons)
+            addons.sort()
 
         cfg_parser.set('plone', 'eggs', '\n' + '\n'.join(addons))
         cfg = open(buildout_cfg, 'w')
