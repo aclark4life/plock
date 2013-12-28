@@ -10,7 +10,7 @@ Installation
 
 .. Note:: Plock requires an internet connection.
 
-.. Note:: Plock supports the latest release (and only the latest release) of Plone, currently Plone 4.3.
+.. Note:: Plock supports the latest release and only the latest release of Plone, currently Plone 4.3.
 
 Installing and running Plone with Plock (inside a virtualenv) looks like this::
 
