@@ -133,9 +133,9 @@ class Installer():
         sys.stdout.flush()
 
         self.create_cfg()
-        self.run_buildout(test=test)
         if first_time:
             self.install_addons(args)
+        self.run_buildout(test=test)
         print(" done. Now run:\n")
         print("%s/bin/plone fg\n" % self.directory)
 
