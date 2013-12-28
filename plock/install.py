@@ -260,6 +260,5 @@ class Installer():
 
 def install():
     args = arg_parser.parse_args()
-    import pdb ; pdb.set_trace()
     plock = Installer()
     plock.install_plone(args)
