@@ -8,7 +8,7 @@ Plock is a Plone Installer for the Pip-loving Crowd
 Installation
 ------------
 
-.. Note:: Installing Plone with Plock requires an internet connection. If you want to install off-line, try the `Unified Installer <http://plone.org/download>`_.
+.. Note:: Plock requires an internet connection.
 
 .. Note:: Plock supports the latest release (and only the latest release) of Plone, currently Plone 4.3.
 
