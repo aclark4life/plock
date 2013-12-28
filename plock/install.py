@@ -116,12 +116,12 @@ class Installer():
             exit()
         if args.raw:
             print("Usage: plock --list-addons --raw")
-            exit(1)
+            exit()
 
         if args.write_config:
             if self.create_cfg():
                 print "Wrote buildout.cfg."
-                exit(0)
+                exit()
             else:
                 print "Failed to write buildout.cfg: it already exists."
                 exit(1)
