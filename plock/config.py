@@ -44,19 +44,19 @@ arg_parser = argparse.ArgumentParser(
 arg_parser.add_argument('install_dir', nargs='?', default=os.getcwd())
 
 arg_parser.add_argument(
-    "-e", "--expert", action="store_true", help="Expert mode")
+    "-e", "--expert", action="store_true", help="expert mode")
 
 arg_parser.add_argument(
-    "-a", "--add-on", help="Install add-ons from PyPI")
+    "-a", "--add-on", help="install add-ons from PyPI")
 
 arg_parser.add_argument(
-    "-l", "--list-addons", action="store_true", help="List add-ons from PyPI")
+    "-l", "--list-addons", action="store_true", help="list add-ons from PyPI")
 
 arg_parser.add_argument(
-    "-w", "--write-config", action="store_true", help="Write buildout.cfg")
+    "-w", "--write-config", action="store_true", help="write buildout.cfg")
 
 arg_parser.add_argument(
-    "-r", "--raw", action="store_true", help="Raw output")
+    "-r", "--raw", action="store_true", help="unformatted output, use with -l")
 
 cfg_parser = configparser.SafeConfigParser()
 
