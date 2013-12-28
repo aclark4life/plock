@@ -111,7 +111,6 @@ class Installer():
             if args.install_dir:
                 print("Usage: plock --list-addons")
                 exit()
-                
             locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
             if args.raw:
                 self.list_addons(raw=True)

@@ -16,7 +16,7 @@ class PlockTests(unittest.TestCase):
         from tempfile import mkdtemp
         plock = Installer()
         args = Mock()
-        args.DIRECTORY = mkdtemp()
+        args.install_dir = mkdtemp()
         args.add_on = None
         args.expert = False
         args.list_addons = False
