@@ -85,9 +85,14 @@ class Installer():
         """
         Install Plone with Buildout
         """
-        self.directory = os.path.realpath(args.DIRECTORY)
 
-        # Create target directory if it does not exist
+        install_dir = args.install_dir
+        if install_dir:
+            self.directory = os.path.realpath(install_dir)
+        else:
+            self.directory = os.getcwd()
+
+        # Create install directory if it does not exist
         if not os.path.exists(self.directory):
             os.mkdir(self.directory)
 
@@ -251,5 +256,6 @@ class Installer():
 
 def install():
     args = arg_parser.parse_args()
+    import pdb ; pdb.set_trace()
     plock = Installer()
     plock.install_plone(args)
