@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.1.8 (2013-12-28)
+------------------
+
+- Support mutually exclusive options `plock .` and `plock -l`
+- Restore preserve addons functionality and make it default
+
 0.1.7 (2013-12-28)
 ------------------
 

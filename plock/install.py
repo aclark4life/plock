@@ -133,7 +133,7 @@ class Installer():
         if first_time:
             self.install_addons(args)
         self.run_buildout(test=test)
-        print(" done. Now run:\n")
+        print(" done! Now run:\n")
         print("%s/bin/plone fg\n" % self.directory)
 
     def install_addons(self, args):
@@ -248,8 +248,7 @@ class Installer():
                             self.sleep(3)
                     install.wait()
             except sh.ErrorReturnCode_1:
-                print(" error: buildout run failed.\n")
-                print("Run buildout manually to see error.")
+                print(" error: buildout failed.\n")
                 if not self.backup is None:
                     buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
                     cfg = open(buildout_cfg, 'w')
