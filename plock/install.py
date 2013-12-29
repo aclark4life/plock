@@ -40,11 +40,11 @@ class Installer():
         """
         try:
             try:
-                # Try command
-                command = sh.Command(command)
-            except sh.CommandNotFound:
                 # Try bin/command
                 command = sh.Command(os.path.join("bin", command))
+            except sh.CommandNotFound:
+                # Try command
+                command = sh.Command(command)
         except sh.CommandNotFound:
             print(" error: %s command not found\n" % command)
             exit(1)
