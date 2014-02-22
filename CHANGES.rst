@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.2.0 (2014-02-22)
+------------------
+
+- Change remote plone URL from https://github.com/plock/pins/blob/master/plone-4.3 to https://github.com/plock/pins/blob/master/plone-4-3
+
 0.1.9 (2013-12-29)
 ------------------
 
