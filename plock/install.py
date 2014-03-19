@@ -66,14 +66,17 @@ class Installer():
 
     def create_dirs(self):
         """
-        Create Buildout directories.
+        Create Buildout directories. Match directory name with section
+        parameter
+        name e.g. download-cache = download-cache,
+        eggs-directory = eggs-directory, etc.
 
         Note: a download cache must be defined to be used; there is no
         default value, or caching enabled if the parameter is not defined.
         Eggs directory is set by default to "eggs" if the parameter is not
-        defined in buildout.cfg which typically it is not.
+        defined in buildout.cfg (which typically it is not).
         """
-        dirs = ('download-cache',)
+        dirs = ('download-cache', 'eggs-directory')
         for d in dirs:
             if not os.path.exists(d):
                 os.mkdir(d)
