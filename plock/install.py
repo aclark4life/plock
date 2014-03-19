@@ -23,9 +23,6 @@ import sys
 import time
 
 
-EGGS_DIRECTORY = 'eggs'
-
-
 class Installer():
     """
     Plock is a Plone Installer for the Pip-loving Crowd
@@ -228,10 +225,10 @@ class Installer():
                     count = 0
                     self.create_dirs()
                     install = buildout(BUILDOUT_OPT, _bg=True)
-                    while(len(os.listdir(EGGS_DIRECTORY)) < self.eggs_total):
+                    while(len(os.listdir('eggs-directory')) < self.eggs_total):
                         count += 1  # Print status control
 
-                        num = len(os.listdir(EGGS_DIRECTORY))
+                        num = len(os.listdir('eggs-directory'))
 
                         last.append(num)
                         for value in collections.Counter(last).values():
