@@ -4,7 +4,7 @@ Changelog
 0.2.1 (2014-03-19)
 ------------------
 
-- Create 'eggs' instead of 'eggs-directory'
+- Don't create eggs directory, only create download-cache.
 
 0.2.0 (2014-02-22)
 ------------------
