@@ -1,14 +1,14 @@
 plock
 =====
 
-A Plone Installer for the Pip-loving Crowd
+A Plone Installer for the pip-loving Crowd
 
 .. image:: https://travis-ci.org/aclark4life/plock.png?branch=master
 
 Installation
 ------------
 
-Plock primarily exists for one reason: to enable the installation of Plone with Pip.
+Plock exists to enable the installation of Plone with pip.
 
 ::
 
