@@ -249,7 +249,7 @@ class Installer():
                     install.wait()
             except sh.ErrorReturnCode_1:
                 print(" error: buildout failed.\n")
-                if not self.backup is None:
+                if self.backup is not None:
                     buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
                     cfg = open(buildout_cfg, 'w')
                     cfg.write(self.backup)
