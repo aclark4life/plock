@@ -37,28 +37,28 @@ except TypeError, NameError:
 VERSION = pkg_resources.require("plock")[0].version
 
 # http://pymotw.com/2/argparse/
-arg_parser = argparse.ArgumentParser(
+ARG_PARSER = argparse.ArgumentParser(
     description="Plock is a Plone Installer for the Pip-Loving Crowd",
     version=VERSION)
 
-arg_parser.add_argument('install_dir', nargs='?')
+ARG_PARSER.add_argument('install_dir', nargs='?')
 
-arg_parser.add_argument(
+ARG_PARSER.add_argument(
     "-e", "--expert", action="store_true", help="expert mode")
 
-arg_parser.add_argument(
+ARG_PARSER.add_argument(
     "-a", "--add-on", help="install add-ons from PyPI")
 
-arg_parser.add_argument(
+ARG_PARSER.add_argument(
     "-l", "--list-addons", action="store_true", help="list add-ons from PyPI")
 
-arg_parser.add_argument(
+ARG_PARSER.add_argument(
     "-w", "--write-config", action="store_true", help="write buildout.cfg")
 
-arg_parser.add_argument(
+ARG_PARSER.add_argument(
     "-r", "--raw", action="store_true", help="unformatted output, use with -l")
 
-cfg_parser = configparser.SafeConfigParser()
+CFG_PARSER = configparser.SafeConfigParser()
 
 pypi = CheeseShop()
 
