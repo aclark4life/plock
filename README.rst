@@ -1,21 +1,12 @@
 plock
 =====
 
-Plock is a Plone Installer for the Pip-loving Crowd
+A Plone Installer for the Pip-loving Crowd
 
 .. image:: https://travis-ci.org/aclark4life/plock.png?branch=master
 
 Installation
 ------------
-
-.. Note:: Plock requires an internet connection.
-
-.. Note:: Plock supports the latest release and only the latest release of Plone, currently Plone 4.3.
-
-Installing and running Plone with Plock and Virtualenv looks like this::
-
-    $ virtualenv-2.7 .
-    $ source bin/activate
 
 ::
 
