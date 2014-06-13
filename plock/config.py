@@ -6,21 +6,16 @@ import pkg_resources
 
 ADDON_FORMAT_STRING = "%s) %s - %s"
 
-EXPERT = os.environ.get('PLOCK_EXPERT')
-try:
-    EXPERT = eval(EXPERT)
-except TypeError, NameError:
-    EXPERT = False
-
 BUILDOUT_CFG = """\
 [buildout]
 extends = %s
 """
 
-BUILDOUT_OPT = [
-    'buildout:download-cache=download-cache',
-    'buildout:eggs-directory=eggs-directory',
-    '-U', ]
+BUILDOUT_OPT = []
+
+#    'buildout:download-cache=download-cache',
+#    'buildout:eggs-directory=eggs-directory',
+#    '-U', ]
 
 EGGS_TOTAL = 235  # Number of eggs in working set
 

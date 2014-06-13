@@ -5,7 +5,6 @@ from .config import BUILDOUT_CFG
 from .config import BUILDOUT_OPT
 from .config import CFG_PARSER
 from .config import EGGS_TOTAL
-from .config import EXPERT
 from .config import REMOTE_PLONE
 from .config import SEARCH_OPER
 from .config import SEARCH_SPEC
@@ -27,7 +26,6 @@ class Installer():
     def __init__(self):
         self.backup = None
         self.directory = None
-        self.expert = EXPERT
         self.eggs_total = EGGS_TOTAL
 
     def check_available(self, command):
@@ -99,7 +97,7 @@ class Installer():
         if args.install_dir:
             self.directory = args.install_dir
         else:  # Quit if no install dir
-            print("Usage: plock [install_dir]")
+            print("Usage: plock <DIR>")
             exit()
 
         # Create install directory if it does not exist
@@ -110,9 +108,6 @@ class Installer():
 
         if args.add_on:
             first_time = self.install_addons(args)
-
-        if args.expert:  # Override env var setting
-            self.expert = True
 
         if args.write_config:
             if self.create_cfg():
@@ -209,48 +204,20 @@ class Installer():
         if not test:
             buildout = self.check_available("buildout")
             last = []  # saved iterations
-            try:
-                if self.expert:  # Allow Buildout dirs to be
-                    # specified by .buildout/default.cfg
-                    buildout_opt = (
-                        "-c", os.path.join(self.directory, "buildout.cfg"))
-                    install = buildout(buildout_opt, _bg=True)
-                    self.sleep(12)
-                    install.wait()
-                else:  # Explicitly create and use Buildout dirs
-                    # in the current working directory.
-                    BUILDOUT_OPT.append([
-                        "-c", os.path.join(self.directory, "buildout.cfg")])
-                    count = 0
-                    self.create_dirs()
-                    install = buildout(BUILDOUT_OPT, _bg=True)
-                    while(len(os.listdir('eggs-directory')) < self.eggs_total):
-                        count += 1  # Print status control
+            BUILDOUT_OPT.append([
+                "-c", os.path.join(self.directory, "buildout.cfg")])
+            count = 0
+            self.create_dirs()
+            print(buildout("-c", os.path.join(self.directory, "buildout.cfg")))
 
-                        num = len(os.listdir('eggs-directory'))
-
-                        last.append(num)
-                        for value in collections.Counter(last).values():
-                            if value >= TIMEOUT:
-                                # If the egg count doesn't change within
-                                # TIMEOUT number of saved iterations, punt!
-                                print("error: taking too long!\n")
-                                print("Try increasing PLOCK_TIMEOUT length.")
-                                exit(1)
-
-                        if count % 5 == 0:  # Print status
-                            sys.stdout.write("(%d)" % num)
-                        else:
-                            self.sleep(3)
-                    install.wait()
-            except sh.ErrorReturnCode_1:
-                print(" error: buildout failed.\n")
-                if self.backup is not None:
-                    buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
-                    cfg = open(buildout_cfg, 'w')
-                    cfg.write(self.backup)
-                    cfg.close()
-                exit(1)
+#            except sh.ErrorReturnCode_1:
+#                print(" error: buildout failed.\n")
+#                if self.backup is not None:
+#                    buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
+#                    cfg = open(buildout_cfg, 'w')
+#                    cfg.write(self.backup)
+#                    cfg.close()
+#                exit(1)
 
     def sleep(self, *args):
         if args:
