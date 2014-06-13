@@ -25,7 +25,7 @@ import time
 
 class Installer():
     """
-    Plock is a Plone Installer for the Pip-loving Crowd
+    A Plone installer for the pip-loving crowd
     """
 
     def __init__(self):
