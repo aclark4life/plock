@@ -8,6 +8,8 @@ A Plone Installer for the Pip-loving Crowd
 Installation
 ------------
 
+Plock primarily exists for one reason: to enable the installation of Plone with Pip.
+
 ::
 
     (venv)$ pip install plock
