@@ -1,15 +1,15 @@
 # encoding: utf-8
 from .config import ADDON_FORMAT_STRING
+from .config import ARG_PARSER
 from .config import BUILDOUT_CFG
 from .config import BUILDOUT_OPT
+from .config import CFG_PARSER
 from .config import EGGS_TOTAL
 from .config import EXPERT
 from .config import REMOTE_PLONE
 from .config import SEARCH_OPER
 from .config import SEARCH_SPEC
 from .config import TIMEOUT
-from .config import arg_parser
-from .config import cfg_parser
 from .config import pypi
 import collections
 import locale
@@ -150,13 +150,13 @@ class Installer():
         addons.append('${base:packages}')
         addons.append('${addon:packages}')
         addons.append(args.add_on)
-        cfg_parser.read('buildout.cfg')
-        if not cfg_parser.has_section('plone'):
-            cfg_parser.add_section('plone')
+        CFG_PARSER.read('buildout.cfg')
+        if not CFG_PARSER.has_section('plone'):
+            CFG_PARSER.add_section('plone')
 
         else:
             # Preserve existing addons
-            existing_addons = cfg_parser.get('plone', 'eggs')
+            existing_addons = CFG_PARSER.get('plone', 'eggs')
             existing_addons = existing_addons.split('\n')
             # http://stackoverflow.com/a/1157160/185820
             existing_addons = filter(lambda a: a != u'', existing_addons)
@@ -169,9 +169,9 @@ class Installer():
             addons = list(addons)
             addons.sort()
 
-        cfg_parser.set('plone', 'eggs', '\n' + '\n'.join(addons))
+        CFG_PARSER.set('plone', 'eggs', '\n' + '\n'.join(addons))
         cfg = open(buildout_cfg, 'w')
-        cfg_parser.write(cfg)
+        CFG_PARSER.write(cfg)
         cfg.close()
 
     def list_addons(self, raw=False):
@@ -264,6 +264,6 @@ class Installer():
 
 
 def install():
-    args = arg_parser.parse_args()
+    args = ARG_PARSER.parse_args()
     plock = Installer()
     plock.install_plone(args)
