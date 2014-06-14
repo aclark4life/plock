@@ -7,6 +7,8 @@ Changelog
 - Removed features:
     - PLOCK_EXPERT
     - PLOCK_TIMEOUT
+- Restore features:
+    - create_venv
 
 0.2.0 (2014-02-22)
 ------------------
