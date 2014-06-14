@@ -39,9 +39,6 @@ ARG_PARSER.add_argument(
     "-l", "--list-addons", action="store_true", help="list add-ons from PyPI")
 
 ARG_PARSER.add_argument(
-    "-w", "--write-config", action="store_true", help="write buildout.cfg")
-
-ARG_PARSER.add_argument(
     "-r", "--raw", action="store_true", help="unformatted output, use with -l")
 
 CFG_PARSER = configparser.SafeConfigParser()

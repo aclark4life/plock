@@ -49,7 +49,7 @@ class Installer():
                 exit(1)
         return command
 
-    def create_cfg(self, args):
+    def create_cfg(self):
         """
         Create Buildout configuration files in self.directory
         """
@@ -59,8 +59,6 @@ class Installer():
             release_remote = REMOTE_PLONE
             cfg.write(BUILDOUT_CFG % release_remote)
             cfg.close
-            if args.write_config:
-                exit()
         else:
             print "Error: buildout.cfg file already exists."
             exit(1)

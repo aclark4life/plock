@@ -9,6 +9,7 @@ Changelog
     - PLOCK_TIMEOUT
     - create_dirs
     - first_time
+    - write_config
 - Restore features:
     - create_venv
 
