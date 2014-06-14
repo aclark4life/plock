@@ -69,14 +69,14 @@ class Installer():
         """
         virtualenv = self.command_init("virtualenv")
 
-        print("Creating virtualenv")
+        print("Creating virtualenv...")
         virtualenv(self.directory)
 
-        print("Upgrading setuptools")
+        print("Upgrading setuptools...")
         pip = self.command_init('pip', path=self.directory)
         pip('install', '--upgrade', 'setuptools')
 
-        print("Installing Buildout")
+        print("Installing Buildout...")
         pip('install', 'zc.buildout')
 
     def install_plone(self, args, test=False):
@@ -119,10 +119,10 @@ class Installer():
         self.create_cfg()
         self.create_venv()
         self.run_buildout(test=test)
-        print("Done")
         if args.add_on:
+            print("Installing addons...") 
             self.install_addons(args)
-        print("Start Plone with: %s/bin/plone fg\n" % self.directory)
+        print("Done: %s/bin/plone fg\n" % self.directory)
 
     def install_addons(self, args):
         """
@@ -203,7 +203,7 @@ class Installer():
                 buildout = self.command_init("buildout")
                 BUILDOUT_OPT.append([
                     "-c", os.path.join(self.directory, "buildout.cfg")])
-                print "Running Buildout (this may take a while)"
+                print "Running Buildout (this may take a while) ..."
                 buildout(
                     "-c", os.path.join(self.directory, "buildout.cfg")
                 )
