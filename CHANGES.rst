@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.2.1 (Unreleased)
+0.2.1 (2014-06-14)
 ------------------
 
 - Removed features:
@@ -11,6 +11,7 @@ Changelog
     - first_time
 - Restore features:
     - create_venv
+- Change remote plone URL from https://github.com/plock/pins/blob/master/plone-4-3 to https://github.com/plock/pins/blob/master/plone-5-0
 
 0.2.0 (2014-02-22)
 ------------------
