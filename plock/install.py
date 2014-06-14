@@ -102,11 +102,6 @@ class Installer():
         if not os.path.exists(self.directory):
             os.mkdir(self.directory)
 
-        first_time = False
-
-        if args.add_on:
-            first_time = self.install_addons(args)
-
         if args.write_config:
             if self.create_cfg():
                 print "Wrote buildout.cfg."
@@ -116,10 +111,10 @@ class Installer():
                 exit(1)
 
         self.create_cfg()
-        if first_time:
-            self.install_addons(args)
         self.create_venv()
         self.run_buildout(test=test)
+        if args.add_on:
+            self.install_addons(args)
         print("%s/bin/plone fg\n" % self.directory)
 
     def install_addons(self, args):
@@ -208,6 +203,8 @@ class Installer():
                 )
             except sh.ErrorReturnCode_1:
                 print(" error: buildout failed.\n")
+                import sys
+                print sys.exc_info()
                 if self.backup is not None:
                     buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
                     cfg = open(buildout_cfg, 'w')
