@@ -1,6 +1,13 @@
 Changelog
 =========
 
+0.2.1 (Unreleased)
+------------------
+
+- Removed features:
+    - PLOCK_EXPERT
+    - PLOCK_TIMEOUT
+
 0.2.0 (2014-02-22)
 ------------------
 
