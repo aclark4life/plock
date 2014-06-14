@@ -1,7 +1,7 @@
 plock
 =====
 
-A Plone Installer for the pip-loving Crowd
+A Plone installer for the pip-loving crowd
 
 .. image:: https://travis-ci.org/aclark4life/plock.png?branch=master
 
