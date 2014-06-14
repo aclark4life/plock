@@ -120,7 +120,7 @@ class Installer():
         self.create_venv()
         self.run_buildout(test=test)
         if args.add_on:
-            print("Installing addons...") 
+            print("Installing addons...")
             self.install_addons(args)
         print("Done: %s/bin/plone fg\n" % self.directory)
 
