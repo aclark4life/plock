@@ -8,7 +8,6 @@ from .config import EGGS_TOTAL
 from .config import REMOTE_PLONE
 from .config import SEARCH_OPER
 from .config import SEARCH_SPEC
-from .config import TIMEOUT
 from .config import pypi
 import collections
 import locale
@@ -39,7 +38,6 @@ class Installer():
             except sh.CommandNotFound:
                 print(" error: %s command not found\n" % command)
                 exit(1)
-    
         else:  # Relative
             try:
                 try:
@@ -222,22 +220,24 @@ class Installer():
 
     def run_buildout(self, test=False):
         if not test:
-            buildout = self.check_available("buildout")
-            last = []  # saved iterations
-            BUILDOUT_OPT.append([
-                "-c", os.path.join(self.directory, "buildout.cfg")])
-            count = 0
-            self.create_dirs()
-            print(buildout("-c", os.path.join(self.directory, "buildout.cfg")))
-
-#            except sh.ErrorReturnCode_1:
-#                print(" error: buildout failed.\n")
-#                if self.backup is not None:
-#                    buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
-#                    cfg = open(buildout_cfg, 'w')
-#                    cfg.write(self.backup)
-#                    cfg.close()
-#                exit(1)
+            try:
+                buildout = self.check_available("buildout")
+                BUILDOUT_OPT.append([
+                    "-c", os.path.join(self.directory, "buildout.cfg")])
+                self.create_dirs()
+                print(
+                    buildout(
+                        "-c", os.path.join(self.directory, "buildout.cfg")
+                    )
+                )
+            except sh.ErrorReturnCode_1:
+                print(" error: buildout failed.\n")
+                if self.backup is not None:
+                    buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
+                    cfg = open(buildout_cfg, 'w')
+                    cfg.write(self.backup)
+                    cfg.close()
+                exit(1)
 
     def sleep(self, *args):
         if args:
