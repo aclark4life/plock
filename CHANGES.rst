@@ -11,7 +11,6 @@ Changelog
     - first_time
 - Restore features:
     - create_venv
-- Change remote plone URL from https://raw.github.com/plock/pins/master/plone-4-3 to https://raw.github.com/plock/pins/master/plone-5-0
 
 0.2.0 (2014-02-22)
 ------------------
