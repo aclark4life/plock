@@ -34,7 +34,7 @@ class Installer():
                 # Try bin/command
                 command = sh.Command(os.path.join(path, "bin", command))
             except sh.CommandNotFound:
-                print(" error: %s command not found\n" % command)
+                print("Error: %s command not found\n" % command)
                 exit(1)
         else:  # Relative
             try:
@@ -45,7 +45,7 @@ class Installer():
                     # Try command
                     command = sh.Command(command)
             except sh.CommandNotFound:
-                print(" error: %s command not found\n" % command)
+                print("Error: %s command not found\n" % command)
                 exit(1)
         return command
 
@@ -118,10 +118,10 @@ class Installer():
 
         self.create_cfg()
         self.create_venv()
-        self.run_buildout(test=test)
         if args.add_on:
             print("Installing addons...")
             self.install_addons(args)
+        self.run_buildout(test=test)
         print("Done: %s/bin/plone fg\n" % self.directory)
 
     def install_addons(self, args):
@@ -208,9 +208,9 @@ class Installer():
                     "-c", os.path.join(self.directory, "buildout.cfg")
                 )
             except sh.ErrorReturnCode_1:
-                print(" error: buildout failed.\n")
+                print("Error: buildout failed.\n")
                 import sys
-                print sys.exc_info()
+                print sys.exc_info()[1]
                 if self.backup is not None:
                     buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
                     cfg = open(buildout_cfg, 'w')
