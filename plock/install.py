@@ -69,7 +69,7 @@ class Installer():
         """
         virtualenv = self.command_init("virtualenv")
 
-        print("Creating virtualenv...")
+        print("Creating virtualenv... (%s)" % self.directory)
         virtualenv(self.directory)
 
         print("Upgrading setuptools...")
