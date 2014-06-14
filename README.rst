@@ -14,7 +14,7 @@ Plock exists to enable the installation of Plone with pip.
 
     $ pip install plock
     $ plock .
-    $ plone fg
+    $ bin/plone fg
 
 FAQ
 ---
