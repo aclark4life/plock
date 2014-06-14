@@ -75,6 +75,13 @@ class Installer():
             if not os.path.exists(d):
                 os.mkdir(d)
 
+    def create_venv(self):
+        """
+        Create virtualenv
+        """
+        virtualenv = self.check_available("virtualenv")
+        virtualenv(self.directory)
+
     def install_plone(self, args, test=False):
         """
         Install Plone with Buildout
@@ -123,6 +130,7 @@ class Installer():
         self.create_cfg()
         if first_time:
             self.install_addons(args)
+        self.create_venv()
         self.run_buildout(test=test)
         print(" done! Now run:\n")
         print("%s/bin/plone fg\n" % self.directory)
