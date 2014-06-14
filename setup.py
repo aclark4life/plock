@@ -27,6 +27,7 @@ setup(
     install_requires=[
         'configparser',
         'sh',
+        'virtualenv',
         'yolk',
         'zc.buildout',
     ],
