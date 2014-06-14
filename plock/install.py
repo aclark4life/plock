@@ -178,15 +178,14 @@ class Installer():
                     "-c", os.path.join(self.directory, "buildout.cfg")
                 )
             except sh.ErrorReturnCode_1:
-                print("Error: buildout failed.\n")
-                import sys
-                print sys.exc_info()[1]
+                print("Error: Buildout run failed, restoring backup.\n")
+                #import sys
+                #print sys.exc_info()[1]
                 if self.backup is not None:
                     buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
                     cfg = open(buildout_cfg, 'w')
                     cfg.write(self.backup)
                     cfg.close()
-                exit(1)
 
     def sleep(self, *args):
         if args:
