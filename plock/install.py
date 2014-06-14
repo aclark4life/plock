@@ -203,7 +203,7 @@ class Installer():
                 buildout = self.command_init("buildout")
                 BUILDOUT_OPT.append([
                     "-c", os.path.join(self.directory, "buildout.cfg")])
-                print "Running Buildout (this may take a while) ..."
+                print "Running Buildout... (this may take a while)"
                 buildout(
                     "-c", os.path.join(self.directory, "buildout.cfg")
                 )
