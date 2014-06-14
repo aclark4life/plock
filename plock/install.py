@@ -65,16 +65,12 @@ class Installer():
 
     def create_venv(self):
         """
-        Create virtualenv, upgrade setuptools, install Buildout.
+        Create virtualenv, install Buildout.
         """
         virtualenv = self.command_init("virtualenv")
 
         print("Creating virtualenv... (%s)" % self.directory)
         virtualenv(self.directory)
-
-        print("Upgrading setuptools...")
-        pip = self.command_init('pip', path=self.directory)
-        pip('install', '--upgrade', 'setuptools')
 
         print("Installing Buildout...")
         pip('install', 'zc.buildout')
