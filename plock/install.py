@@ -25,7 +25,7 @@ class Installer():
         self.backup = None
         self.directory = None
 
-    def check_available(self, command, path=None):
+    def command_init(self, command, path=None):
         """
         Check to see if `command` is available to run
         """
@@ -84,9 +84,9 @@ class Installer():
         """
         Create virtualenv, upgrade setuptools, install Buildout.
         """
-        virtualenv = self.check_available("virtualenv")
+        virtualenv = self.command_init("virtualenv")
         print(virtualenv(self.directory))
-        pip = self.check_available('pip', path=self.directory)
+        pip = self.command_init('pip', path=self.directory)
         print(pip('install', '--upgrade', 'setuptools'))
         print(pip('install', 'zc.buildout'))
 
@@ -219,7 +219,7 @@ class Installer():
     def run_buildout(self, test=False):
         if not test:
             try:
-                buildout = self.check_available("buildout")
+                buildout = self.command_init("buildout")
                 BUILDOUT_OPT.append([
                     "-c", os.path.join(self.directory, "buildout.cfg")])
                 self.create_dirs()
