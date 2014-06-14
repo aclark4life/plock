@@ -85,10 +85,10 @@ class Installer():
         Create virtualenv, upgrade setuptools, install Buildout.
         """
         virtualenv = self.check_available("virtualenv")
-        virtualenv(self.directory)
+        print(virtualenv(self.directory))
         pip = self.check_available('pip', path=self.directory)
-        pip('install', '--upgrade', 'setuptools')
-        pip('install', 'zc.buildout')
+        print(pip('install', '--upgrade', 'setuptools'))
+        print(pip('install', 'zc.buildout'))
 
     def install_plone(self, args, test=False):
         """
