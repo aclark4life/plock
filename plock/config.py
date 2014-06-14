@@ -48,4 +48,4 @@ CFG_PARSER = configparser.SafeConfigParser()
 
 pypi = CheeseShop()
 
-REMOTE_PLONE = "https://raw.github.com/plock/pins/master/plone-4-3"
+REMOTE_PLONE = "https://raw.github.com/plock/pins/master/plone-5-0"
