@@ -128,7 +128,8 @@ class Installer():
         addons = []
         addons.append('${base:packages}')
         addons.append('${addon:packages}')
-        addons.append(args.add_on)
+        for add_on in args.add_on.split():
+            addons.append(add_on)
         CFG_PARSER.read(buildout_cfg)
         CFG_PARSER.add_section('plone')
         CFG_PARSER.set('plone', 'eggs', '\n' + '\n'.join(addons))
