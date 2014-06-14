@@ -73,6 +73,7 @@ class Installer():
         virtualenv(self.directory)
 
         print("Installing Buildout...")
+        pip = self.command_init("pip")
         pip('install', 'zc.buildout')
 
     def install_plone(self, args, test=False):
