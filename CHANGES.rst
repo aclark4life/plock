@@ -7,6 +7,7 @@ Changelog
 - Removed features:
     - PLOCK_EXPERT
     - PLOCK_TIMEOUT
+    - create_dirs
 - Restore features:
     - create_venv
 
