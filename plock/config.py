@@ -4,7 +4,7 @@ import configparser
 import os
 import pkg_resources
 
-ADDON_FORMAT_STRING = "%s) %s - %s"
+ADDON_FORMAT = "%s) %s - %s"
 
 BUILDOUT_CFG = """\
 [buildout]

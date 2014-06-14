@@ -1,5 +1,5 @@
 # encoding: utf-8
-from .config import ADDON_FORMAT_STRING
+from .config import ADDON_FORMAT
 from .config import ARG_PARSER
 from .config import BUILDOUT_CFG
 from .config import BUILDOUT_OPT
@@ -202,7 +202,7 @@ class Installer():
                 print(name)
             else:
                 print(
-                    ADDON_FORMAT_STRING % (
+                    ADDON_FORMAT % (
                         self.locale_format(
                             count), name.ljust(40), summary.ljust(40)))
 
