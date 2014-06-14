@@ -122,7 +122,7 @@ class Installer():
             print("Installing addons...")
             self.install_addons(args)
         self.run_buildout(test=test)
-        print("Done: %s/bin/plone fg\n" % self.directory)
+        print("Done, now run:\n\n%s/bin/plone fg\n" % self.directory)
 
     def install_addons(self, args):
         """
