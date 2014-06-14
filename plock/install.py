@@ -125,39 +125,14 @@ class Installer():
         """
         Install add-ons from PyPI
         """
-        import pdb ; pdb.set_trace()
         buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
-
-#        if not os.path.exists(buildout_cfg):
-#            # It's the first time the installer has run so we need
-#            # to write buildout.cfg before adding a plone section.
-#            # Return and come back later.
-#            return True
-
         self.backup = open(buildout_cfg).read()
         addons = []
         addons.append('${base:packages}')
         addons.append('${addon:packages}')
         addons.append(args.add_on)
         CFG_PARSER.read(buildout_cfg)
-#        if not CFG_PARSER.has_section('plone'):
         CFG_PARSER.add_section('plone')
-
-#        else:
-#            # Preserve existing addons
-#            existing_addons = CFG_PARSER.get('plone', 'eggs')
-#            existing_addons = existing_addons.split('\n')
-#            # http://stackoverflow.com/a/1157160/185820
-#            existing_addons = filter(lambda a: a != u'', existing_addons)
-#            existing_addons = filter(
-#                lambda a: a != u'${base:packages}', existing_addons)
-#            existing_addons = filter(
-#                lambda a: a != u'${addon:packages}', existing_addons)
-#            addons = addons + existing_addons
-#            addons = set(addons)
-#            addons = list(addons)
-#            addons.sort()
-#
         CFG_PARSER.set('plone', 'eggs', '\n' + '\n'.join(addons))
         cfg = open(buildout_cfg, 'w')
         CFG_PARSER.write(cfg)
