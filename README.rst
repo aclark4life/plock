@@ -8,7 +8,7 @@ A Plone Installer for the pip-loving Crowd
 Installation
 ------------
 
-Plock exists to enable the installation of Plone with pip.
+Plock enables the installation of Plone with pip:
 
 ::
 
