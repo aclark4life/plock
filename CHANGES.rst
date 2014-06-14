@@ -8,6 +8,7 @@ Changelog
     - PLOCK_EXPERT
     - PLOCK_TIMEOUT
     - create_dirs
+    - first_time
 - Restore features:
     - create_venv
 
