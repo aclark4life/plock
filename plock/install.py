@@ -82,7 +82,7 @@ class Installer():
 
     def create_venv(self):
         """
-        Create virtualenv
+        Create virtualenv, upgrade setuptools, install Buildout.
         """
         virtualenv = self.check_available("virtualenv")
         virtualenv(self.directory)
