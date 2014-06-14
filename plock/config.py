@@ -13,12 +13,6 @@ extends = %s
 
 BUILDOUT_OPT = []
 
-#    'buildout:download-cache=download-cache',
-#    'buildout:eggs-directory=eggs-directory',
-#    '-U', ]
-
-EGGS_TOTAL = 235  # Number of eggs in working set
-
 SEARCH_OPER = 'AND'
 SEARCH_SPEC = {'description': 'plone', 'keyword': 'plone', 'summary': 'plone'}
 

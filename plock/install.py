@@ -4,7 +4,6 @@ from .config import ARG_PARSER
 from .config import BUILDOUT_CFG
 from .config import BUILDOUT_OPT
 from .config import CFG_PARSER
-from .config import EGGS_TOTAL
 from .config import REMOTE_PLONE
 from .config import SEARCH_OPER
 from .config import SEARCH_SPEC
@@ -25,7 +24,6 @@ class Installer():
     def __init__(self):
         self.backup = None
         self.directory = None
-        self.eggs_total = EGGS_TOTAL
 
     def check_available(self, command, path=None):
         """
