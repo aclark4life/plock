@@ -70,10 +70,13 @@ class Installer():
         Create virtualenv, install Buildout.
         """
         virtualenv = self.command_init("virtualenv")
-
         print("Creating virtualenv... (%s)" % self.directory)
         virtualenv(self.directory)
 
+    def install_buildout(self):
+        """
+        Install Buildout with pip
+        """
         print("Installing Buildout...")
         pip = self.command_init("pip")
         pip('install', 'zc.buildout')
@@ -107,11 +110,14 @@ class Installer():
         if not os.path.exists(self.directory):
             os.mkdir(self.directory)
 
-        self.create_cfg(args)
         self.create_venv()
+        self.install_buildout()
+        self.create_cfg(args)
+
         if args.add_on:
             print("Installing addons...")
             self.install_addons(args)
+
         self.run_buildout(test=test)
         print("Done, now run:\n\n%s/bin/plone fg\n" % self.directory)
 
@@ -119,39 +125,39 @@ class Installer():
         """
         Install add-ons from PyPI
         """
-
+        import pdb ; pdb.set_trace()
         buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
 
-        if not os.path.exists(buildout_cfg):
-            # It's the first time the installer has run so we need
-            # to write buildout.cfg before adding a plone section.
-            # Return and come back later.
-            return True
+#        if not os.path.exists(buildout_cfg):
+#            # It's the first time the installer has run so we need
+#            # to write buildout.cfg before adding a plone section.
+#            # Return and come back later.
+#            return True
 
         self.backup = open(buildout_cfg).read()
         addons = []
         addons.append('${base:packages}')
         addons.append('${addon:packages}')
         addons.append(args.add_on)
-        CFG_PARSER.read('buildout.cfg')
-        if not CFG_PARSER.has_section('plone'):
-            CFG_PARSER.add_section('plone')
+        CFG_PARSER.read(buildout_cfg)
+#        if not CFG_PARSER.has_section('plone'):
+        CFG_PARSER.add_section('plone')
 
-        else:
-            # Preserve existing addons
-            existing_addons = CFG_PARSER.get('plone', 'eggs')
-            existing_addons = existing_addons.split('\n')
-            # http://stackoverflow.com/a/1157160/185820
-            existing_addons = filter(lambda a: a != u'', existing_addons)
-            existing_addons = filter(
-                lambda a: a != u'${base:packages}', existing_addons)
-            existing_addons = filter(
-                lambda a: a != u'${addon:packages}', existing_addons)
-            addons = addons + existing_addons
-            addons = set(addons)
-            addons = list(addons)
-            addons.sort()
-
+#        else:
+#            # Preserve existing addons
+#            existing_addons = CFG_PARSER.get('plone', 'eggs')
+#            existing_addons = existing_addons.split('\n')
+#            # http://stackoverflow.com/a/1157160/185820
+#            existing_addons = filter(lambda a: a != u'', existing_addons)
+#            existing_addons = filter(
+#                lambda a: a != u'${base:packages}', existing_addons)
+#            existing_addons = filter(
+#                lambda a: a != u'${addon:packages}', existing_addons)
+#            addons = addons + existing_addons
+#            addons = set(addons)
+#            addons = list(addons)
+#            addons.sort()
+#
         CFG_PARSER.set('plone', 'eggs', '\n' + '\n'.join(addons))
         cfg = open(buildout_cfg, 'w')
         CFG_PARSER.write(cfg)
