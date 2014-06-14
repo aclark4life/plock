@@ -18,7 +18,10 @@ Plock enables the installation of Plone with pip:
     Upgrading setuptools...
     Installing Buildout...
     Running Buildout (this may take a while) ...
-    Done: ./bin/plone fg
+    Done, now run:
+
+    ./bin/plone fg
+
     $ bin/plone fg
 
 FAQ
