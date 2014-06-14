@@ -110,7 +110,7 @@ class Installer():
 
         self.create_venv()
         self.install_buildout()
-        self.create_cfg(args)
+        self.create_cfg()
 
         if args.add_on:
             print("Installing addons...")
