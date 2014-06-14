@@ -28,20 +28,29 @@ class Installer():
         self.directory = None
         self.eggs_total = EGGS_TOTAL
 
-    def check_available(self, command):
+    def check_available(self, command, path=None):
         """
-        Check to see if a command is available to run
+        Check to see if `command` is available to run
         """
-        try:
+        if path:  # Absolute
             try:
                 # Try bin/command
-                command = sh.Command(os.path.join("bin", command))
+                command = sh.Command(os.path.join(path, "bin", command))
             except sh.CommandNotFound:
-                # Try command
-                command = sh.Command(command)
-        except sh.CommandNotFound:
-            print(" error: %s command not found\n" % command)
-            exit(1)
+                print(" error: %s command not found\n" % command)
+                exit(1)
+    
+        else:  # Relative
+            try:
+                try:
+                    # Try bin/command
+                    command = sh.Command(os.path.join("bin", command))
+                except sh.CommandNotFound:
+                    # Try command
+                    command = sh.Command(command)
+            except sh.CommandNotFound:
+                print(" error: %s command not found\n" % command)
+                exit(1)
         return command
 
     def create_cfg(self):
@@ -81,6 +90,9 @@ class Installer():
         """
         virtualenv = self.check_available("virtualenv")
         virtualenv(self.directory)
+        pip = self.check_available('pip', path=self.directory)
+        pip('install', '--upgrade', 'setuptools')
+        pip('install', 'zc.buildout')
 
     def install_plone(self, args, test=False):
         """
