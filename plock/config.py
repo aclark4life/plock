@@ -27,7 +27,7 @@ VERSION = pkg_resources.require("plock")[0].version
 
 # http://pymotw.com/2/argparse/
 ARG_PARSER = argparse.ArgumentParser(
-    description="Plock is a Plone Installer for the Pip-Loving Crowd",
+    description="A Plone installer for the pip-Loving crowd",
     version=VERSION)
 
 ARG_PARSER.add_argument('install_dir', nargs='?')
