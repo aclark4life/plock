@@ -1,8 +1,10 @@
 Changelog
 =========
 
-0.2.2 (unreleased)
+0.2.2 (2014-06-15)
 ------------------
+
+- Fix bug in check_command try/except
 
 0.2.1 (2014-06-14)
 ------------------
