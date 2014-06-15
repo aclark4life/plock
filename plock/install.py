@@ -128,8 +128,9 @@ class Installer():
         addons = []
         addons.append('${base:packages}')
         addons.append('${addon:packages}')
-        for add_on in args.add_on.split():
-            addons.append(add_on)
+        for addon in args.add_on.split():
+            print(" %s" % addon)
+            addons.append(addon)
         CFG_PARSER.read(buildout_cfg)
         CFG_PARSER.add_section('plone')
         CFG_PARSER.set('plone', 'eggs', '\n' + '\n'.join(addons))
@@ -180,13 +181,12 @@ class Installer():
                 )
             except sh.ErrorReturnCode_1:
                 print("Error: Buildout run failed, restoring backup.\n")
-                #import sys
-                #print sys.exc_info()[1]
                 if self.backup is not None:
                     buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
                     cfg = open(buildout_cfg, 'w')
                     cfg.write(self.backup)
                     cfg.close()
+                    self.run_buildout()
 
     def sleep(self, *args):
         if args:
