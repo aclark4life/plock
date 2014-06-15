@@ -25,28 +25,24 @@ class Installer():
         self.backup = None
         self.directory = None
 
-    def command_init(self, command, path=None):
+    def command_init(self, command):
         """
         Check to see if `command` is available to run
         """
-        if path:  # Absolute
+        try:
+            # Try /path/to/bin/command
+            command = sh.Command(os.path.join(self.directory, "bin", command))
+        except sh.CommandNotFound:
             try:
                 # Try bin/command
-                command = sh.Command(os.path.join(path, "bin", command))
+                command = sh.Command(os.path.join("bin", command))
             except sh.CommandNotFound:
-                print("Error: %s command not found\n" % command)
-                exit(1)
-        else:  # Relative
-            try:
                 try:
-                    # Try bin/command
-                    command = sh.Command(os.path.join("bin", command))
-                except sh.CommandNotFound:
                     # Try command
                     command = sh.Command(command)
-            except sh.CommandNotFound:
-                print("Error: %s command not found\n" % command)
-                exit(1)
+                except sh.CommandNotFound:
+                    print("Error: %s command not found.\n" % command)
+                    exit(1)
         return command
 
     def create_cfg(self):
