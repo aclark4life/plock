@@ -4,6 +4,9 @@ Changelog
 0.2.3 (unreleased)
 ------------------
 
+- Remove:
+    - BUILDOUT_OPT
+
 0.2.2 (2014-06-15)
 ------------------
 
