@@ -33,8 +33,6 @@ BUILDOUT_CFG = """\
 extends = %s
 """
 
-BUILDOUT_OPT = []
-
 CFG_PARSER = configparser.SafeConfigParser()
 
 PYPI = CheeseShop()

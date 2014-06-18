@@ -2,7 +2,6 @@
 from .config import ADDON_FORMAT
 from .config import ARG_PARSER
 from .config import BUILDOUT_CFG
-from .config import BUILDOUT_OPT
 from .config import CFG_PARSER
 from .config import PYPI
 from .config import REMOTE_PLONE
@@ -169,8 +168,6 @@ class Installer():
         if not test:
             try:
                 buildout = self.command_init("buildout")
-                BUILDOUT_OPT.append([
-                    "-c", os.path.join(self.directory, "buildout.cfg")])
                 print "Running Buildout... (this may take a while)"
                 buildout(
                     "-c", os.path.join(self.directory, "buildout.cfg")
