@@ -140,7 +140,7 @@ class Installer():
         """
         count = 0
         results = collections.OrderedDict()
-        for package in pypi.search(SEARCH_SPEC, SEARCH_OPER):
+        for package in PYPI.search(SEARCH_SPEC, SEARCH_OPER):
             if 'name' in package and 'summary' in package:
                 name = package['name']
                 summary = package['summary']
