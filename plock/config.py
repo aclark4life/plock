@@ -4,15 +4,15 @@ import configparser
 import os
 import pkg_resources
 
-ADDON_FORMAT = "%s) %s - %s"
-
 # http://stackoverflow.com/a/2073599/185820
-VERSION = pkg_resources.require("plock")[0].version
+_VERSION = pkg_resources.require("plock")[0].version
+
+ADDON_FORMAT = "%s) %s - %s"
 
 # http://pymotw.com/2/argparse/
 ARG_PARSER = argparse.ArgumentParser(
     description="A Plone installer for the pip-Loving crowd",
-    version=VERSION)
+    version=_VERSION)
 
 ARG_PARSER.add_argument('install_dir', nargs='?')
 
