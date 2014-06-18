@@ -13,6 +13,8 @@ extends = %s
 
 BUILDOUT_OPT = []
 
+PYPI = CheeseShop()
+
 SEARCH_OPER = 'AND'
 SEARCH_SPEC = {'description': 'plone', 'keyword': 'plone', 'summary': 'plone'}
 
@@ -41,8 +43,9 @@ ARG_PARSER.add_argument(
 ARG_PARSER.add_argument(
     "-r", "--raw", action="store_true", help="unformatted output, use with -l")
 
-CFG_PARSER = configparser.SafeConfigParser()
+ARG_PARSER.add_argument(
+    "-u", "--unstable", action="store_true", help="latest release")
 
-pypi = CheeseShop()
+CFG_PARSER = configparser.SafeConfigParser()
 
 REMOTE_PLONE = "https://raw.github.com/plock/pins/master/plone-4-3"

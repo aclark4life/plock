@@ -4,10 +4,10 @@ from .config import ARG_PARSER
 from .config import BUILDOUT_CFG
 from .config import BUILDOUT_OPT
 from .config import CFG_PARSER
+from .config import PYPI
 from .config import REMOTE_PLONE
 from .config import SEARCH_OPER
 from .config import SEARCH_SPEC
-from .config import pypi
 import collections
 import locale
 import os
