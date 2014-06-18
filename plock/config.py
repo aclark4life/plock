@@ -41,9 +41,3 @@ REMOTE_PLONE = "https://raw.github.com/plock/pins/master/plone-4-3"
 
 SEARCH_OPER = 'AND'
 SEARCH_SPEC = {'description': 'plone', 'keyword': 'plone', 'summary': 'plone'}
-
-TIMEOUT = os.environ.get('PLOCK_TIMEOUT')
-try:
-    TIMEOUT = eval(TIMEOUT)
-except TypeError, NameError:
-    TIMEOUT = 45
