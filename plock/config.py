@@ -1,7 +1,6 @@
 from yolk.pypi import CheeseShop
 import argparse
 import configparser
-import os
 import pkg_resources
 
 # http://stackoverflow.com/a/2073599/185820
