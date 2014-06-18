@@ -26,7 +26,8 @@ class Installer():
 
     def command_init(self, command):
         """
-        Check to see if `command` is available to run. Return sh command else quit.
+        Check to see if `command` is available to run.
+        Return sh command else quit.
         """
         try:
             # Try /path/to/bin/command
