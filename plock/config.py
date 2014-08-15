@@ -27,9 +27,14 @@ ARG_PARSER.add_argument(
 ARG_PARSER.add_argument(
     "-u", "--unstable", action="store_true", help="latest release")
 
+ARG_PARSER.add_argument(
+    "-e", "--extra", help="extra extends file"
+)
+
 BUILDOUT_CFG = """\
 [buildout]
-extends = %s
+extends =
+    %s
 """
 
 CFG_PARSER = configparser.SafeConfigParser()
