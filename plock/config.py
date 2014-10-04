@@ -42,6 +42,8 @@ CFG_PARSER = configparser.SafeConfigParser()
 PYPI = CheeseShop()
 
 REMOTE_PLONE = "https://raw.github.com/plock/pins/master/plone-4-3"
+PLONE_UNIFIEDINSTALLER = "https://launchpad.net/plone/4.3/4.3.3/+download/Plone-4.3.3-UnifiedInstaller.tgz"
+PACKAGE_NAME = "Plone-4.3.3-UnifiedInstaller"
 
 SEARCH_OPER = 'AND'
 SEARCH_SPEC = {'description': 'plone', 'keyword': 'plone', 'summary': 'plone'}

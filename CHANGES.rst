@@ -3,7 +3,12 @@ Changelog
 
 0.2.3 (unreleased)
 ------------------
-
+- Now pulls the unified installer [pigeonflight]
+    - downloads unified installer
+    - unpacks eggs cache
+    - unpacks downloads cache
+    - configures buildout dir to use downloads cache
+    - all tests passing
 - Added the ability to pass an extra extends file.
 - Remove:
     - BUILDOUT_OPT

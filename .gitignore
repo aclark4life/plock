@@ -1,0 +1,6 @@
+*.pyc
+*.egg-info
+*-UnifiedInstaller.tgz
+*-UnifiedInstaller/
+buildout-cache/
+*.egg

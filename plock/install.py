@@ -5,14 +5,20 @@ from .config import BUILDOUT_CFG
 from .config import CFG_PARSER
 from .config import PYPI
 from .config import REMOTE_PLONE
+from .config import PLONE_UNIFIEDINSTALLER
+from .config import PACKAGE_NAME
 from .config import SEARCH_OPER
 from .config import SEARCH_SPEC
+from distutils import log
 import collections
 import locale
 import os
 import sh
+import shutil
 import sys
+import tarfile
 import time
+import urllib2
 
 
 class Installer():
@@ -23,6 +29,16 @@ class Installer():
     def __init__(self):
         self.backup = None
         self.directory = None
+
+    def add_download_cache(self):
+        """
+        Add downloads directory to buildout file in self.directory
+        """
+        buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
+        if os.path.exists(buildout_cfg):
+            with open(buildout_cfg, "a") as myfile:
+                print("Adding download cache entry to buildout file...")
+                myfile.write("download-cache=./downloads")
 
     def command_init(self, command):
         """
@@ -45,6 +61,48 @@ class Installer():
                     exit(1)
         return command
 
+
+    def clean_up(self,test=False):
+        if test:
+            return
+        shutil.rmtree("%s/%s" % (self.directory,PACKAGE_NAME))
+        shutil.rmtree("%s/buildout-cache" % self.directory)
+
+    def create_cache(self,test=False):
+        """
+        Create cache directories for eggs
+        and downloads
+        """
+        if test:
+            return
+        path_to_installer = self.download_unifiedinstaller()
+        print("Unpacking installer files...")
+        tar = tarfile.open(path_to_installer)
+        tar.extractall(self.directory)
+        tar.close()
+
+        package_folder = os.path.basename(path_to_installer)
+        package_folder = package_folder.split('.tgz')[0]
+        path_to_cache = "%s/packages/buildout-cache.tar.bz2" % package_folder
+        print("Unpacking installer cache files...")
+        tar = tarfile.open(path_to_cache)
+        tar.extractall(self.directory)
+        tar.close()
+
+        buildout_cache = "%s/buildout-cache" % self.directory
+
+        print("Installing egg cache...")
+        dst_eggs = "%s/eggs" % self.directory
+        src_eggs = "%s/eggs" % buildout_cache
+        shutil.move(src_eggs, dst_eggs)
+
+        print("Installing download cache...")
+        dst_downloads = "%s/downloads" % self.directory
+        src_downloads = "%s/downloads" % buildout_cache
+        shutil.move(src_downloads, dst_downloads)
+
+
+
     def create_cfg(self, remotes):
         """
         Create Buildout configuration files in self.directory
@@ -55,8 +113,9 @@ class Installer():
             cfg.write(BUILDOUT_CFG % '\n    '.join(remotes))
             cfg.close
         else:
-            print "Error: buildout.cfg file already exists."
+            print ("Error: buildout.cfg file already exists.")
             exit(1)
+
 
     def create_venv(self):
         """
@@ -65,6 +124,52 @@ class Installer():
         virtualenv = self.command_init("virtualenv")
         print("Creating virtualenv... (%s)" % self.directory)
         virtualenv(self.directory)
+
+    def download_unifiedinstaller(self):
+        """
+        Download the unified installer
+        """
+        return self.download(
+                   package_url = PLONE_UNIFIEDINSTALLER,
+                   packagename = PACKAGE_NAME,
+                   to_dir = self.directory
+                   )
+
+
+    def download(self,
+        package_url=PLONE_UNIFIEDINSTALLER,
+        packagename = PACKAGE_NAME,
+        to_dir=os.curdir,
+        unzip = False,
+        unzip_dir = None
+    ):
+        """Download a file from a specific location 
+        `to_dir` is the directory where the egg will be downloaded.
+        
+         returns the location of the file
+        """
+        url = package_url
+        packagename = "%s.tgz" % packagename
+        saveto = os.path.join(to_dir, packagename)
+        src = dst = None
+        if not os.path.exists(saveto):  # Avoid repeated downloads
+            try:
+                log.warn("Downloading %s", url)
+                src = urllib2.urlopen(url)
+                # Read/write all in one block, so we don't create a corrupt file
+                # if the download is interrupted.
+                # data = _validate_md5(egg_name, src.read())
+                data = src.read()
+                dst = open(saveto,"wb"); dst.write(data)
+            finally:
+                if src: src.close()
+                if dst:
+                    dst.close()
+                    if unzip:
+                        unzip_package(package,unzip_dir)
+        else:
+            log.warn("Using previous download of %s", packagename)
+        return os.path.realpath(saveto)
 
     def install_buildout(self):
         """
@@ -105,11 +210,14 @@ class Installer():
 
         self.create_venv()
         self.install_buildout()
-
+        self.create_cache(test=test)
         if args.extra:
             self.create_cfg((REMOTE_PLONE, args.extra))
         else:
             self.create_cfg((REMOTE_PLONE, ))
+        self.add_download_cache()
+        self.clean_up(test=test)
+
 
         if args.add_on:
             print("Installing addons...")
