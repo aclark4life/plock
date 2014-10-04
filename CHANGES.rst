@@ -8,6 +8,7 @@ Changelog
     - unpacks eggs cache
     - unpacks downloads cache
     - configures buildout dir to use downloads cache
+    - all tests passing
 - Remove:
     - BUILDOUT_OPT
 
