@@ -26,12 +26,12 @@ Plock enables the installation of Plone with pip:
 
     $ bin/plone fg
 
-
 Contributing to Plock
 ----------------------
 
 - Create a fork of the repository http://github.com/plock/plock.git
 - Clone your fork to your local machine.
+
 ::
 
    git clone git@github.com:{youraccount}/plock.git
@@ -45,6 +45,7 @@ Contributing to Plock
    easy_install nose mock
 
 After adding your changes to the code, remember to run `nosetests` before commiting
+
 ::
 
    nosetests
