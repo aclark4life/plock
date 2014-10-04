@@ -209,7 +209,8 @@ class Installer():
 
         if not args.no_venv:
             self.create_venv()
-        self.install_buildout()
+        if not args.no_buildout:
+            self.install_buildout()
         if args.unified:
             self.create_cache(test=test)
         if args.extra:
@@ -219,6 +220,10 @@ class Installer():
         if args.unified:
             self.add_download_cache()
             self.clean_up(test=test)
+
+        if args.unified_only:
+            print("Only downloading Unified Installer cache, bye!")
+            exit()
 
         if args.add_on:
             print("Installing addons...")

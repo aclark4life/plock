@@ -1,6 +1,16 @@
 Changelog
 =========
 
+0.2.6 (2014-10-04)
+------------------
+
+- Add --unified-only option to download Unified Installer cache & quit.
+
+0.2.5 (2014-10-04)
+------------------
+
+- Add --no-buildout option to skip Buildout installation.
+
 0.2.4 (2014-10-04)
 ------------------
 

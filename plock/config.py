@@ -33,6 +33,12 @@ ARG_PARSER.add_argument(
 ARG_PARSER.add_argument(
     "--no-venv", action="store_true", help="no virtualenv")
 
+ARG_PARSER.add_argument(
+    "--no-buildout", action="store_true", help="no pip install zc.buildout")
+
+ARG_PARSER.add_argument(
+    "--unified-only", action="store_true", help="get unified cache & quit")
+
 BUILDOUT_CFG = """\
 [buildout]
 extends =
