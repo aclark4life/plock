@@ -217,12 +217,12 @@ class Installer():
             self.create_cfg((EXTENDS, args.extra))
         else:
             self.create_cfg((EXTENDS, ))
-        if args.unified:
+        if args.unified or args.unified_only:
             self.add_download_cache()
             self.clean_up(test=test)
 
         if args.unified_only:
-            print("Only downloading Unified Installer cache, bye!")
+            print("Only downloading installer cache, bye!")
             exit()
 
         if args.add_on:
