@@ -4,7 +4,7 @@ from .config import ARG_PARSER
 from .config import BUILDOUT_CFG
 from .config import CFG_PARSER
 from .config import PYPI
-from .config import REMOTE_PLONE
+from .config import EXTENDS
 from .config import PLONE_UNIFIEDINSTALLER
 from .config import PACKAGE_NAME
 from .config import SEARCH_OPER
@@ -212,9 +212,9 @@ class Installer():
         self.install_buildout()
         self.create_cache(test=test)
         if args.extra:
-            self.create_cfg((REMOTE_PLONE, args.extra))
+            self.create_cfg((EXTENDS, args.extra))
         else:
-            self.create_cfg((REMOTE_PLONE, ))
+            self.create_cfg((EXTENDS, ))
         self.add_download_cache()
         self.clean_up(test=test)
 
