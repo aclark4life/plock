@@ -10,7 +10,7 @@ ADDON_FORMAT = "%s) %s - %s"
 
 # http://pymotw.com/2/argparse/
 ARG_PARSER = argparse.ArgumentParser(
-    description="A Plone installer for the pip-Loving crowd",
+    description="A Plone installer for the pip-loving crowd.",
     version=_VERSION)
 
 ARG_PARSER.add_argument('install_dir', nargs='?')
