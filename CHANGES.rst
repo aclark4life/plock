@@ -4,7 +4,7 @@ Changelog
 0.2.4 (2014-10-04)
 ------------------
 
-- Re-add --no-venv option to allow skipping creation of virtualenv.
+- Re-add --no-venv option to allow skipping virtualenv creation.
 
 0.2.3 (2014-10-04)
 ------------------
