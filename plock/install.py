@@ -73,7 +73,7 @@ class Installer():
         path_to_installer = self.download_unifiedinstaller()
         import tarfile
         tar = tarfile.open(path_to_installer)
-        hmm = tar.extractall()
+        tar.extractall(self.directory)
         tar.close()
 
         package_folder = os.path.basename(path_to_installer)
@@ -81,7 +81,7 @@ class Installer():
         path_to_cache = "%s/packages/buildout-cache.tar.bz2" % package_folder
         print("Unpacking cache files")
         tar = tarfile.open(path_to_cache)
-        tar.extractall()
+        tar.extractall(self.directory)
         tar.close()
 
         print("Installing egg cache")
@@ -127,14 +127,15 @@ class Installer():
         """
         return self.download(
                    package_url = PLONE_UNIFIEDINSTALLER,
-                   packagename = PACKAGE_NAME
+                   packagename = PACKAGE_NAME,
+                   to_dir = self.directory
                    )
 
 
     def download(self,
         package_url=PLONE_UNIFIEDINSTALLER,
-        to_dir=os.curdir,
         packagename = PACKAGE_NAME,
+        to_dir=os.curdir,
         unzip = False,
         unzip_dir = None
     ):
