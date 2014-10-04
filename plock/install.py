@@ -16,6 +16,7 @@ import os
 import sh
 import shutil
 import sys
+import tarfile
 import time
 import urllib2
 
@@ -61,17 +62,21 @@ class Installer():
         return command
 
 
-    def clean_up(self):
+    def clean_up(self,test=False):
+        if test:
+            return
         shutil.rmtree("%s/%s" % (self.directory,PACKAGE_NAME))
         shutil.rmtree("%s/buildout-cache" % self.directory)
 
-    def create_cache(self):
+    def create_cache(self,test=False):
         """
         Create cache directories for eggs
         and downloads
         """
+        if test:
+            return
         path_to_installer = self.download_unifiedinstaller()
-        import tarfile
+        print("Unpacking installer files...")
         tar = tarfile.open(path_to_installer)
         tar.extractall(self.directory)
         tar.close()
@@ -79,7 +84,7 @@ class Installer():
         package_folder = os.path.basename(path_to_installer)
         package_folder = package_folder.split('.tgz')[0]
         path_to_cache = "%s/packages/buildout-cache.tar.bz2" % package_folder
-        print("Unpacking cache files...")
+        print("Unpacking installer cache files...")
         tar = tarfile.open(path_to_cache)
         tar.extractall(self.directory)
         tar.close()
@@ -205,13 +210,13 @@ class Installer():
 
         self.create_venv()
         self.install_buildout()
-        self.create_cache()
+        self.create_cache(test=test)
         if args.extra:
             self.create_cfg((REMOTE_PLONE, args.extra))
         else:
             self.create_cfg((REMOTE_PLONE, ))
         self.add_download_cache()
-        self.clean_up()
+        self.clean_up(test=test)
 
 
         if args.add_on:
