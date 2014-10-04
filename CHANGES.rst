@@ -66,12 +66,10 @@ Changelog
 0.1.4 (2013-08-12)
 ------------------
 
-- New features:
-    - Add ``--expert`` command line argument, does same thing as PLOCK_EXPERT environment variable
-    - Add ``--insecure`` command line argument to allow extending remote hosted configuration files
-- Bug fixes:
-    - Prevent inadvertently switching from Plone to Zope2 or vice versa
-    - Configure Buildout command relative to current working directory, instead of relying on source bin/activate
+- Add ``--expert`` command line argument, does same thing as PLOCK_EXPERT environment variable
+- Add ``--insecure`` command line argument to allow extending remote hosted configuration files
+- Bug fix: prevent inadvertently switching from Plone to Zope2 or vice versa
+- Bug fix: configure Buildout command relative to current working directory, instead of relying on source bin/activate
 
 0.1.3 (2013-07-31)
 ------------------
