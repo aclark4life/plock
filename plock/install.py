@@ -209,13 +209,15 @@ class Installer():
 
         self.create_venv()
         self.install_buildout()
-        self.create_cache(test=test)
+        if args.unified:
+            self.create_cache(test=test)
         if args.extra:
             self.create_cfg((EXTENDS, args.extra))
         else:
             self.create_cfg((EXTENDS, ))
-        self.add_download_cache()
-        self.clean_up(test=test)
+        if args.unified:
+            self.add_download_cache()
+            self.clean_up(test=test)
 
         if args.add_on:
             print("Installing addons...")
