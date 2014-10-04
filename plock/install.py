@@ -69,8 +69,7 @@ class Installer():
 
     def create_cache(self, test=False):
         """
-        Create cache directories for eggs
-        and downloads
+        Create cache directories for eggs and downloads
         """
         if test:
             return
@@ -82,6 +81,7 @@ class Installer():
 
         package_folder = os.path.basename(path_to_installer)
         package_folder = package_folder.split('.tgz')[0]
+        package_folder = os.path.join(self.directory, package_folder)
         path_to_cache = "%s/packages/buildout-cache.tar.bz2" % package_folder
         print("Unpacking installer cache files...")
         tar = tarfile.open(path_to_cache)
