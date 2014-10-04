@@ -28,8 +28,10 @@ ARG_PARSER.add_argument(
     "-u", "--unified", action="store_true", help="use unified installer cache")
 
 ARG_PARSER.add_argument(
-    "-e", "--extra", help="extra extends file"
-)
+    "-e", "--extra", help="extra extends file")
+
+ARG_PARSER.add_argument(
+    "--no-venv", action="store_true", help="no virtualenv")
 
 BUILDOUT_CFG = """\
 [buildout]

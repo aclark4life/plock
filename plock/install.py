@@ -207,7 +207,8 @@ class Installer():
         if not os.path.exists(self.directory):
             os.mkdir(self.directory)
 
-        self.create_venv()
+        if not args.no_venv:
+            self.create_venv()
         self.install_buildout()
         if args.unified:
             self.create_cache(test=test)

@@ -1,7 +1,12 @@
 Changelog
 =========
 
-0.2.3 (unreleased)
+0.2.4 (2014-10-04)
+------------------
+
+- Re-add --no-venv option to allow skipping creation of virtualenv.
+
+0.2.3 (2014-10-04)
 ------------------
 - Add ability to use Unified Installer download cache via --unified.
   [pigeonflight]
