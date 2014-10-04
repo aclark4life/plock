@@ -9,6 +9,7 @@ Changelog
     - unpacks downloads cache
     - configures buildout dir to use downloads cache
     - all tests passing
+- Added the ability to pass an extra extends file.
 - Remove:
     - BUILDOUT_OPT
 

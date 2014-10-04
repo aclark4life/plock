@@ -1,4 +1,5 @@
 import unittest
+import os.path
 
 
 class PlockTests(unittest.TestCase):
@@ -8,7 +9,14 @@ class PlockTests(unittest.TestCase):
         from tempfile import mkdtemp
         plock = Installer()
         plock.directory = mkdtemp()
-        plock.create_cfg()
+        plock.create_cfg(('one', 'two', 'three'))
+
+        with open(os.path.join(plock.directory, 'buildout.cfg'), 'r') as f:
+            content = f.read()
+
+        self.assertIn('one', content)
+        self.assertIn('two', content)
+        self.assertIn('three', content)
 
     def test_install_plone(self):
         from mock import Mock
@@ -22,6 +30,7 @@ class PlockTests(unittest.TestCase):
         args.list_addons = False
         args.raw = False
         args.write_config = False
+        args.extra = None
         plock.install_plone(args, test=True)
 
     def test_run_buildout(self):

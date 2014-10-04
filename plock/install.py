@@ -36,7 +36,7 @@ class Installer():
         buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
         if os.path.exists(buildout_cfg):
             with open(buildout_cfg, "a") as myfile:
-                print("Adding download cache entry to buildout file")
+                print("Adding download cache entry to buildout file...")
                 myfile.write("download-cache=./downloads")
 
     def command_init(self, command):
@@ -79,37 +79,36 @@ class Installer():
         package_folder = os.path.basename(path_to_installer)
         package_folder = package_folder.split('.tgz')[0]
         path_to_cache = "%s/packages/buildout-cache.tar.bz2" % package_folder
-        print("Unpacking cache files")
+        print("Unpacking cache files...")
         tar = tarfile.open(path_to_cache)
         tar.extractall(self.directory)
         tar.close()
 
         buildout_cache = "%s/buildout-cache" % self.directory
 
-        print("Installing egg cache")
+        print("Installing egg cache...")
         dst_eggs = "%s/eggs" % self.directory
         src_eggs = "%s/eggs" % buildout_cache
         shutil.move(src_eggs, dst_eggs)
 
-        print("Installing download cache")
+        print("Installing download cache...")
         dst_downloads = "%s/downloads" % self.directory
         src_downloads = "%s/downloads" % buildout_cache
         shutil.move(src_downloads, dst_downloads)
 
 
 
-    def create_cfg(self):
+    def create_cfg(self, remotes):
         """
         Create Buildout configuration files in self.directory
         """
         buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
         if not os.path.exists(buildout_cfg):
             cfg = open(buildout_cfg, 'w')
-            release_remote = REMOTE_PLONE
-            cfg.write(BUILDOUT_CFG % release_remote)
+            cfg.write(BUILDOUT_CFG % '\n    '.join(remotes))
             cfg.close
         else:
-            print "Error: buildout.cfg file already exists."
+            print ("Error: buildout.cfg file already exists.")
             exit(1)
 
 
@@ -207,9 +206,13 @@ class Installer():
         self.create_venv()
         self.install_buildout()
         self.create_cache()
-        self.create_cfg()
+        if args.extra:
+            self.create_cfg((REMOTE_PLONE, args.extra))
+        else:
+            self.create_cfg((REMOTE_PLONE, ))
         self.add_download_cache()
         self.clean_up()
+
 
         if args.add_on:
             print("Installing addons...")
