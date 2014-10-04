@@ -5,8 +5,8 @@ from .config import BUILDOUT_CFG
 from .config import CFG_PARSER
 from .config import PYPI
 from .config import EXTENDS
-from .config import PLONE_UNIFIEDINSTALLER
-from .config import PACKAGE_NAME
+from .config import UNIFIEDINSTALLER_DIR
+from .config import UNIFIEDINSTALLER_URL
 from .config import SEARCH_OPER
 from .config import SEARCH_SPEC
 from distutils import log
@@ -65,7 +65,7 @@ class Installer():
     def clean_up(self,test=False):
         if test:
             return
-        shutil.rmtree("%s/%s" % (self.directory,PACKAGE_NAME))
+        shutil.rmtree("%s/%s" % (self.directory,UNIFIEDINSTALLER_DIR))
         shutil.rmtree("%s/buildout-cache" % self.directory)
 
     def create_cache(self,test=False):
@@ -130,15 +130,15 @@ class Installer():
         Download the unified installer
         """
         return self.download(
-                   package_url = PLONE_UNIFIEDINSTALLER,
-                   packagename = PACKAGE_NAME,
+                   package_url = UNIFIEDINSTALLER_URL,
+                   packagename = UNIFIEDINSTALLER_DIR,
                    to_dir = self.directory
                    )
 
 
     def download(self,
-        package_url=PLONE_UNIFIEDINSTALLER,
-        packagename = PACKAGE_NAME,
+        package_url=UNIFIEDINSTALLER_URL,
+        packagename = UNIFIEDINSTALLER_DIR,
         to_dir=os.curdir,
         unzip = False,
         unzip_dir = None
