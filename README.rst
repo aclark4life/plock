@@ -1,9 +1,12 @@
 plock
 =====
 
-A Plone installer for the pip-loving crowd
-
 .. image:: https://travis-ci.org/aclark4life/plock.png?branch=master
+
+A Plone installer for the pip-loving crowd.
+
+.. image:: Plocktastic.png
+    :width: 100%
 
 Installation
 ------------

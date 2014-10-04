@@ -3,12 +3,12 @@ Changelog
 
 0.2.3 (unreleased)
 ------------------
-- Add ability to use Unified Installer download cache.
+- Add ability to use Unified Installer download cache via --unified.
   [pigeonflight]
-- Add ability to pass an extra extends file.
+- Add ability to pass an extra extends file via --extends.
   [href]
-- Remove:
-    - BUILDOUT_OPT
+- Remove --unstable
+- Remove BUILDOUT_OPT
 
 0.2.2 (2014-06-15)
 ------------------
@@ -18,14 +18,12 @@ Changelog
 0.2.1 (2014-06-14)
 ------------------
 
-- Removed features:
-    - PLOCK_EXPERT
-    - PLOCK_TIMEOUT
-    - create_dirs
-    - first_time
-    - write_config
-- Restore features:
-    - create_venv
+- Remove PLOCK_EXPERT
+- Remove PLOCK_TIMEOUT
+- Remove create_dirs
+- Remove first_time
+- Remove write_config
+- Re-add create_venv
 
 0.2.0 (2014-02-22)
 ------------------
@@ -41,36 +39,29 @@ Changelog
 ------------------
 
 - Support mutually exclusive options `plock .` and `plock -l`
-- Restore preserve addons functionality and make it default
+- Restore preserve add-ons functionality and make it default
 
 0.1.7 (2013-12-28)
 ------------------
 
-- New features:
-    - Create install_dir if it does not exist
-    - Use Plock Pins instead of PythonPackages as zc.buildout configuration host
-    - Add -v, --version to display version
-
-- Bug fixes
-    - Don't break --list-addons
-    - Don't break --install-addons
-
-- Removed features:
-    - Remove --insecure
-    - Remove --virtualenv
-    - Remove --zope2-only
+- Create install_dir if it does not exist
+- Use Plock Pins instead of PythonPackages as zc.buildout configuration host
+- Add -v, --version to display version
+- Bug fix: don't break --list-addons
+- Bug fix: don't break --install-addons
+- Remove --insecure
+- Remove --virtualenv
+- Remove --zope2-only
 
 0.1.6 (2013-08-12)
 ------------------
 
-- Bug fixes:
-    - Fix Buildout command execution
+- Bug fix: Buildout command execution
 
 0.1.5 (2013-08-12)
 ------------------
 
-- Bug fixes:
-    - Fix Buildout command execution
+- Bug Fix: Buildout command execution
 
 0.1.4 (2013-08-12)
 ------------------
@@ -115,36 +106,30 @@ Changelog
 0.0.9 (2013-07-25)
 ------------------
 
-- Bug fixes:
-    - Don't print "Wrote buildout.cfg" if buildout.cfg exists.
+- Bug fix: don't print "Wrote buildout.cfg" if buildout.cfg exists.
 
 0.0.8 (2013-07-25)
 ------------------
 
-- New features:
-    - Added --write-config to write buildout.cfg and exit.
+- Added --write-config to write buildout.cfg and exit.
 
 0.0.7 (2013-07-24)
 ------------------
 
-- Bug fixes:
-    - Restore -U
+- Bug fix: Restore -U
 
 0.0.6 (2013-07-24)
 ------------------
 
-- Bug fixes:
-    - Make sure addons list is sorted.
+- Bug fix: sort add-ons list. 
 
 0.0.5 (2013-07-24)
 ------------------
 
-- New features:
-    - Added ``--raw``, for use with ``--list-addons`` e.g. bin/install-plone --list--addons --raw
-    - Added ``--preserve`` for use with ``--install-addons`` e.g. bin/install-plone --install-addons Products.PloneFormGen --preserve
-- Bug fixes:
-    - bin/install-plone --install-addons PACKAGE(S) can now be run the first time to install both Plone and add-ons.
-    - bin/install-plone --install-addons PACKAGE(S) saves a copy of buildout.cfg and reverts changes if a Buildout run fails.
+- Added ``--raw``, for use with ``--list-addons`` e.g. bin/install-plone --list--addons --raw
+- Added ``--preserve`` for use with ``--install-addons`` e.g. bin/install-plone --install-addons Products.PloneFormGen --preserve
+- Bug fix: bin/install-plone --install-addons PACKAGE(S) can now be run the first time to install both Plone and add-ons.
+- Bug fix: bin/install-plone --install-addons PACKAGE(S) saves a copy of buildout.cfg and reverts changes if a Buildout run fails.
 
 0.0.4 (2013-07-23)
 ------------------
