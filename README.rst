@@ -16,41 +16,12 @@ Plock enables the installation of Plone with pip:
     $ plock .
     Creating virtualenv...
     Installing Buildout...
-    Unpacking cache files...
-	Installing egg cache...
-	Installing download cache...
     Running Buildout... (this may take a while)
     Done, now run:
 
     ./bin/plone fg
 
     $ bin/plone fg
-
-Contributing to Plock
-----------------------
-
-- Create a fork of the repository http://github.com/plock/plock.git
-- Clone your fork to your local machine.
-
-::
-
-   git clone git@github.com:{youraccount}/plock.git
-   cd plock
-
-::
-
-   virtualenv $HOME/plockenv
-   source $HOME/plockenv/activate
-   pip install -r requirements.txt
-   easy_install nose mock
-
-After adding your changes to the code, remember to run `nosetests` before commiting
-
-::
-
-   nosetests
-
-- Now do a pull request at http://github.com/{youraccount}/plock
 
 FAQ
 ---
