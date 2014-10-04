@@ -76,17 +76,14 @@ Changelog
 0.1.3 (2013-07-31)
 ------------------
 
-- New features:
-    - Added experimental ``--zope2-only`` option to install Zope2 only.
-- Bug fixes:
-    - Exit Plock when egg count remains the same for longer than or equal to PLOCK_TIMEOUT
+- Add experimental feature ``--zope2-only`` option to install Zope2 only.
+- Bug fix: exit Plock when egg count remains the same for longer than or equal to PLOCK_TIMEOUT
 
 0.1.2 (2013-07-29)
 ------------------
 
-- Document PLOCK_EXPERT environment variable to respect ``.buildout/default.cfg``
-- Bug fixes:
-    - Fixed ref to ``args.add_on`` via ``--preserve``
+- Document PLOCK_EXPERT environment variable to respect ``.buildout/default.cfg``.
+- Bug fix: fix reference to ``args.add_on`` via ``--preserve``.
 
 0.1.1 (2013-07-28)
 ------------------
@@ -96,12 +93,9 @@ Changelog
 0.1.0 (2013-07-28)
 ------------------
 
-- Make "secure"
-    - All Buildout configuration files (for Plone, Zope2, the ZTK, etc.) are included in plock; this eliminates the possibility of a MITM-attack via remote extends (now you just need to trust PyPI and dist.plone.org.)
-
-- Changed features:
-    - Renamed script: ``install-plone`` to ``plock``.
-    - Renamed arg: ``--install-addons`` to ``--add-on`` (to improve argparse-provided usage statement).
+- Make "secure": all Buildout configuration files (for Plone, Zope2, the ZTK, etc.) are included in plock; this eliminates the possibility of a MITM-attack via remote extends (now you just need to trust PyPI and dist.plone.org.)
+- Renamed script: ``install-plone`` to ``plock``.
+- Renamed arg: ``--install-addons`` to ``--add-on`` (to improve argparse-provided usage statement).
 
 0.0.9 (2013-07-25)
 ------------------
@@ -116,7 +110,7 @@ Changelog
 0.0.7 (2013-07-24)
 ------------------
 
-- Bug fix: Restore -U
+- Bug fix: re-add -U
 
 0.0.6 (2013-07-24)
 ------------------
