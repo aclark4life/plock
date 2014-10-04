@@ -36,7 +36,7 @@ class Installer():
         buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
         if os.path.exists(buildout_cfg):
             with open(buildout_cfg, "a") as myfile:
-                print("adding download cache entry to buildout file")
+                print("Adding download cache entry to buildout file")
                 myfile.write("download-cache=./downloads")
 
     def command_init(self, command):
@@ -84,15 +84,15 @@ class Installer():
         tar.extractall(self.directory)
         tar.close()
 
+        buildout_cache = "%s/buildout-cache" % self.directory
+
         print("Installing egg cache")
         dst_eggs = "%s/eggs" % self.directory
-        buildout_cache = "%s/buildout-cache" % self.directory
         src_eggs = "%s/eggs" % buildout_cache
         shutil.move(src_eggs, dst_eggs)
 
         print("Installing download cache")
         dst_downloads = "%s/downloads" % self.directory
-        buildout_cache = "%s/buildout-cache" % self.directory
         src_downloads = "%s/downloads" % buildout_cache
         shutil.move(src_downloads, dst_downloads)
 
