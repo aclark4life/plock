@@ -4,6 +4,7 @@ Changelog
 0.2.3 (unreleased)
 ------------------
 
+- Added the ability to pass an extra extends file.
 - Remove:
     - BUILDOUT_OPT
 

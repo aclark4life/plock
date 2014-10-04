@@ -45,15 +45,14 @@ class Installer():
                     exit(1)
         return command
 
-    def create_cfg(self):
+    def create_cfg(self, remotes):
         """
         Create Buildout configuration files in self.directory
         """
         buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
         if not os.path.exists(buildout_cfg):
             cfg = open(buildout_cfg, 'w')
-            release_remote = REMOTE_PLONE
-            cfg.write(BUILDOUT_CFG % release_remote)
+            cfg.write(BUILDOUT_CFG % '\n    '.join(remotes))
             cfg.close
         else:
             print "Error: buildout.cfg file already exists."
@@ -106,7 +105,11 @@ class Installer():
 
         self.create_venv()
         self.install_buildout()
-        self.create_cfg()
+
+        if args.extra:
+            self.create_cfg((REMOTE_PLONE, args.extra))
+        else:
+            self.create_cfg((REMOTE_PLONE, ))
 
         if args.add_on:
             print("Installing addons...")
