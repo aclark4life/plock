@@ -61,14 +61,13 @@ class Installer():
                     exit(1)
         return command
 
-
-    def clean_up(self,test=False):
+    def clean_up(self, test=False):
         if test:
             return
-        shutil.rmtree("%s/%s" % (self.directory,UNIFIEDINSTALLER_DIR))
+        shutil.rmtree("%s/%s" % (self.directory, UNIFIEDINSTALLER_DIR))
         shutil.rmtree("%s/buildout-cache" % self.directory)
 
-    def create_cache(self,test=False):
+    def create_cache(self, test=False):
         """
         Create cache directories for eggs
         and downloads
@@ -101,8 +100,6 @@ class Installer():
         src_downloads = "%s/downloads" % buildout_cache
         shutil.move(src_downloads, dst_downloads)
 
-
-
     def create_cfg(self, remotes):
         """
         Create Buildout configuration files in self.directory
@@ -115,7 +112,6 @@ class Installer():
         else:
             print ("Error: buildout.cfg file already exists.")
             exit(1)
-
 
     def create_venv(self):
         """
@@ -130,23 +126,22 @@ class Installer():
         Download the unified installer
         """
         return self.download(
-                   package_url = UNIFIEDINSTALLER_URL,
-                   packagename = UNIFIEDINSTALLER_DIR,
-                   to_dir = self.directory
-                   )
+            package_url=UNIFIEDINSTALLER_URL,
+            packagename=UNIFIEDINSTALLER_DIR,
+            to_dir=self.directory
+        )
 
-
-    def download(self,
+    def download(
+        self,
         package_url=UNIFIEDINSTALLER_URL,
-        packagename = UNIFIEDINSTALLER_DIR,
+        packagename=UNIFIEDINSTALLER_DIR,
         to_dir=os.curdir,
-        unzip = False,
-        unzip_dir = None
+        unzip=False,
+        unzip_dir=None
     ):
-        """Download a file from a specific location 
-        `to_dir` is the directory where the egg will be downloaded.
-        
-         returns the location of the file
+        """
+        Download a file from a specific location. `to_dir` is the directory
+        where the egg will be downloaded. Returns the location of the file.
         """
         url = package_url
         packagename = "%s.tgz" % packagename
@@ -156,17 +151,21 @@ class Installer():
             try:
                 log.warn("Downloading %s", url)
                 src = urllib2.urlopen(url)
-                # Read/write all in one block, so we don't create a corrupt file
-                # if the download is interrupted.
+                # Read/write all in one block, so we don't create a corrupt
+                # file if the download is interrupted.
                 # data = _validate_md5(egg_name, src.read())
                 data = src.read()
-                dst = open(saveto,"wb"); dst.write(data)
+                dst = open(saveto, "wb")
+                dst.write(data)
             finally:
-                if src: src.close()
+                if src:
+                    src.close()
                 if dst:
                     dst.close()
-                    if unzip:
-                        unzip_package(package,unzip_dir)
+                    # XXX FIXME
+                    # F821 undefined name 'unzip_package'
+                    # if unzip:
+                    #     unzip_package(packagename, unzip_dir)
         else:
             log.warn("Using previous download of %s", packagename)
         return os.path.realpath(saveto)
@@ -217,7 +216,6 @@ class Installer():
             self.create_cfg((EXTENDS, ))
         self.add_download_cache()
         self.clean_up(test=test)
-
 
         if args.add_on:
             print("Installing addons...")

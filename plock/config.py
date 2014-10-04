@@ -44,7 +44,8 @@ PYPI = CheeseShop()
 EXTENDS = "https://raw.github.com/plock/pins/master/plone-4-3"
 
 UNIFIEDINSTALLER_DIR = "Plone-4.3.3-UnifiedInstaller"
-UNIFIEDINSTALLER_URL = "https://launchpad.net/plone/4.3/4.3.3/+download/Plone-4.3.3-UnifiedInstaller.tgz"
+UNIFIEDINSTALLER_URL = "https://launchpad.net/plone/4.3/4.3.3/+download/"
+UNIFIEDINSTALLER_URL += "Plone-4.3.3-UnifiedInstaller.tgz"
 
 SEARCH_OPER = 'AND'
 SEARCH_SPEC = {'description': 'plone', 'keyword': 'plone', 'summary': 'plone'}

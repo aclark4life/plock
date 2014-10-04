@@ -31,7 +31,6 @@ class PlockTests(unittest.TestCase):
         args.raw = False
         args.write_config = False
         args.extra = None
-        #plock.install_plone(args, test=True)
         plock.install_plone(args, test=True)
 
     def test_run_buildout(self):
