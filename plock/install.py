@@ -211,7 +211,7 @@ class Installer():
             self.create_venv()
         if not args.no_buildout:
             self.install_buildout()
-        if args.unified:
+        if args.unified or args.unified_only:
             self.create_cache(test=test)
         if args.extra:
             self.create_cfg((EXTENDS, args.extra))
