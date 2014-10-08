@@ -1,8 +1,8 @@
 Changelog
 =========
 
-(unreleased)
-------------
+0.2.7 (2014-10-08)
+------------------
 
 - Make '--unified' the default and add '--no-unified'.
   [href]

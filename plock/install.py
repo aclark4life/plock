@@ -37,7 +37,7 @@ class Installer():
         buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
         if os.path.exists(buildout_cfg):
             with open(buildout_cfg, "a") as myfile:
-                print("Adding download cache entry to buildout file...")
+                print("Adding download cache entry...")
                 myfile.write("download-cache=./downloads")
 
     def command_init(self, command):
@@ -149,7 +149,7 @@ class Installer():
         src = dst = None
         if not os.path.exists(saveto):  # Avoid repeated downloads
             try:
-                log.warn("Downloading %s", url)
+                log.warn("Downloading installer bundle (%s)", url)
                 src = urllib2.urlopen(url)
                 # Read/write all in one block, so we don't create a corrupt
                 # file if the download is interrupted.
