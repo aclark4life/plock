@@ -1,6 +1,12 @@
 Changelog
 =========
 
+(unreleased)
+------------
+
+- Make '--unified' the default and add '--no-unified'.
+  [href]
+
 0.2.6 (2014-10-04)
 ------------------
 
