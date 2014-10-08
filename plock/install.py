@@ -90,12 +90,12 @@ class Installer():
 
         buildout_cache = "%s/buildout-cache" % self.directory
 
-        print("Installing egg cache...")
+        print("Installing eggs...")
         dst_eggs = "%s/eggs" % self.directory
         src_eggs = "%s/eggs" % buildout_cache
         shutil.move(src_eggs, dst_eggs)
 
-        print("Installing download cache...")
+        print("Installing cmmi & dist...")
         dst_downloads = "%s/downloads" % self.directory
         src_downloads = "%s/downloads" % buildout_cache
         shutil.move(src_downloads, dst_downloads)
