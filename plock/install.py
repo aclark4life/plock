@@ -37,7 +37,7 @@ class Installer():
         buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
         if os.path.exists(buildout_cfg):
             with open(buildout_cfg, "a") as myfile:
-                print("Adding download cache entry...")
+                print("Configuring cache...")
                 myfile.write("download-cache=./downloads")
 
     def command_init(self, command):
@@ -74,7 +74,7 @@ class Installer():
         if test:
             return
         path_to_installer = self.download_unifiedinstaller()
-        print("Unpacking installer files...")
+        print("Unpacking installer...")
         tar = tarfile.open(path_to_installer)
         tar.extractall(self.directory)
         tar.close()
@@ -83,7 +83,7 @@ class Installer():
         package_folder = package_folder.split('.tgz')[0]
         package_folder = os.path.join(self.directory, package_folder)
         path_to_cache = "%s/packages/buildout-cache.tar.bz2" % package_folder
-        print("Unpacking installer cache files...")
+        print("Unpacking cache...")
         tar = tarfile.open(path_to_cache)
         tar.extractall(self.directory)
         tar.close()
@@ -149,7 +149,7 @@ class Installer():
         src = dst = None
         if not os.path.exists(saveto):  # Avoid repeated downloads
             try:
-                log.warn("Downloading installer bundle (%s)", url)
+                log.warn("Downloading installer (%s)", url)
                 src = urllib2.urlopen(url)
                 # Read/write all in one block, so we don't create a corrupt
                 # file if the download is interrupted.
