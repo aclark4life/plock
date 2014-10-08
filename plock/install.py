@@ -286,7 +286,9 @@ class Installer():
         if not test:
             try:
                 buildout = self.command_init("buildout")
-                print "Running Buildout... (this may take a while)"
+                # XXX Only print when using --no-unified
+                # print "Running Buildout... (this may take a while)"
+                print "Running Buildout..."
                 buildout(
                     "-c", os.path.join(self.directory, "buildout.cfg")
                 )
