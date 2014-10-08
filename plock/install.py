@@ -312,5 +312,7 @@ class Installer():
 
 def install():
     args = ARG_PARSER.parse_args()
+    args.unified = not args.no_unified
+
     plock = Installer()
     plock.install_plone(args)
