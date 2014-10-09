@@ -300,7 +300,7 @@ class Installer():
                     cfg = open(buildout_cfg, 'w')
                     cfg.write(self.backup)
                     cfg.close()
-                    self.run_buildout()
+                    self.run_buildout(args)
 
     def sleep(self, *args):
         if args:

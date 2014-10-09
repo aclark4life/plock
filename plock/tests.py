@@ -35,9 +35,11 @@ class PlockTests(unittest.TestCase):
         plock.install_plone(args, test=True)
 
     def test_run_buildout(self):
+        from mock import Mock
         from plock.install import Installer
         plock = Installer()
-        plock.run_buildout(test=True)
+        args = Mock()
+        plock.run_buildout(args, test=True)
 
 
 if __name__ == '__main__':
