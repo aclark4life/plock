@@ -1,10 +1,15 @@
 Changelog
 =========
 
+0.2.8 (2014-10-09)
+------------------
+
+- Print "this may take a while" message when `--no-unified`.
+
 0.2.7 (2014-10-08)
 ------------------
 
-- Make '--unified' the default and add '--no-unified'.
+- Make `--unified` the default and add `--no-unified`.
   [href]
 
 0.2.6 (2014-10-04)
