@@ -229,7 +229,7 @@ class Installer():
             print("Installing addons...")
             self.install_addons(args)
 
-        self.run_buildout(test=test)
+        self.run_buildout(args, test=test)
         print("Done, now run:\n\n%s/bin/plone fg\n" % self.directory)
 
     def install_addons(self, args):
@@ -282,13 +282,14 @@ class Installer():
             # XXX Keep going
             return num
 
-    def run_buildout(self, test=False):
+    def run_buildout(self, args, test=False):
         if not test:
             try:
                 buildout = self.command_init("buildout")
-                # XXX Only print when using --no-unified
-                # print "Running Buildout... (this may take a while)"
-                print "Running Buildout..."
+                if args.no_unified:
+                    print "Running Buildout... (this may take a while)"
+                else:
+                    print "Running Buildout..."
                 buildout(
                     "-c", os.path.join(self.directory, "buildout.cfg")
                 )
