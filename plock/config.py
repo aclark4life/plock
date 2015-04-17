@@ -43,13 +43,16 @@ BUILDOUT_CFG = """\
 [buildout]
 extends =
     %s
+# Uncomment to add development packages e.g. ZopeSkel
+#    %s
 """
 
 CFG_PARSER = configparser.SafeConfigParser()
 
 PYPI = CheeseShop()
 
-EXTENDS = "https://raw.github.com/plock/pins/master/plone-4-3"
+EXTENDS_PROD = "https://raw.github.com/plock/pins/master/plone-4-3"
+EXTENDS_DEV = "https://raw.github.com/plock/pins/master/dev"
 
 UNIFIEDINSTALLER_DIR = "Plone-4.3.3-UnifiedInstaller"
 UNIFIEDINSTALLER_URL = "https://launchpad.net/plone/4.3/4.3.3/+download/"

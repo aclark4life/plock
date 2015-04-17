@@ -4,7 +4,8 @@ from .config import ARG_PARSER
 from .config import BUILDOUT_CFG
 from .config import CFG_PARSER
 from .config import PYPI
-from .config import EXTENDS
+from .config import EXTENDS_PROD
+from .config import EXTENDS_DEV
 from .config import UNIFIEDINSTALLER_DIR
 from .config import UNIFIEDINSTALLER_URL
 from .config import SEARCH_OPER
