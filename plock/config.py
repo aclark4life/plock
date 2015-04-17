@@ -43,7 +43,6 @@ BUILDOUT_CFG = """\
 [buildout]
 extends =
     %s
-# Uncomment to add development packages e.g. ZopeSkel
 #    %s
 """
 
