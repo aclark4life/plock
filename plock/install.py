@@ -215,9 +215,9 @@ class Installer():
         if args.unified or args.unified_only:
             self.create_cache(test=test)
         if args.extra:
-            self.create_cfg(((EXTENDS_PROD, EXTENDS_DEV), args.extra))
+            self.create_cfg((EXTENDS, args.extra))
         else:
-            self.create_cfg(((EXTENDS_PROD, EXTENDS_DEV), ))
+            self.create_cfg((EXTENDS, ))
         if args.unified or args.unified_only:
             self.add_download_cache()
             self.clean_up(test=test)
