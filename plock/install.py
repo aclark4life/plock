@@ -100,14 +100,14 @@ class Installer():
         src_downloads = "%s/downloads" % buildout_cache
         shutil.move(src_downloads, dst_downloads)
 
-    def create_cfg(self, remotes):
+    def create_cfg(self, extends):
         """
         Create Buildout configuration files in self.directory
         """
         buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
         if not os.path.exists(buildout_cfg):
             cfg = open(buildout_cfg, 'w')
-            cfg.write(BUILDOUT_CFG % '\n    '.join(remotes))
+            cfg.write(BUILDOUT_CFG % '\n    '.join(extends))
             cfg.close
         else:
             print ("Error: buildout.cfg file already exists.")
