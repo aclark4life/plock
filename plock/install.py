@@ -119,7 +119,11 @@ class Installer():
         """
         virtualenv = self.command_init("virtualenv")
         print("Creating virtualenv... (%s)" % self.directory)
-        virtualenv(self.directory)
+        try:
+            virtualenv(self.directory)
+        except sh.ErrorReturnCode_1:
+            print ("Error: virtualenv already exists. Try `--no-venv`")
+            exit(1)
 
     def download_unifiedinstaller(self):
         """
