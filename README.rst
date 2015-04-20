@@ -6,7 +6,7 @@ plock
 A Plone installer for the pip-loving crowd.
 
 .. image:: https://raw.githubusercontent.com/plock/plock/master/Plocktastic.png
-    :width: 100%
+    :align: center
 
 Installation
 ------------
