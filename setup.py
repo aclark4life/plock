@@ -7,7 +7,7 @@ from setuptools import find_packages
 from setuptools import setup
 
 
-VERSION = '0.2.8'
+VERSION = '0.2.9'
 
 
 setup(
