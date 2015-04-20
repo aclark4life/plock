@@ -109,8 +109,8 @@ class Installer():
         if not os.path.exists(buildout_cfg):
             cfg = open(buildout_cfg, 'w')
             if extends:
-                wtf = BUILDOUT_CFG + '    %s\n'
-                cfg.write(wtf % (EXTENDS_PROD, EXTENDS_DEV, extends))
+                _BUILDOUT_CFG = BUILDOUT_CFG + '    %s\n'
+                cfg.write(_BUILDOUT_CFG % (EXTENDS_PROD, EXTENDS_DEV, extends))
             else:
                 cfg.write(BUILDOUT_CFG % (EXTENDS_PROD, EXTENDS_DEV))
             cfg.close
