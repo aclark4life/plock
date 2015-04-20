@@ -5,6 +5,7 @@ Changelog
 ------------------
 
 - Add additional extends https://raw.github.com/plock/pins/master/dev
+- Change add-on installation syntax from `-a, --add-on` to `-i, --install-addon`
 
 0.2.8 (2014-10-09)
 ------------------

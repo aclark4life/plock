@@ -234,7 +234,7 @@ class Installer():
             print("Only downloading installer cache, bye!")
             exit()
 
-        if args.add_on:
+        if args.install_addon:
             print("Installing addons...")
             self.install_addons(args)
 
@@ -250,7 +250,7 @@ class Installer():
         addons = []
         addons.append('${base:packages}')
         addons.append('${addon:packages}')
-        for addon in args.add_on.split():
+        for addon in args.install_addon.split():
             print(" %s" % addon)
             addons.append(addon)
         CFG_PARSER.read(buildout_cfg)

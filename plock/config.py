@@ -19,7 +19,7 @@ ARG_PARSER = argparse.ArgumentParser(
 ARG_PARSER.add_argument('install_dir', nargs='?')
 
 ARG_PARSER.add_argument(
-    "-a", "--add-on", help="install add-ons from PyPI")
+    "-i", "--install-addon", help="install add-on(s) from PyPI")
 
 ARG_PARSER.add_argument(
     "-l", "--list-addons", action="store_true", help="list add-ons from PyPI")
