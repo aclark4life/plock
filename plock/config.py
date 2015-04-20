@@ -31,7 +31,7 @@ ARG_PARSER.add_argument(
     "--no-unified", action="store_true", help="do not use unified installer")
 
 ARG_PARSER.add_argument(
-    "-e", "--extra", help="extra extends file")
+    "-e", "--extends", help="extra extends file")
 
 ARG_PARSER.add_argument(
     "--no-venv", action="store_true", help="no virtualenv")

@@ -222,8 +222,8 @@ class Installer():
             self.install_buildout()
         if args.unified or args.unified_only:
             self.create_cache(test=test)
-        if args.extra:
-            self.create_cfg(extends=args.extra)
+        if args.extends:
+            self.create_cfg(extends=args.extends)
         else:
             self.create_cfg()
         if args.unified or args.unified_only:

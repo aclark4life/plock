@@ -4,9 +4,10 @@ Changelog
 0.2.9 (2015-04-20)
 ------------------
 
-- Add additional extends https://raw.github.com/plock/pins/master/dev
+- Add commented additional default extends https://raw.github.com/plock/pins/master/dev
 - Change add-on installation syntax from `-a, --add-on` to `-i, --install-addon`
 - "Installing add-on" output now prints PyPI URL of add-on
+- Rename `-e, --extra` to `-e, --extends`
 
 0.2.8 (2014-10-09)
 ------------------
