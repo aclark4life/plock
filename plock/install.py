@@ -239,7 +239,11 @@ class Installer():
             self.install_addons(args)
 
         self.run_buildout(args, test=test)
-        print("Done, now run:\n\n%s/bin/plone fg\n" % self.directory)
+#        print("Done, created buildout.cfg:\n---\n")
+#        buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
+#        print(open(buildout_cfg, 'r').read())
+#        print("---\n")
+        print("Done, now run:\n\n %s/bin/plone fg\n" % self.directory)
 
     def install_addons(self, args):
         """
@@ -251,7 +255,7 @@ class Installer():
         addons.append('${base:packages}')
         addons.append('${addon:packages}')
         for addon in args.install_addon.split():
-            print(" %s" % addon)
+            print(" https://pypi.python.org/pypi/%s" % addon)
             addons.append(addon)
         CFG_PARSER.read(buildout_cfg)
         CFG_PARSER.add_section('plone')
