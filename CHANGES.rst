@@ -6,6 +6,7 @@ Changelog
 
 - Add additional extends https://raw.github.com/plock/pins/master/dev
 - Change add-on installation syntax from `-a, --add-on` to `-i, --install-addon`
+- "Installing add-on" output now prints PyPI URL of add-on
 
 0.2.8 (2014-10-09)
 ------------------
