@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.2.9 (2015-04-20)
+------------------
+
+- Add additional extends https://raw.github.com/plock/pins/master/dev
+
 0.2.8 (2014-10-09)
 ------------------
 
