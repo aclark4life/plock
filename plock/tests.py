@@ -9,14 +9,12 @@ class PlockTests(unittest.TestCase):
         from tempfile import mkdtemp
         plock = Installer()
         plock.directory = mkdtemp()
-        plock.create_cfg(('one', 'two', 'three'))
-
+        plock.create_cfg(
+            extends='https://raw.github.com/plock/pins/master/dev')
         with open(os.path.join(plock.directory, 'buildout.cfg'), 'r') as f:
-            content = f.read()
-
-        self.assertIn('one', content)
-        self.assertIn('two', content)
-        self.assertIn('three', content)
+            buildout_cfg = f.read()
+        self.assertIn(
+            'https://raw.github.com/plock/pins/master/dev', buildout_cfg)
 
     def test_install_plone(self):
         from mock import Mock
