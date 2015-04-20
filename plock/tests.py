@@ -24,7 +24,6 @@ class PlockTests(unittest.TestCase):
         args = Mock()
         args.install_dir = mkdtemp()
         args.install_addon = None
-        args.expert = False
         args.list_addons = False
         args.raw = False
         args.write_config = False
