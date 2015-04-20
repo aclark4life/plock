@@ -4,7 +4,8 @@ from .config import ARG_PARSER
 from .config import BUILDOUT_CFG
 from .config import CFG_PARSER
 from .config import PYPI
-from .config import EXTENDS
+from .config import EXTENDS_DEV
+from .config import EXTENDS_PROD
 from .config import UNIFIEDINSTALLER_DIR
 from .config import UNIFIEDINSTALLER_URL
 from .config import SEARCH_OPER
@@ -100,14 +101,18 @@ class Installer():
         src_downloads = "%s/downloads" % buildout_cache
         shutil.move(src_downloads, dst_downloads)
 
-    def create_cfg(self, extends):
+    def create_cfg(self, extends=None):
         """
         Create Buildout configuration files in self.directory
         """
         buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
         if not os.path.exists(buildout_cfg):
             cfg = open(buildout_cfg, 'w')
-            cfg.write(BUILDOUT_CFG % '\n    '.join(extends))
+            if extends:
+                wtf = BUILDOUT_CFG + '    %s\n'
+                cfg.write(wtf % (EXTENDS_PROD, EXTENDS_DEV, extends))
+            else:
+                cfg.write(BUILDOUT_CFG % (EXTENDS_PROD, EXTENDS_DEV))
             cfg.close
         else:
             print ("Error: buildout.cfg file already exists.")
@@ -218,9 +223,9 @@ class Installer():
         if args.unified or args.unified_only:
             self.create_cache(test=test)
         if args.extra:
-            self.create_cfg((EXTENDS, args.extra))
+            self.create_cfg(extends=args.extra)
         else:
-            self.create_cfg((EXTENDS, ))
+            self.create_cfg()
         if args.unified or args.unified_only:
             self.add_download_cache()
             self.clean_up(test=test)

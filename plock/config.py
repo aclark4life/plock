@@ -3,6 +3,9 @@ import argparse
 import configparser
 import pkg_resources
 
+EXTENDS_PROD = "https://raw.github.com/plock/pins/master/plone-4-3"
+EXTENDS_DEV = "https://raw.github.com/plock/pins/master/dev"
+
 # http://stackoverflow.com/a/2073599/185820
 _VERSION = pkg_resources.require("plock")[0].version
 
@@ -43,13 +46,13 @@ BUILDOUT_CFG = """\
 [buildout]
 extends =
     %s
+#    %s
 """
 
 CFG_PARSER = configparser.SafeConfigParser()
 
 PYPI = CheeseShop()
 
-EXTENDS = "https://raw.github.com/plock/pins/master/plone-4-3"
 
 UNIFIEDINSTALLER_DIR = "Plone-4.3.3-UnifiedInstaller"
 UNIFIEDINSTALLER_URL = "https://launchpad.net/plone/4.3/4.3.3/+download/"
