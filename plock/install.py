@@ -1,16 +1,16 @@
 # encoding: utf-8
-from .config import ADDON_FORMAT
-from .config import ARG_PARSER
-from .config import BUILDOUT_CFG
-from .config import CFG_PARSER
-from .config import PYPI
-from .config import EXTENDS_DEV
-from .config import EXTENDS_PROD
-from .config import UNIFIEDINSTALLER_DIR
-from .config import UNIFIEDINSTALLER_URL
-from .config import SEARCH_OPER
-from .config import SEARCH_SPEC
 from distutils import log
+from plock.config import ADDON_FORMAT
+from plock.config import ARG_PARSER
+from plock.config import BUILDOUT_CFG
+from plock.config import CFG_PARSER
+from plock.config import PYPI
+from plock.config import EXTENDS_DEV
+from plock.config import EXTENDS_PROD
+from plock.config import UNIFIEDINSTALLER_DIR
+from plock.config import UNIFIEDINSTALLER_URL
+from plock.config import SEARCH_OPER
+from plock.config import SEARCH_SPEC
 import collections
 import locale
 import os
