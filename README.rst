@@ -27,9 +27,7 @@ Plock enables the installation of Plone with pip [1]_:
     Configuring cache...
     Running buildout...
     Done, now run:
-
-    ./bin/plone fg
-
+      ./bin/plone fg
     $ bin/plone fg
 
 FAQ
