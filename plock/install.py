@@ -61,6 +61,8 @@ class Installer():
         return command
 
     def clean_up(self, test=False):
+        """
+        """
         if test:
             return
         shutil.rmtree("%s/%s" % (self.directory, UNIFIEDINSTALLER_DIR))
@@ -324,6 +326,8 @@ class Installer():
             return num
 
     def run_buildout(self, args, test=False):
+        """
+        """
         if not test:
             try:
                 buildout = self.command_init("buildout")
@@ -345,6 +349,8 @@ class Installer():
 
 
 def install():
+    """
+    """
     args = argparser.parse_args()
     args.unified = not args.no_unified
 
