@@ -309,7 +309,7 @@ class Installer():
         try:
             return locale.format("%d", num, grouping=True)
         except TypeError:
-            # XXX Keep going
+            # XXX Keep going?
             return num
 
     def run_buildout(self, args, test=False):
