@@ -34,6 +34,10 @@ argparser.add_argument(
     help="package name only. for use with `-l`")
 
 argparser.add_argument(
+    "-w", "--write-only", action="store_true",
+    help="write buildout.cfg and exit")
+
+argparser.add_argument(
     "--no-unified", action="store_true",
     help="do not download unified installer cache")
 

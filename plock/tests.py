@@ -29,7 +29,7 @@ class PlockTests(unittest.TestCase):
         args.install_addon = None
         args.list_addons = False
         args.raw = False
-        args.write_config = False
+        args.write_only = False
         args.extends = None
         args.unified_only = False
         plock.install_plone(args, test=True)

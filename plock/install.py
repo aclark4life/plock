@@ -232,14 +232,6 @@ class Installer():
         if not os.path.exists(self.directory):
             os.mkdir(self.directory)
 
-        if not args.no_virtualenv:
-            self.create_virtualenv()
-
-        self.install_buildout()
-
-        if args.unified or args.unified_only:
-            self.create_cache(test=test)
-
         buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
         if not os.path.exists(buildout_cfg) or args.force:
             if args.extends:
@@ -252,6 +244,20 @@ class Installer():
                 "Try `--force`."
             )
             exit(1)
+
+        if args.write_only:
+            print(
+                "Wrote buildout.cfg:\n  %s\nBye!" % buildout_cfg)
+            exit(0)
+
+        if not args.no_virtualenv:
+            self.create_virtualenv()
+
+        self.install_buildout()
+
+        if args.unified or args.unified_only:
+            self.create_cache(test=test)
+
         if args.unified or args.unified_only:
             self.add_download_cache()
             self.clean_up(test=test)
