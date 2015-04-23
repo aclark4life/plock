@@ -4,7 +4,8 @@ Changelog
 0.2.9 (2015-04-23)
 ------------------
 
-- Add ``-f, --force`` option to overwrite existing buildout.cfg
+- (Re)add ``-w,--write-only`` option to write buildout.cfg and exit
+- Add ``-f,--force`` option to overwrite existing buildout.cfg
 - Remove ``--no-buildout`` option
 - Support multiple extends e.g. ``-e "http://extend-one http://extend-two"``
 - Add commented additional default extends https://raw.github.com/plock/pins/master/dev
