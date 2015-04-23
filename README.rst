@@ -55,4 +55,4 @@ Why the name Plock?
 
 Plock is a `single by the band Plone <http://www.youtube.com/watch?v=IlLzsF61n-8>`_. It is also the name of a `city in Poland <http://en.wikipedia.org/wiki/P%C5%82ock>`_.
 
-.. [1] Sort of. The ``plock`` script installs and runs a Plone ``buildout`` for you.
+.. [1] Sort of. Plock installs and runs Buildout for you.

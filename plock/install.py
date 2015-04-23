@@ -140,7 +140,7 @@ class Installer():
             print ("Error: buildout.cfg file already exists.")
             exit(1)
 
-    def create_venv(self):
+    def create_virtualenv(self):
         """
         Create virtualenv, install Buildout.
         """
@@ -149,7 +149,7 @@ class Installer():
         try:
             virtualenv(self.directory)
         except sh.ErrorReturnCode_1:
-            print ("Error: virtualenv already exists. Try `--no-venv`")
+            print ("Error: virtualenv already exists. Try `--no-virtualenv`")
             exit(1)
 
     def download_unifiedinstaller(self):
@@ -238,8 +238,8 @@ class Installer():
         if not os.path.exists(self.directory):
             os.mkdir(self.directory)
 
-        if not args.no_venv:
-            self.create_venv()
+        if not args.no_virtualenv:
+            self.create_virtualenv()
 
         self.install_buildout()
 

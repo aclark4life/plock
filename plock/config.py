@@ -35,7 +35,7 @@ ARG_PARSER.add_argument(
     "-e", "--extends", help="use additional extends file")
 
 ARG_PARSER.add_argument(
-    "--no-venv", action="store_true", help="no virtualenv")
+    "--no-virtualenv", action="store_true", help="no virtualenv")
 
 ARG_PARSER.add_argument(
     "--unified-only", action="store_true", help="get unified cache & quit")
