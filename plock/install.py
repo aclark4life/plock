@@ -3,12 +3,12 @@ from distutils import log
 from plock.config import BUILDOUT_CFG
 from plock.config import FORMATTED_LISTING
 from plock.config import PYPI
+from plock.config import PYPI_OPER
+from plock.config import PYPI_SPEC
 from plock.config import EXTENDS_DEV
 from plock.config import EXTENDS_PROD
 from plock.config import UNIFIEDINSTALLER_DIR
 from plock.config import UNIFIEDINSTALLER_URL
-from plock.config import SEARCH_OPER
-from plock.config import SEARCH_SPEC
 from plock.config import argparser
 from plock.config import cfgparser
 import collections
@@ -289,7 +289,7 @@ class Installer():
         """
         count = 0
         results = collections.OrderedDict()
-        for package in PYPI.search(SEARCH_SPEC, SEARCH_OPER):
+        for package in PYPI.search(PYPI_SPEC, PYPI_OPER):
             if 'name' in package and 'summary' in package:
                 name = package['name']
                 summary = package['summary']
