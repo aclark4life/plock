@@ -1,8 +1,7 @@
 # encoding: utf-8
 from distutils import log
-from plock.config import ADDON_FORMAT
 from plock.config import BUILDOUT_CFG
-from plock.config import CFG_PARSER
+from plock.config import FORMATTED_LISTING
 from plock.config import PYPI
 from plock.config import EXTENDS_DEV
 from plock.config import EXTENDS_PROD
@@ -11,6 +10,7 @@ from plock.config import UNIFIEDINSTALLER_URL
 from plock.config import SEARCH_OPER
 from plock.config import SEARCH_SPEC
 from plock.config import argparser
+from plock.config import cfgparser
 import collections
 import locale
 import os
@@ -118,12 +118,12 @@ class Installer():
                 for extend in extends.split():
                     print("- %s" % extend)
                     _extends.append(extend)
-                CFG_PARSER.read(buildout_cfg)
-                CFG_PARSER.get('buildout', 'extends')
-                CFG_PARSER.set(
+                cfgparser.read(buildout_cfg)
+                cfgparser.get('buildout', 'extends')
+                cfgparser.set(
                     'buildout', 'extends', '\n' + '\n'.join(_extends))
                 cfg = open(buildout_cfg, 'w')
-                CFG_PARSER.write(cfg)
+                cfgparser.write(cfg)
                 cfg.close()
                 # XXX TERRIBLE. Replace dev line with commented dev line.
                 # Better way?
@@ -276,11 +276,11 @@ class Installer():
         for addon in args.install_addon.split():
             print("- https://pypi.python.org/pypi/%s" % addon)
             addons.append(addon)
-        CFG_PARSER.read(buildout_cfg)
-        CFG_PARSER.add_section('plone')
-        CFG_PARSER.set('plone', 'eggs', '\n' + '\n'.join(addons))
+        cfgparser.read(buildout_cfg)
+        cfgparser.add_section('plone')
+        cfgparser.set('plone', 'eggs', '\n' + '\n'.join(addons))
         cfg = open(buildout_cfg, 'w')
-        CFG_PARSER.write(cfg)
+        cfgparser.write(cfg)
         cfg.close()
 
     def list_addons(self, raw=False):
@@ -300,7 +300,7 @@ class Installer():
                 print(name)
             else:
                 print(
-                    ADDON_FORMAT % (
+                    FORMATTED_LISTING % (
                         self.locale_format(
                             count), name.ljust(40), summary.ljust(40)))
 
