@@ -99,44 +99,40 @@ class Installer():
         src_downloads = "%s/downloads" % buildout_cache
         shutil.move(src_downloads, dst_downloads)
 
-    def create_cfg(self, extends=None):
+    def create_cfg(self, buildout_cfg, extends=None):
         """
         Create buildout.cfg file in self.directory.
         """
-        buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
-        if not os.path.exists(buildout_cfg):
+
+        cfg = open(buildout_cfg, 'w')
+        cfg.write(BUILDOUT_CFG % (EXTENDS_PROD, EXTENDS_DEV))
+        cfg.close()
+        if extends:
+            _extends = []
+            _extends.append(EXTENDS_PROD)
+            _extends.append(EXTENDS_DEV)
+            print("Configuring extends:")
+            for extend in extends.split():
+                print("- %s" % extend)
+                _extends.append(extend)
+            cfgparser.read(buildout_cfg)
+            cfgparser.get('buildout', 'extends')
+            cfgparser.set(
+                'buildout', 'extends', '\n' + '\n'.join(_extends))
             cfg = open(buildout_cfg, 'w')
-            cfg.write(BUILDOUT_CFG % (EXTENDS_PROD, EXTENDS_DEV))
+            cfgparser.write(cfg)
             cfg.close()
-            if extends:
-                _extends = []
-                _extends.append(EXTENDS_PROD)
-                _extends.append(EXTENDS_DEV)
-                print("Configuring extends:")
-                for extend in extends.split():
-                    print("- %s" % extend)
-                    _extends.append(extend)
-                cfgparser.read(buildout_cfg)
-                cfgparser.get('buildout', 'extends')
-                cfgparser.set(
-                    'buildout', 'extends', '\n' + '\n'.join(_extends))
-                cfg = open(buildout_cfg, 'w')
-                cfgparser.write(cfg)
-                cfg.close()
-                # XXX TERRIBLE. Replace dev line with commented dev line.
-                # Better way?
-                cfg = open(buildout_cfg, 'r')
-                chars = cfg.read()
-                cfg = open(buildout_cfg, 'w')
-                for line in chars.split('\n'):
-                    cfg.write(
-                        line.replace(
-                            '\t%s' % EXTENDS_DEV,
-                            '#\t%s' % EXTENDS_DEV) + '\n')
-                cfg.close()
-        else:
-            print ("Error: buildout.cfg file already exists.")
-            exit(1)
+            # XXX TERRIBLE. Replace dev line with commented dev line.
+            # Better way?
+            cfg = open(buildout_cfg, 'r')
+            chars = cfg.read()
+            cfg = open(buildout_cfg, 'w')
+            for line in chars.split('\n'):
+                cfg.write(
+                    line.replace(
+                        '\t%s' % EXTENDS_DEV,
+                        '#\t%s' % EXTENDS_DEV) + '\n')
+            cfg.close()
 
     def create_virtualenv(self):
         """
@@ -243,10 +239,19 @@ class Installer():
 
         if args.unified or args.unified_only:
             self.create_cache(test=test)
-        if args.extends:
-            self.create_cfg(extends=args.extends)
+
+        buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
+        if not os.path.exists(buildout_cfg) or args.force:
+            if args.extends:
+                self.create_cfg(buildout_cfg, extends=args.extends)
+            else:
+                self.create_cfg(buildout_cfg)
         else:
-            self.create_cfg()
+            print(
+                "Error: buildout.cfg file already exists. "
+                "Try `--force`."
+            )
+            exit(1)
         if args.unified or args.unified_only:
             self.add_download_cache()
             self.clean_up(test=test)

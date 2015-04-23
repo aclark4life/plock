@@ -18,6 +18,9 @@ argparser = argparse.ArgumentParser(
 argparser.add_argument('install_dir', nargs='?')
 
 argparser.add_argument(
+    "-f", "--force", action="store_true", help="overwrite buildout.cfg")
+
+argparser.add_argument(
     "-i", "--install-addon", help="install add-on(s) from PyPI")
 
 argparser.add_argument(
