@@ -28,7 +28,8 @@ ARG_PARSER.add_argument(
     "-r", "--raw", action="store_true", help="unformatted output, use with -l")
 
 ARG_PARSER.add_argument(
-    "--no-unified", action="store_true", help="do not use unified installer cache")
+    "--no-unified", action="store_true",
+    help="do not use unified installer cache")
 
 ARG_PARSER.add_argument(
     "-e", "--extends", help="use additional extends file")
