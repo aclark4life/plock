@@ -103,17 +103,37 @@ class Installer():
 
     def create_cfg(self, extends=None):
         """
-        Create Buildout configuration files in self.directory
+        Create buildout.cfg file in self.directory.
         """
         buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
         if not os.path.exists(buildout_cfg):
             cfg = open(buildout_cfg, 'w')
+            cfg.write(BUILDOUT_CFG % (EXTENDS_PROD, EXTENDS_DEV))
+            cfg.close()
             if extends:
-                _BUILDOUT_CFG = BUILDOUT_CFG + '    %s\n'
-                cfg.write(_BUILDOUT_CFG % (EXTENDS_PROD, EXTENDS_DEV, extends))
-            else:
-                cfg.write(BUILDOUT_CFG % (EXTENDS_PROD, EXTENDS_DEV))
-            cfg.close
+                _extends = []
+                _extends.append(EXTENDS_PROD)
+                _extends.append(EXTENDS_DEV)
+                for extend in extends.split():
+                    _extends.append(extend)
+                CFG_PARSER.read(buildout_cfg)
+                CFG_PARSER.get('buildout', 'extends')
+                CFG_PARSER.set(
+                    'buildout', 'extends', '\n' + '\n'.join(_extends))
+                cfg = open(buildout_cfg, 'w')
+                CFG_PARSER.write(cfg)
+                cfg.close()
+                # XXX TERRIBLE. Replace dev line with commented dev line.
+                # Better way?
+                cfg = open(buildout_cfg, 'r')
+                chars = cfg.read()
+                cfg = open(buildout_cfg, 'w')
+                for line in chars.split('\n'):
+                    cfg.write(
+                        line.replace(
+                            '\t%s' % EXTENDS_DEV,
+                            '#\t%s' % EXTENDS_DEV) + '\n')
+                cfg.close()
         else:
             print ("Error: buildout.cfg file already exists.")
             exit(1)
