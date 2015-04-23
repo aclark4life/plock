@@ -4,7 +4,7 @@ Changelog
 0.2.9 (2015-04-20)
 ------------------
 
-- Support multiple extends e.g. ``-e "http://extend1 http://extend2"``
+- Support multiple extends e.g. ``-e "http://extend-one http://extend-two"``
 - Add commented additional default extends https://raw.github.com/plock/pins/master/dev
 - Change add-on installation syntax from ``-a, --add-on`` to ``-i, --install-addon``
 - "Installing add-on" output now prints PyPI URL of add-on
