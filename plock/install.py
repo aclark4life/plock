@@ -1,7 +1,6 @@
 # encoding: utf-8
 from distutils import log
 from plock.config import ADDON_FORMAT
-from plock.config import ARG_PARSER
 from plock.config import BUILDOUT_CFG
 from plock.config import CFG_PARSER
 from plock.config import PYPI
@@ -11,6 +10,7 @@ from plock.config import UNIFIEDINSTALLER_DIR
 from plock.config import UNIFIEDINSTALLER_URL
 from plock.config import SEARCH_OPER
 from plock.config import SEARCH_SPEC
+from plock.config import argparser
 import collections
 import locale
 import os
@@ -346,7 +346,7 @@ class Installer():
 
 
 def install():
-    args = ARG_PARSER.parse_args()
+    args = argparser.parse_args()
     args.unified = not args.no_unified
 
     plock = Installer()
