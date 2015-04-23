@@ -25,20 +25,22 @@ ARG_PARSER.add_argument(
     "-l", "--list-addons", action="store_true", help="list add-ons from PyPI")
 
 ARG_PARSER.add_argument(
-    "-r", "--raw", action="store_true", help="unformatted output, use with -l")
+    "-r", "--raw", action="store_true",
+    help="package name only. for use with `-l`")
 
 ARG_PARSER.add_argument(
     "--no-unified", action="store_true",
-    help="do not use unified installer cache")
+    help="do not download unified installer cache")
 
 ARG_PARSER.add_argument(
     "-e", "--extends", help="use additional extends file")
 
 ARG_PARSER.add_argument(
-    "--no-virtualenv", action="store_true", help="no virtualenv")
+    "--no-virtualenv", action="store_true", help="do not create virtualenv")
 
 ARG_PARSER.add_argument(
-    "--unified-only", action="store_true", help="get unified cache & quit")
+    "--unified-only", action="store_true",
+    help="download unified installer cache and exit")
 
 BUILDOUT_CFG = """\
 [buildout]
