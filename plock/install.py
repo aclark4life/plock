@@ -114,7 +114,9 @@ class Installer():
                 _extends = []
                 _extends.append(EXTENDS_PROD)
                 _extends.append(EXTENDS_DEV)
+                print("Configuring extends:")
                 for extend in extends.split():
+                    print("- %s" % extend)
                     _extends.append(extend)
                 CFG_PARSER.read(buildout_cfg)
                 CFG_PARSER.get('buildout', 'extends')
@@ -259,7 +261,7 @@ class Installer():
             self.install_addons(args)
 
         self.run_buildout(args, test=test)
-        print("Done, now run:\n\n %s/bin/plone fg\n" % self.directory)
+        print("Done, now run:\n  %s/bin/plone fg" % self.directory)
 
     def install_addons(self, args):
         """
@@ -271,7 +273,7 @@ class Installer():
         addons.append('${base:packages}')
         addons.append('${addon:packages}')
         for addon in args.install_addon.split():
-            print(" https://pypi.python.org/pypi/%s" % addon)
+            print("- https://pypi.python.org/pypi/%s" % addon)
             addons.append(addon)
         CFG_PARSER.read(buildout_cfg)
         CFG_PARSER.add_section('plone')
