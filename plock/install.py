@@ -16,9 +16,7 @@ import locale
 import os
 import sh
 import shutil
-import sys
 import tarfile
-import time
 import urllib2
 
 
@@ -333,16 +331,6 @@ class Installer():
                     cfg.write(self.backup)
                     cfg.close()
                     self.run_buildout(args)
-
-    def sleep(self, *args):
-        if args:
-            s = args[0]
-        else:
-            s = 9  # 10 seconds
-        for i in range(s):
-            sys.stdout.write(".")
-            sys.stdout.flush()
-            time.sleep(1)
 
 
 def install():
