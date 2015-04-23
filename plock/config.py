@@ -18,6 +18,9 @@ argparser = argparse.ArgumentParser(
 argparser.add_argument('install_dir', nargs='?')
 
 argparser.add_argument(
+    "-e", "--extends", help="use additional extends file")
+
+argparser.add_argument(
     "-f", "--force", action="store_true", help="overwrite buildout.cfg")
 
 argparser.add_argument(
@@ -33,9 +36,6 @@ argparser.add_argument(
 argparser.add_argument(
     "--no-unified", action="store_true",
     help="do not download unified installer cache")
-
-argparser.add_argument(
-    "-e", "--extends", help="use additional extends file")
 
 argparser.add_argument(
     "--no-virtualenv", action="store_true", help="do not create virtualenv")
