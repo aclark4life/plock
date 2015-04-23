@@ -28,16 +28,13 @@ ARG_PARSER.add_argument(
     "-r", "--raw", action="store_true", help="unformatted output, use with -l")
 
 ARG_PARSER.add_argument(
-    "--no-unified", action="store_true", help="do not use unified installer")
+    "--no-unified", action="store_true", help="do not use unified installer cache")
 
 ARG_PARSER.add_argument(
-    "-e", "--extends", help="extra extends file")
+    "-e", "--extends", help="use additional extends file")
 
 ARG_PARSER.add_argument(
     "--no-venv", action="store_true", help="no virtualenv")
-
-ARG_PARSER.add_argument(
-    "--no-buildout", action="store_true", help="no pip install zc.buildout")
 
 ARG_PARSER.add_argument(
     "--unified-only", action="store_true", help="get unified cache & quit")

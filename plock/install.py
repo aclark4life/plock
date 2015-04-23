@@ -240,8 +240,9 @@ class Installer():
 
         if not args.no_venv:
             self.create_venv()
-        if not args.no_buildout:
-            self.install_buildout()
+
+        self.install_buildout()
+
         if args.unified or args.unified_only:
             self.create_cache(test=test)
         if args.extends:
