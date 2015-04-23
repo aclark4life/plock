@@ -239,10 +239,6 @@ class Installer():
             self.install_addons(args)
 
         self.run_buildout(args, test=test)
-#        print("Done, created buildout.cfg:\n---\n")
-#        buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
-#        print(open(buildout_cfg, 'r').read())
-#        print("---\n")
         print("Done, now run:\n\n %s/bin/plone fg\n" % self.directory)
 
     def install_addons(self, args):
