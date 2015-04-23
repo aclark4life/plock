@@ -63,6 +63,6 @@ PYPI = CheeseShop()
 PYPI_OPER = 'AND'
 PYPI_SPEC = {'description': 'plone', 'keyword': 'plone', 'summary': 'plone'}
 
-UNIFIEDINSTALLER_DIR = "Plone-4.3.3-UnifiedInstaller"
+UNIFIEDINSTALLER_DIR = "Plone-4.3.4-UnifiedInstaller"
 UNIFIEDINSTALLER_URL = "https://launchpad.net/plone/4.3/4.3.4/+download/"
 UNIFIEDINSTALLER_URL += "Plone-4.3.4-r1-UnifiedInstaller.tgz"
