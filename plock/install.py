@@ -205,7 +205,7 @@ class Installer():
         """
         Install Buildout with pip
         """
-        print("Installing Buildout...")
+        print("Installing buildout...")
         pip = self.command_init("pip")
         pip('install', 'zc.buildout')
 
@@ -319,14 +319,14 @@ class Installer():
             try:
                 buildout = self.command_init("buildout")
                 if args.no_unified:
-                    print "Running Buildout... (this may take a while)"
+                    print "Running buildout... (this may take a while)"
                 else:
-                    print "Running Buildout..."
+                    print "Running buildout..."
                 buildout(
                     "-c", os.path.join(self.directory, "buildout.cfg")
                 )
             except sh.ErrorReturnCode_1:
-                print("Error: Buildout run failed, restoring backup.\n")
+                print("Error: buildout run failed, restoring backup.\n")
                 if self.backup is not None:
                     buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
                     cfg = open(buildout_cfg, 'w')
