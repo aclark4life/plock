@@ -1,16 +1,16 @@
 # encoding: utf-8
 from distutils import log
-from plock.config import BUILDOUT_CFG
-from plock.config import FORMATTED_LISTING
-from plock.config import PYPI
-from plock.config import PYPI_OPER
-from plock.config import PYPI_SPEC
-from plock.config import EXTENDS_DEV
-from plock.config import EXTENDS_PROD
-from plock.config import UNIFIEDINSTALLER_DIR
-from plock.config import UNIFIEDINSTALLER_URL
-from plock.config import argparser
-from plock.config import cfgparser
+from .config import BUILDOUT_CFG
+from .config import FORMATTED_LISTING
+from .config import PYPI
+from .config import PYPI_OPER
+from .config import PYPI_SPEC
+from .config import EXTENDS_DEV
+from .config import EXTENDS_PROD
+from .config import UNIFIEDINSTALLER_DIR
+from .config import UNIFIEDINSTALLER_URL
+from .config import argparser
+from .config import cfgparser
 import collections
 import locale
 import os
