@@ -122,8 +122,7 @@ class Installer():
             cfg = open(buildout_cfg, 'w')
             cfgparser.write(cfg)
             cfg.close()
-            # XXX TERRIBLE. Replace dev line with commented dev line.
-            # Better way?
+            # XXX Replace dev line with commented dev line. Better way?
             cfg = open(buildout_cfg, 'r')
             chars = cfg.read()
             cfg = open(buildout_cfg, 'w')
