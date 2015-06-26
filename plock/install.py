@@ -252,7 +252,8 @@ class Installer():
         if not args.no_virtualenv:
             self.create_virtualenv()
 
-        self.install_buildout()
+        if not args.no_buildout:
+            self.install_buildout()
 
         if args.unified or args.unified_only:
             self.create_cache(test=test)

@@ -51,6 +51,9 @@ argparser.add_argument(
     help="do not download unified installer cache")
 
 argparser.add_argument(
+    "--no-buildout", action="store_true", help="do not install buildout")
+
+argparser.add_argument(
     "--no-virtualenv", action="store_true", help="do not create virtualenv")
 
 argparser.add_argument(
