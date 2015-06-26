@@ -30,7 +30,7 @@ Plock is a workaround for ``pip install Plone`` which technically works, but req
 Why support pip? 
 ~~~~~~~~~~~~~~~~
 
-To advance the state of Plone such that Buildout can be used, but not required.
+To advance the state of Plone such that Buildout can be used but not required.
 
 Why make Buildout optional? 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
