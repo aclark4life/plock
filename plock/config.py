@@ -3,12 +3,21 @@ import argparse
 import configparser
 import pkg_resources
 
-EXTENDS_PROD = "https://raw.github.com/plock/pins/master/plone-4-3"
-EXTENDS_DEV = "https://raw.github.com/plock/pins/master/dev"
-
 # http://stackoverflow.com/a/2073599/185820
 _VERSION = pkg_resources.require("plock")[0].version
 
+BUILDOUT_CFG = """\
+[buildout]
+extends =
+    %s
+#    %s
+"""
+
+PLOCK_PLONE_4_3_URL = "https://raw.github.com/plock/pins/master/plone-4-3"
+PLOCK_PLONE_DEV_URL = "https://raw.github.com/plock/pins/master/dev"
+UNIFIEDINSTALLER_DIR = "Plone-4.3.4-UnifiedInstaller"
+UNIFIEDINSTALLER_URL = "https://launchpad.net/plone/4.3/4.3.4/+download/"
+UNIFIEDINSTALLER_URL += "Plone-4.3.4-r1-UnifiedInstaller.tgz"
 
 # http://pymotw.com/2/argparse/
 argparser = argparse.ArgumentParser(
@@ -48,21 +57,10 @@ argparser.add_argument(
     "--unified-only", action="store_true",
     help="download unified installer cache and exit")
 
-BUILDOUT_CFG = """\
-[buildout]
-extends =
-    %s
-#    %s
-"""
-
 cfgparser = configparser.SafeConfigParser()
-
-FORMATTED_LISTING = "%s) %s - %s"
-
-PYPI = CheeseShop()
-PYPI_OPER = 'AND'
-PYPI_SPEC = {'description': 'plone', 'keyword': 'plone', 'summary': 'plone'}
-
-UNIFIEDINSTALLER_DIR = "Plone-4.3.4-UnifiedInstaller"
-UNIFIEDINSTALLER_URL = "https://launchpad.net/plone/4.3/4.3.4/+download/"
-UNIFIEDINSTALLER_URL += "Plone-4.3.4-r1-UnifiedInstaller.tgz"
+pypi = CheeseShop()
+query = {
+    'description': 'plone',
+    'keyword': 'plone',
+    'summary': 'plone'
+}

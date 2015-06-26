@@ -1,16 +1,14 @@
 # encoding: utf-8
 from distutils import log
 from .config import BUILDOUT_CFG
-from .config import FORMATTED_LISTING
-from .config import PYPI
-from .config import PYPI_OPER
-from .config import PYPI_SPEC
-from .config import EXTENDS_DEV
-from .config import EXTENDS_PROD
+from .config import PLOCK_PLONE_4_3_URL
+from .config import PLOCK_PLONE_DEV_URL
 from .config import UNIFIEDINSTALLER_DIR
 from .config import UNIFIEDINSTALLER_URL
 from .config import argparser
 from .config import cfgparser
+from .config import pypi
+from .config import query
 import collections
 import locale
 import os
@@ -107,12 +105,12 @@ class Installer():
         """
 
         cfg = open(buildout_cfg, 'w')
-        cfg.write(BUILDOUT_CFG % (EXTENDS_PROD, EXTENDS_DEV))
+        cfg.write(BUILDOUT_CFG % (PLOCK_PLONE_4_3_URL, PLOCK_PLONE_DEV_URL))
         cfg.close()
         if extends:
             _extends = []
-            _extends.append(EXTENDS_PROD)
-            _extends.append(EXTENDS_DEV)
+            _extends.append(PLOCK_PLONE_4_3_URL)
+            _extends.append(PLOCK_PLONE_DEV_URL)
             print("Configuring extends:")
             for extend in extends.split():
                 print("- %s" % extend)
@@ -132,8 +130,8 @@ class Installer():
             for line in chars.split('\n'):
                 cfg.write(
                     line.replace(
-                        '\t%s' % EXTENDS_DEV,
-                        '#\t%s' % EXTENDS_DEV) + '\n')
+                        '\t%s' % PLOCK_PLONE_DEV_URL,
+                        '#\t%s' % PLOCK_PLONE_DEV_URL) + '\n')
             cfg.close()
 
     def create_virtualenv(self):
@@ -300,7 +298,7 @@ class Installer():
         """
         count = 0
         results = collections.OrderedDict()
-        for package in PYPI.search(PYPI_SPEC, PYPI_OPER):
+        for package in pypi.search(query, 'AND'):
             if 'name' in package and 'summary' in package:
                 name = package['name']
                 summary = package['summary']
@@ -311,7 +309,7 @@ class Installer():
                 print(name)
             else:
                 print(
-                    FORMATTED_LISTING % (
+                    "%s) %s - %s" % (
                         self.locale_format(
                             count), name.ljust(40), summary.ljust(40)))
 
