@@ -4,6 +4,7 @@ Changelog
 0.4.0 (2015-07-26)
 ------------------
 
+- Rebrand: "Pip installs Plock. Plock installs Plone."
 - Rename ``--write-only`` to ``--write``
 - Rename ``--list-addons`` to ``--list``
 - Rename ``--unified-only`` to ``--cache``

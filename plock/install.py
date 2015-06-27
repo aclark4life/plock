@@ -20,7 +20,7 @@ import urllib2
 
 class Installer():
     """
-    A Plone installer for the pip-loving crowd
+    Pip installs Plock. Plock installs Plone.
     """
 
     def __init__(self):

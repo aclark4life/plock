@@ -21,7 +21,7 @@ UNIFIEDINSTALLER_URL += "Plone-4.3.4-r1-UnifiedInstaller.tgz"
 
 # http://pymotw.com/2/argparse/
 argparser = argparse.ArgumentParser(
-    description="A Plone installer for the pip-loving crowd.",
+    description="Pip installs Plock. Plock installs Plone",
     version=_VERSION)
 
 argparser.add_argument('install_dir', nargs='?')
