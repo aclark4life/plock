@@ -4,6 +4,7 @@ Changelog
 0.4.0 (2015-07-26)
 ------------------
 
+- Update GitHub content URL to https://raw.githubusercontent.com
 - Rebrand: "Pip installs Plock. Plock installs Plone."
 - Rename ``--write-only`` to ``--write``
 - Rename ``--list-addons`` to ``--list``

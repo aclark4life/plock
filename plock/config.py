@@ -13,8 +13,9 @@ extends =
 #    %s
 """
 
-PLOCK_PLONE_4_3_URL = "https://raw.github.com/plock/pins/master/plone-4-3"
-PLOCK_PLONE_DEV_URL = "https://raw.github.com/plock/pins/master/dev"
+GITHUB_RAW_URL = 'https://raw.githubusercontent.com'
+PLOCK_PLONE_4_3_URL = "%s/plock/pins/master/plone-4-3" % GITHUB_RAW_URL
+PLOCK_PLONE_DEV_URL = "%s/plock/pins/master/dev" % GITHUB_RAW_URL
 UNIFIEDINSTALLER_DIR = "Plone-4.3.4-UnifiedInstaller"
 UNIFIEDINSTALLER_URL = "https://launchpad.net/plone/4.3/4.3.4/+download/"
 UNIFIEDINSTALLER_URL += "Plone-4.3.4-r1-UnifiedInstaller.tgz"
