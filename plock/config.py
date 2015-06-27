@@ -36,18 +36,19 @@ argparser.add_argument(
     "-i", "--install-addon", help="install add-on(s) from PyPI")
 
 argparser.add_argument(
-    "-l", "--list-addons", action="store_true", help="list add-ons from PyPI")
+    "-l", "--list", action="store_true", dest="list_addons",
+    help="list add-ons from PyPI")
 
 argparser.add_argument(
     "-r", "--raw", action="store_true",
     help="package name only. for use with `-l`")
 
 argparser.add_argument(
-    "-w", "--write-only", action="store_true",
+    "-w", "--write", action="store_true", dest="write_only",
     help="write buildout.cfg and exit")
 
 argparser.add_argument(
-    "--no-unified", action="store_true",
+    "--no-cache", action="store_true", dest="no_unified",
     help="do not download unified installer cache")
 
 argparser.add_argument(
@@ -57,7 +58,7 @@ argparser.add_argument(
     "--no-virtualenv", action="store_true", help="do not create virtualenv")
 
 argparser.add_argument(
-    "--unified-only", action="store_true",
+    "--cache", action="store_true", dest="unified_only",
     help="download unified installer cache and exit")
 
 cfgparser = configparser.SafeConfigParser()

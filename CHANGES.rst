@@ -4,6 +4,10 @@ Changelog
 0.4.0 (2015-07-26)
 ------------------
 
+- Rename ``--write-only`` to ``--write``
+- Rename ``--list-addons`` to ``--list``
+- Rename ``--unified-only`` to ``--cache``
+- Rename ``--no-unified`` to ``--no-cache``
 - (Re)add ``--no-buildout`` option
 
 0.3.0 (2015-04-23)
