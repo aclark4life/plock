@@ -27,38 +27,38 @@ argparser = argparse.ArgumentParser(
 argparser.add_argument('install_dir', nargs='?')
 
 argparser.add_argument(
-    "-e", "--extends", help="extend config")
+    "-e", "--extends", help="use additional extends file")
 
 argparser.add_argument(
-    "-f", "--force", action="store_true", help="overwrite config")
+    "-f", "--force", action="store_true", help="overwrite buildout.cfg")
 
 argparser.add_argument(
-    "-i", "--install", help="install add-on")
+    "-i", "--install-addon", help="install add-on(s) from PyPI")
 
 argparser.add_argument(
-    "-l", "--list", action="store_true", help="list add-ons")
+    "-l", "--list-addons", action="store_true", help="list add-ons from PyPI")
 
 argparser.add_argument(
     "-r", "--raw", action="store_true",
-    help="disable formatting")
+    help="package name only. for use with `-l`")
 
 argparser.add_argument(
-    "-w", "--write", action="store_true",
-    help="write config & quit")
+    "-w", "--write-only", action="store_true",
+    help="write buildout.cfg and exit")
 
 argparser.add_argument(
-    "--no-cache", action="store_true",
-    help="no download cache")
+    "--no-unified", action="store_true",
+    help="do not download unified installer cache")
 
 argparser.add_argument(
-    "--no-buildout", action="store_true", help="no install buildout")
+    "--no-buildout", action="store_true", help="do not install buildout")
 
 argparser.add_argument(
-    "--no-virtualenv", action="store_true", help="no create virtualenv")
+    "--no-virtualenv", action="store_true", help="do not create virtualenv")
 
 argparser.add_argument(
-    "--cache", action="store_true",
-    help="download cache & quit")
+    "--unified-only", action="store_true",
+    help="download unified installer cache and exit")
 
 cfgparser = configparser.SafeConfigParser()
 pypi = CheeseShop()

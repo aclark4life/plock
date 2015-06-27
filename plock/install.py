@@ -207,7 +207,7 @@ class Installer():
         Install Plone with Buildout
         """
 
-        if args.list:
+        if args.list_addons:
             if args.install_dir:
                 print("Usage: plock -l")
                 exit()
@@ -350,7 +350,7 @@ def install():
     """
     """
     args = argparser.parse_args()
-    args.cache = not args.no_cache
+    args.unified = not args.no_unified
 
     plock = Installer()
     plock.install_plone(args)
