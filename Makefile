@@ -1,4 +1,4 @@
-pre:
+test:
 	flake8 plock/*.py
 	check-manifest
 	pyroma .
