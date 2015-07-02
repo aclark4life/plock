@@ -237,10 +237,12 @@ class Installer():
                 self.create_cfg(buildout_cfg, extends=args.extends)
             else:
                 self.create_cfg(buildout_cfg)
+        elif args.use:
+            pass
         else:
             print(
                 "Error: buildout.cfg file already exists. "
-                "Try `--force`."
+                "Try `--force` or `--use`."
             )
             exit(1)
 
@@ -270,8 +272,9 @@ class Installer():
             print("Installing addons...")
             self.install_addons(args)
 
-        self.run_buildout(args, test=test)
-        print("Done, now run:\n  %s/bin/plone fg" % self.directory)
+        error = self.run_buildout(args, test=test)
+        if not error:
+            print("Done, now run:\n  %s/bin/plone fg" % self.directory)
 
     def install_addons(self, args):
         """
@@ -344,6 +347,7 @@ class Installer():
                     cfg.write(self.backup)
                     cfg.close()
                     self.run_buildout(args)
+                return(-1)
 
 
 def install():

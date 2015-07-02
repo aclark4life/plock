@@ -1,7 +1,12 @@
 Changelog
 =========
 
-0.4.0 (2015-07-26)
+0.4.1 (2015-07-02)
+------------------
+
+- Add ``-u, --use`` to run Plock with existing Plock buildout.cfg files.
+
+0.4.0 (2015-06-26)
 ------------------
 
 - Update GitHub content URL to https://raw.githubusercontent.com
