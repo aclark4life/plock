@@ -10,8 +10,10 @@ class PlockTests(unittest.TestCase):
         plock = Installer()
         plock.directory = mkdtemp()
         buildout_cfg = os.path.join(plock.directory, 'buildout.cfg')
+        heroku_cfg = os.path.join(plock.directory, 'heroku.cfg')
         plock.create_cfg(
             buildout_cfg,
+            heroku_cfg,
             extends='https://raw.github.com/plock/pins/master/dev')
         with open(buildout_cfg, 'r') as f:
             file_contents = f.read()

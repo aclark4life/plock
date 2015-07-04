@@ -1,7 +1,12 @@
 Changelog
 =========
 
-0.4.0 (2015-07-26)
+0.4.1 (2015-07-04)
+------------------
+
+- Create ``heroku.cfg``
+
+0.4.0 (2015-06-27)
 ------------------
 
 - Update GitHub content URL to https://raw.githubusercontent.com

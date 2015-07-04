@@ -1,6 +1,7 @@
 # encoding: utf-8
 from distutils import log
 from .config import BUILDOUT_CFG
+from .config import HEROKU_CFG
 from .config import PLOCK_PLONE_4_3_URL
 from .config import PLOCK_PLONE_DEV_URL
 from .config import UNIFIEDINSTALLER_DIR
@@ -99,14 +100,19 @@ class Installer():
         src_downloads = "%s/downloads" % buildout_cache
         shutil.move(src_downloads, dst_downloads)
 
-    def create_cfg(self, buildout_cfg, extends=None):
+    def create_cfg(self, buildout_cfg, heroku_cfg, extends=None):
         """
-        Create buildout.cfg file in self.directory.
+        Create buildout.cfg and heroku.cfg files in self.directory.
         """
 
         cfg = open(buildout_cfg, 'w')
         cfg.write(BUILDOUT_CFG % (PLOCK_PLONE_4_3_URL, PLOCK_PLONE_DEV_URL))
         cfg.close()
+
+        cfg = open(heroku_cfg, 'w')
+        cfg.write(HEROKU_CFG)
+        cfg.close()
+
         if extends:
             _extends = []
             _extends.append(PLOCK_PLONE_4_3_URL)
@@ -122,7 +128,7 @@ class Installer():
             cfg = open(buildout_cfg, 'w')
             cfgparser.write(cfg)
             cfg.close()
-            # XXX Replace dev line with commented dev line. Better way?
+            # XXX Need a better way to insert comment at ^
             cfg = open(buildout_cfg, 'r')
             chars = cfg.read()
             cfg = open(buildout_cfg, 'w')
@@ -232,14 +238,17 @@ class Installer():
             os.mkdir(self.directory)
 
         buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
-        if not os.path.exists(buildout_cfg) or args.force:
+        heroku_cfg = os.path.join(self.directory, 'heroku.cfg')
+        if not (
+                os.path.exists(buildout_cfg) or
+                os.path.exists(heroku_cfg)) or args.force:
             if args.extends:
-                self.create_cfg(buildout_cfg, extends=args.extends)
+                self.create_cfg(buildout_cfg, heroku_cfg, extends=args.extends)
             else:
-                self.create_cfg(buildout_cfg)
+                self.create_cfg(buildout_cfg, heroku_cfg)
         else:
             print(
-                "Error: buildout.cfg file already exists. "
+                "Error: buildout.cfg or heroku.cfg file already exists. "
                 "Try `--force`."
             )
             exit(1)

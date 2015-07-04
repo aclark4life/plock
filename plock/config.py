@@ -13,6 +13,14 @@ extends =
 #    %s
 """
 
+HEROKU_CFG = """\
+[buildout]
+extends = buildout.cfg
+
+[plone]
+http-address = ${env:PORT}
+"""
+
 GITHUB_RAW_URL = 'https://raw.githubusercontent.com'
 PLOCK_PLONE_4_3_URL = "%s/plock/pins/master/plone-4-3" % GITHUB_RAW_URL
 PLOCK_PLONE_DEV_URL = "%s/plock/pins/master/dev" % GITHUB_RAW_URL
