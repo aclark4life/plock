@@ -4,3 +4,5 @@ test:
 	pyroma .
 	bin/python setup.py test
 	viewdoc
+release:
+	python setup.py sdist --format=zip upload

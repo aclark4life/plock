@@ -245,21 +245,13 @@ class Installer():
             if args.extends:
                 self.create_cfg(buildout_cfg, heroku_cfg, extends=args.extends)
             else:
-<<<<<<< HEAD
                 self.create_cfg(buildout_cfg, heroku_cfg)
-        else:
-            print(
-                "Error: buildout.cfg or heroku.cfg file already exists. "
-                "Try `--force`."
-=======
-                self.create_cfg(buildout_cfg)
         elif args.use:
             pass
         else:
             print(
-                "Error: buildout.cfg file already exists. "
-                "Try `--force` or `--use`."
->>>>>>> c0feb5005bf88f1a2508aefef9ad6f8fe4a63433
+                "Error: buildout.cfg or heroku.cfg file already exists. "
+                "Try `--force`."
             )
             exit(1)
 
