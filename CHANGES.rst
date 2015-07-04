@@ -1,10 +1,15 @@
 Changelog
 =========
 
+0.4.4 (2015-07-04)
+------------------
+
+- Configure https://raw.githubusercontent.com/plock/pins/master/relstorage in ``heroku.cfg``
+
 0.4.3 (2015-07-04)
 ------------------
 
-- Configure ``USERNAME`` and ``PASSWORD`` env in heroku.cfg
+- Configure ``USERNAME`` and ``PASSWORD`` env in ``heroku.cfg``
 
 0.4.2 (2015-07-04)
 ------------------

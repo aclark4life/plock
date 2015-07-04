@@ -15,7 +15,9 @@ extends =
 
 HEROKU_CFG = """\
 [buildout]
-extends = buildout.cfg
+extends =
+    buildout.cfg
+    https://raw.githubusercontent.com/plock/pins/master/relstorage
 
 [plone]
 http-address =
