@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.4.3 (2015-07-04)
+------------------
+
+- Configure ``USERNAME`` and ``PASSWORD`` env in heroku.cfg
+
 0.4.2 (2015-07-04)
 ------------------
 

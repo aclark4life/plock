@@ -18,7 +18,10 @@ HEROKU_CFG = """\
 extends = buildout.cfg
 
 [plone]
-http-address = ${env:PORT}
+http-address =
+    ${env:PORT}
+user =
+    ${env:USERNAME}:${env:PASSWORD}
 """
 
 GITHUB_RAW_URL = 'https://raw.githubusercontent.com'
