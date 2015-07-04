@@ -53,6 +53,10 @@ argparser.add_argument(
     help="package name only. for use with `-l`")
 
 argparser.add_argument(
+    "-u", "--use", action="store_true",
+    help="use existing buildout.cfg")
+
+argparser.add_argument(
     "-w", "--write", action="store_true", dest="write_only",
     help="write buildout.cfg and exit")
 

@@ -1,12 +1,17 @@
 Changelog
 =========
 
-0.4.1 (2015-07-04)
+0.4.2 (2015-07-04)
 ------------------
 
 - Create ``heroku.cfg``
 
-0.4.0 (2015-06-27)
+0.4.1 (2015-07-02)
+------------------
+
+- Add ``-u, --use`` to run Plock with existing Plock buildout.cfg files.
+
+0.4.0 (2015-06-26)
 ------------------
 
 - Update GitHub content URL to https://raw.githubusercontent.com
