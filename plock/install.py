@@ -358,6 +358,10 @@ class Installer():
                     self.run_buildout(args)
                 return(-1)
 
+    def run_plone(self, args):
+        """
+        """
+
 
 def install():
     """

@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.5.0 (2015-10-10)
+------------------
+
+- Add Plone 5 support. Since Plock only supports a single version of Plone ("latest"), Plone 5 is now the default.
+
 0.4.4 (2015-07-04)
 ------------------
 

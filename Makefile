@@ -6,3 +6,6 @@ test:
 	viewdoc
 release:
 	python setup.py sdist --format=zip upload
+
+releasetest:
+	python setup.py sdist --format=zip upload -r test
