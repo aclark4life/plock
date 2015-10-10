@@ -20,6 +20,8 @@ Buildout is a tool for software automation, similar to GNU Make, with INI-style 
     plock plone
     plone/bin/plone fg
 
+Now open `localhost <http://localhost:8080>`_ and login with ``admin:admin``.
+
 FAQ
 ---
 
