@@ -26,12 +26,14 @@ user =
     ${env:USERNAME}:${env:PASSWORD}
 """
 
-GITHUB_RAW_URL = 'https://raw.githubusercontent.com'
-PLOCK_PLONE_4_3_URL = "%s/plock/pins/master/plone-4-3" % GITHUB_RAW_URL
-PLOCK_PLONE_DEV_URL = "%s/plock/pins/master/dev" % GITHUB_RAW_URL
-UNIFIEDINSTALLER_DIR = "Plone-4.3.4-UnifiedInstaller"
-UNIFIEDINSTALLER_URL = "https://launchpad.net/plone/4.3/4.3.4/+download/"
-UNIFIEDINSTALLER_URL += "Plone-4.3.4-r1-UnifiedInstaller.tgz"
+RAW_URL = 'https://raw.githubusercontent.com'
+
+DEV_URL = "%s/plock/pins/master/dev" % RAW_URL
+PLONE_URL = "%s/plock/pins/master/plone-4-3" % RAW_URL
+
+INSTALLER_DIR = "Plone-4.3.4-UnifiedInstaller"
+INSTALLER_URL = "https://launchpad.net/plone/4.3/4.3.4/+download/"
+INSTALLER_URL += "Plone-4.3.4-r1-UnifiedInstaller.tgz"
 
 # http://pymotw.com/2/argparse/
 argparser = argparse.ArgumentParser(

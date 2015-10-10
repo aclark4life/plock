@@ -1,11 +1,11 @@
 # encoding: utf-8
 from distutils import log
 from .config import BUILDOUT_CFG
+from .config import DEV_URL
 from .config import HEROKU_CFG
-from .config import PLOCK_PLONE_4_3_URL
-from .config import PLOCK_PLONE_DEV_URL
-from .config import UNIFIEDINSTALLER_DIR
-from .config import UNIFIEDINSTALLER_URL
+from .config import INSTALLER_DIR
+from .config import INSTALLER_URL
+from .config import PLONE_URL
 from .config import argparser
 from .config import cfgparser
 from .config import pypi
@@ -64,7 +64,7 @@ class Installer():
         """
         if test:
             return
-        shutil.rmtree("%s/%s" % (self.directory, UNIFIEDINSTALLER_DIR))
+        shutil.rmtree("%s/%s" % (self.directory, INSTALLER_DIR))
         shutil.rmtree("%s/buildout-cache" % self.directory)
 
     def create_cache(self, test=False):
@@ -106,7 +106,7 @@ class Installer():
         """
 
         cfg = open(buildout_cfg, 'w')
-        cfg.write(BUILDOUT_CFG % (PLOCK_PLONE_4_3_URL, PLOCK_PLONE_DEV_URL))
+        cfg.write(BUILDOUT_CFG % (PLONE_URL, DEV_URL))
         cfg.close()
 
         cfg = open(heroku_cfg, 'w')
@@ -115,8 +115,8 @@ class Installer():
 
         if extends:
             _extends = []
-            _extends.append(PLOCK_PLONE_4_3_URL)
-            _extends.append(PLOCK_PLONE_DEV_URL)
+            _extends.append(PLONE_URL)
+            _extends.append(DEV_URL)
             print("Configuring extends:")
             for extend in extends.split():
                 print("- %s" % extend)
@@ -135,8 +135,8 @@ class Installer():
             for line in chars.split('\n'):
                 cfg.write(
                     line.replace(
-                        '\t%s' % PLOCK_PLONE_DEV_URL,
-                        '#\t%s' % PLOCK_PLONE_DEV_URL) + '\n')
+                        '\t%s' % DEV_URL,
+                        '#\t%s' % DEV_URL) + '\n')
             cfg.close()
 
     def create_virtualenv(self):
@@ -156,15 +156,15 @@ class Installer():
         Download the unified installer
         """
         return self.download(
-            package_url=UNIFIEDINSTALLER_URL,
-            packagename=UNIFIEDINSTALLER_DIR,
+            package_url=INSTALLER_URL,
+            packagename=INSTALLER_DIR,
             to_dir=self.directory
         )
 
     def download(
         self,
-        package_url=UNIFIEDINSTALLER_URL,
-        packagename=UNIFIEDINSTALLER_DIR,
+        package_url=INSTALLER_URL,
+        packagename=INSTALLER_DIR,
         to_dir=os.curdir,
         unzip=False,
         unzip_dir=None
