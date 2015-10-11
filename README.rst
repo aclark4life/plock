@@ -45,7 +45,7 @@ Plock only supports installation of Plone's *Python* requirements. To satisfy yo
 Why use pip? 
 ~~~~~~~~~~~~
 
-Python web developers using popular Python web frameworks (e.g. Django) are generally more familiar with pip than Buildout.
+Python web developers who use popular Python web frameworks (e.g. Django, Pyramid, Flask) are generally more familiar with pip than Buildout.
 
 Why build Plock on top of Buildout? 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
