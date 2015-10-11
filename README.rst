@@ -65,7 +65,7 @@ Plock only supports the latest version of Plone, but with `Plock Pins <https://g
 Plone 5
 +++++++
 
-.. Note:: Requires Python 2.7
+*Requires Python 2.7*
 
 ::
 
@@ -75,7 +75,7 @@ Plone 5
 Plone 4
 +++++++
 
-.. Note:: Requires Python 2.7
+*Requires Python 2.7*
 
 ::
 
@@ -85,7 +85,7 @@ Plone 4
 Plone 3
 +++++++
 
-.. Note:: Requires Python 2.4
+**Requires Python 2.4**
 
 ::
 
@@ -96,7 +96,7 @@ Plone 2
 +++++++
 
 
-.. Note:: Requires Python 2.4
+**Requires Python 2.4**
 
 ::
 
@@ -106,7 +106,7 @@ Plone 2
 Plone 1
 +++++++
 
-.. Note:: Python 2.4
+**Requires Python 2.4**
 
 ::
 
