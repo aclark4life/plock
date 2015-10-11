@@ -70,7 +70,7 @@ Plone 5
 ::
 
     [buildout]
-    extends = http://raw.githubusercontent.com/plock/pins/master/plone-4-3
+    extends = http://raw.githubusercontent.com/plock/pins/master/plone-5-0
 
 Plone 4
 +++++++
