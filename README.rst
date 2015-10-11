@@ -25,10 +25,65 @@ Now open `localhost <http://localhost:8080>`_ and login with ``admin:admin``.
 FAQ
 ---
 
+Plone version?
+~~~~~~~~~~~~~~
+
+Plock only supports the latest version of Plone, but with `Plock Pins <https://github.com/plock/pins>`_ you can run any version by editing the ``extends`` parameter in the ``buildout`` section in ``buildout.cfg``:
+
+Plone 5
++++++++
+
+.. Note:: Python 2.7
+
+::
+
+    [buildout]
+    extends = http://raw.githubusercontent.com/plock/pins/master/plone-4-3
+
+Plone 4
++++++++
+
+.. Note:: Python 2.7
+
+::
+
+    [buildout]
+    extends = http://raw.githubusercontent.com/plock/pins/master/plone-4-3
+
+Plone 3
++++++++
+
+.. Note:: Python 2.4
+
+::
+
+    [buildout]
+    extends = http://raw.githubusercontent.com/plock/pins/master/plone-3-3
+
+Plone 2
++++++++
+
+::
+
+.. Note:: Python 2.4
+
+    [buildout]
+    extends = http://raw.githubusercontent.com/plock/pins/master/plone-2-5
+
+Plone 1
++++++++
+
+.. Note:: Python 2.4
+
+::
+
+    [buildout]
+    extends = http://raw.githubusercontent.com/plock/pins/master/plone-1-1
+
 Setuptools errors?
 ~~~~~~~~~~~~~~~~~~
 
-Plock only supports the latest setuptools. If you're setuptools is older than the latest, update it. You can update setuptools via::
+Plock only supports the latest version of setuptools. If you're setuptools is older than the latest version, update it. You can update setuptools via::
 
     wget https://bootstrap.pypa.io/ez_setup.py -O - | python
 
