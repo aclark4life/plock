@@ -32,6 +32,8 @@ Plock only supports the latest setuptools. If you're setuptools is older than th
 
     wget https://bootstrap.pypa.io/ez_setup.py -O - | python
 
+See: https://pypi.python.org/pypi/setuptools#unix-wget for more installation instructions.
+
 Why use pip? 
 ~~~~~~~~~~~~
 
