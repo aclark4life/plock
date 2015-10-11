@@ -25,6 +25,13 @@ Now open `localhost <http://localhost:8080>`_ and login with ``admin:admin``.
 FAQ
 ---
 
+Setuptools errors?
+~~~~~~~~~~~~~~~~~~
+
+Plock only supports the latest setuptools. If you're setuptools is older than the latest, update it. You can update setuptools via::
+
+    wget https://bootstrap.pypa.io/ez_setup.py -O - | python
+
 Why use pip? 
 ~~~~~~~~~~~~
 
