@@ -34,10 +34,17 @@ Plock only supports the latest setuptools. If you're setuptools is older than th
 
 See: https://pypi.python.org/pypi/setuptools#unix-wget for more installation instructions.
 
+Missing requirements?
+~~~~~~~~~~~~~~~~~~~~~
+
+Plock only supports installation of Plone's *Python* requirements. To satisfy your operating system's requirements e.g. Ubuntu, please see:
+
+- http://docs.plone.org/manage/installing/installation.html#install-the-operating-system-software-and-libraries-needed-to-run-plone
+
 Why use pip? 
 ~~~~~~~~~~~~
 
-To cater to users more familiar with pip than Buildout.
+Python web developers using popular Python web frameworks (e.g. Django) are generally more familiar with pip than Buildout.
 
 Why build Plock on top of Buildout? 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
