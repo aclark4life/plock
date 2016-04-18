@@ -6,12 +6,13 @@
 from setuptools import find_packages
 from setuptools import setup
 
-VERSION = '0.5.0'
+VERSION = '0.6.0'
 
 setup(author="Alex Clark",
       author_email="aclark@aclark.net",
       classifiers=[
           'Framework :: Plone :: 4.3',
+          'Framework :: Plone :: 5.0',
           'Programming Language :: Python :: 2.7',
       ],
       description="Pip installs Plock. Plock installs Plone.",
