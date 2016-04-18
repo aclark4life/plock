@@ -123,8 +123,7 @@ class Installer():
                 _extends.append(extend)
             cfgparser.read(buildout_cfg)
             cfgparser.get('buildout', 'extends')
-            cfgparser.set(
-                'buildout', 'extends', '\n' + '\n'.join(_extends))
+            cfgparser.set('buildout', 'extends', '\n' + '\n'.join(_extends))
             cfg = open(buildout_cfg, 'w')
             cfgparser.write(cfg)
             cfg.close()
@@ -133,10 +132,8 @@ class Installer():
             chars = cfg.read()
             cfg = open(buildout_cfg, 'w')
             for line in chars.split('\n'):
-                cfg.write(
-                    line.replace(
-                        '\t%s' % DEV_URL,
-                        '#\t%s' % DEV_URL) + '\n')
+                cfg.write(line.replace('\t%s' % DEV_URL, '#\t%s' % DEV_URL) +
+                          '\n')
             cfg.close()
 
     def create_virtualenv(self):
@@ -148,27 +145,23 @@ class Installer():
         try:
             virtualenv(self.directory)
         except sh.ErrorReturnCode_1:
-            print ("Error: virtualenv already exists. Try `--no-virtualenv`")
+            print("Error: virtualenv already exists. Try `--no-virtualenv`")
             exit(1)
 
     def download_unifiedinstaller(self):
         """
         Download the unified installer
         """
-        return self.download(
-            package_url=INSTALLER_URL,
-            packagename=INSTALLER_DIR,
-            to_dir=self.directory
-        )
+        return self.download(package_url=INSTALLER_URL,
+                             packagename=INSTALLER_DIR,
+                             to_dir=self.directory)
 
-    def download(
-        self,
-        package_url=INSTALLER_URL,
-        packagename=INSTALLER_DIR,
-        to_dir=os.curdir,
-        unzip=False,
-        unzip_dir=None
-    ):
+    def download(self,
+                 package_url=INSTALLER_URL,
+                 packagename=INSTALLER_DIR,
+                 to_dir=os.curdir,
+                 unzip=False,
+                 unzip_dir=None):
         """
         Download a file from a specific location. `to_dir` is the directory
         where the egg will be downloaded. Returns the location of the file.
@@ -239,8 +232,7 @@ class Installer():
 
         buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
         heroku_cfg = os.path.join(self.directory, 'heroku.cfg')
-        if not (
-                os.path.exists(buildout_cfg) or
+        if not (os.path.exists(buildout_cfg) or
                 os.path.exists(heroku_cfg)) or args.force:
             if args.extends:
                 self.create_cfg(buildout_cfg, heroku_cfg, extends=args.extends)
@@ -249,15 +241,12 @@ class Installer():
         elif args.use:
             pass
         else:
-            print(
-                "Error: buildout.cfg or heroku.cfg file already exists. "
-                "Try `--force`."
-            )
+            print("Error: buildout.cfg or heroku.cfg file already exists. "
+                  "Try `--force`.")
             exit(1)
 
         if args.write_only:
-            print(
-                "Wrote buildout.cfg:\n  %s\nBye!" % buildout_cfg)
+            print("Wrote buildout.cfg:\n  %s\nBye!" % buildout_cfg)
             exit(0)
 
         if not args.no_virtualenv:
@@ -320,10 +309,8 @@ class Installer():
             if raw:
                 print(name)
             else:
-                print(
-                    "%s) %s - %s" % (
-                        self.locale_format(
-                            count), name.ljust(40), summary.ljust(40)))
+                print("%s) %s - %s" % (self.locale_format(count),
+                                       name.ljust(40), summary.ljust(40)))
 
     def locale_format(self, num):
         """
@@ -345,9 +332,7 @@ class Installer():
                     print "Running buildout... (this may take a while)"
                 else:
                     print "Running buildout..."
-                buildout(
-                    "-c", os.path.join(self.directory, "buildout.cfg")
-                )
+                buildout("-c", os.path.join(self.directory, "buildout.cfg"))
             except sh.ErrorReturnCode_1:
                 print("Error: buildout run failed, restoring backup.\n")
                 if self.backup is not None:
@@ -356,7 +341,7 @@ class Installer():
                     cfg.write(self.backup)
                     cfg.close()
                     self.run_buildout(args)
-                return(-1)
+                return (-1)
 
     def run_plone(self, args):
         """

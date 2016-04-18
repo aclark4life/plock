@@ -26,7 +26,7 @@
 BRANCHES=`git branch -a | grep remote | grep -v HEAD | grep -v master`
 
 # Django
-PROJECT = project
+PROJECT = plock
 APP = app
 
 all: up
@@ -64,7 +64,7 @@ debug-off-heroku:
 flake:
 	-flake8 *.py
 	-flake8 $(PROJECT)/*.py
-	-flake8 $(PROJECT)/$(APP)/*.py
+#	-flake8 $(PROJECT)/$(APP)/*.py
 
 # http://stackoverflow.com/a/26339924
 .PHONY: h
@@ -119,7 +119,7 @@ test:
 test-readme:
 	rst2html.py README.rst > readme.html; open readme.html
 update: commit-update
-up: commit-update push
+up: commit push
 upload-test:
 	python setup.py sdist --format=gztar,zip upload -r test
 upload:
@@ -127,8 +127,8 @@ upload:
 wc:
 	wc -l *.py
 	wc -l $(PROJECT)/*.py
-	wc -l $(PROJECT)/$(APP)/*.py
+#	wc -l $(PROJECT)/$(APP)/*.py
 yapf:
 	-yapf -i *.py
 	-yapf -i -e $(PROJECT)/urls.py $(PROJECT)/*.py
-	-yapf -i $(PROJECT)/$(APP)/*.py
+#	-yapf -i $(PROJECT)/$(APP)/*.py

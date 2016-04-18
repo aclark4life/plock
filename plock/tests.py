@@ -3,7 +3,6 @@ import os.path
 
 
 class PlockTests(unittest.TestCase):
-
     def test_create_cfg(self):
         from plock.install import Installer
         from tempfile import mkdtemp
@@ -17,9 +16,8 @@ class PlockTests(unittest.TestCase):
             extends='https://raw.github.com/plock/pins/master/dev')
         with open(buildout_cfg, 'r') as f:
             file_contents = f.read()
-        self.assertIn(
-            'https://raw.github.com/plock/pins/master/dev',
-            file_contents)
+        self.assertIn('https://raw.github.com/plock/pins/master/dev',
+                      file_contents)
 
     def test_install_plone(self):
         from mock import Mock
