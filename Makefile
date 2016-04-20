@@ -22,113 +22,148 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-# Git
-BRANCHES=`git branch -a | grep remote | grep -v HEAD | grep -v master`
+# GNU software standard targets... for inspiration.
+# https://www.gnu.org/prep/standards/html_node/Standard-Targets.html
+#TAGS
+#all
+#check
+#clean
+#distclean
+#dist
+#dvi
+#html
+#info
+#install-dvi
+#install-html
+#install-pdf
+#install-ps
+#install-strip
+#install
+#maintainer-clean
+#mostlyclean
+#pdf
+#ps
+#uninstall
+
+.DEFAULT_GOAL := commit
+.PHONY := install
+
+# Short target names to execute default targets
+commit: git-commit-auto-push
+co: git-checkout-branches
+db: django-migrate django-su
+db-clean: django-db-clean-postgres
+install: python-virtualenv-create python-pip-install
+lint: python-flake python-yapf python-wc
+release: python-package-release
+releasetest: python-package-release-test
+serve: django-serve
+static: django-static
+test: django-test
+
+# Variables to configure defaults 
+COMMIT_MESSAGE="Update"
+PROJECT=project
+APP=app
 
 # Django
-PROJECT = plock
-APP = app
-
-all: up
-
-clean-pyc:
-	find . -name \*.pyc | xargs rm -v
-
-clean-db: clean-postgres
-clean-django-migration:
-	rm -rf $(PROJECT)/$(APP)/migrations
-clean-postgres:
+django-db-clean-postgres:
 	-dropdb $(PROJECT)-$(APP)
 	-createdb $(PROJECT)-$(APP)
-clean-sqlite:
-	-rm -f db.sqlite3
-	-git add db.sqlite3
+django-db-clean-sqlite:
+	-rm -f $(PROJECT)-$(APP).sqlite3
+django-migrate:
+	python manage.py migrate
+django-migrations:
+	python manage.py makemigrations $(APP)
+django-migrations-clean:
+	rm -rf $(PROJECT)/$(APP)/migrations
+	$(MAKE) django-migrations
+django-serve:
+	python manage.py runserver
+django-test:
+	python manage.py test
+django-shell:
+	python manage.py shell
+django-start:
+	-mkdir -p $(PROJECT)/$(APP)
+	-django-admin startproject $(PROJECT) .
+	-django-admin startapp $(APP) $(PROJECT)/$(APP)
+django-static:
+	python manage.py collectstatic --noinput
+django-su:
+	python manage.py createsuperuser
 
-co:
-	-for i in $(branches) ; do \
-        git checkout -t $$i ; \
-    done
-
-commit:
+# Git
+REMOTE_BRANCHES=`git branch -a |\
+	grep remote |\
+	grep -v HEAD |\
+	grep -v master`
+git-checkout-branches:
+	-for i in $(REMOTE_BRANCHES) ; do \
+        git checkout -t $$i ; done
+git-commit-auto-push:
+	git commit -a -m $(COMMIT_MESSAGE)
+	$(MAKE) git-push
+git-commit-edit-push:
 	git commit -a
-commit-update:
-	git commit -a -m "Update"
+	$(MAKE) git-push
+git-push:
+	git push
 
-db: migrate su
-
-debug-on-heroku:
-	heroku config:set DEBUG=1
-debug-off-heroku:
-	heroku config:unset DEBUG
-
-flake:
-	-flake8 *.py
-	-flake8 $(PROJECT)/*.py
-#	-flake8 $(PROJECT)/$(APP)/*.py
-
-# http://stackoverflow.com/a/26339924
-.PHONY: h
+# Misc
 help:
-	@echo "\nPlease run make with one of the following targets:\n"
+	@echo "\nPlease run \`make\` with one of these targets:\n"
 	@$(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F:\
         '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}'\
         | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$' | xargs | tr ' ' '\n' | awk\
         '{print "    - "$$0}'
 	@echo "\n"
-install:
-	virtualenv .
-	bin/pip install -r requirements.txt
-lint: yapf flake wc
-migrate:
-	python manage.py migrate
-migrations:
-	python manage.py makemigrations $(APP)
-package-test:
-	check-manifest
-	pyroma .
-push: push-origin
-push-heroku:
-	git push heroku
-push-origin:
-	git push
-release:
-	python setup.py sdist --format=zip upload
-releasetest:
-	python setup.py sdist --format=zip upload -r test
 review:
 	open -a "Sublime Text 2" `find $(PROJECT) -name \*.py | grep -v __init__.py`\
         `find $(PROJECT) -name \*.html`
-serve:
-	python manage.py runserver
-shell:
-	python manage.py shell
-shell-heroku:
+
+# Heroku
+heroku-debug-on:
+	heroku config:set DEBUG=1
+heroku-debug-off:
+	heroku config:unset DEBUG
+heroku-push:
+	git push heroku
+heroku-shell:
 	heroku run bash
-start-django:
-	-mkdir -p $(PROJECT)/$(APP)
-	-django-admin startproject $(PROJECT) .
-	-django-admin startapp $(APP) $(PROJECT)/$(APP)
-start-doc:
-	sphinx-quickstart -q -p "Python Project" -a "Alex Clark" -v 0.0.1 doc
-static:
-	python manage.py collectstatic --noinput
-su:
-	python manage.py createsuperuser
-test:
-	python manage.py test
-test-readme:
-	rst2html.py README.rst > readme.html; open readme.html
-update: commit-update
-up: commit push
-upload-test:
-	python setup.py sdist --format=gztar,zip upload -r test
-upload:
-	python setup.py sdist --format=gztar,zip upload
-wc:
-	wc -l *.py
-	wc -l $(PROJECT)/*.py
-#	wc -l $(PROJECT)/$(APP)/*.py
-yapf:
+
+# Python
+python-clean-pyc:
+	find . -name \*.pyc | xargs rm -v
+python-flake:
+	-flake8 *.py
+	-flake8 $(PROJECT)/*.py
+	-flake8 $(PROJECT)/$(APP)/*.py
+python-package-check:
+	check-manifest
+	pyroma .
+python-pip-install:
+	bin/pip install -r requirements.txt
+python-virtualenv-create:
+	virtualenv .
+python-yapf:
 	-yapf -i *.py
 	-yapf -i -e $(PROJECT)/urls.py $(PROJECT)/*.py
-#	-yapf -i $(PROJECT)/$(APP)/*.py
+	-yapf -i $(PROJECT)/$(APP)/*.py
+python-wc:
+	-wc -l *.py
+	-wc -l $(PROJECT)/*.py
+	-wc -l $(PROJECT)/$(APP)/*.py
+
+# Python Package
+python-package-readme-test:
+	rst2html.py README.rst > readme.html; open readme.html
+python-package-release:
+	python setup.py sdist --format=gztar,zip upload
+python-package-release-test:
+	python setup.py sdist --format=gztar,zip upload -r test
+
+# Sphinx
+sphinx-start:
+	sphinx-quickstart -q -p "Python Project" -a "Alex Clark" -v 0.0.1 doc
