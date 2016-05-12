@@ -16,11 +16,8 @@ Install Plone
     pip install plock; plock `tmp`
 
 
-Now open `localhost <http://localhost:8080>`_ and login with ``admin:admin``.
-
 FAQ
 ---
-
 
 Setuptools errors?
 ~~~~~~~~~~~~~~~~~~
