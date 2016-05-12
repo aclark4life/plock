@@ -46,7 +46,7 @@
 #uninstall
 
 # https://www.gnu.org/software/make/manual/html_node/Special-Variables.html#Special-Variables
-.DEFAULT_GOAL := git-commit-edit-push
+.DEFAULT_GOAL := git-commit-auto-push
 
 # https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html
 .PHONY : install
@@ -61,11 +61,12 @@ fe: npm-install grunt-serve
 heroku: heroku-push
 install: python-virtualenv-create python-pip-install
 lint: python-flake python-yapf python-wc
+readme: python-package-readme-test
 release: python-package-release
 releasetest: python-package-release-test
 serve: django-serve
 static: django-static
-test: python-package-test
+test: django-test
 vm: vagrant-up
 vm-down: vagrant-suspend
 
