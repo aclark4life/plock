@@ -257,8 +257,6 @@ class Installer():
 
         if args.unified or args.unified_only:
             self.create_cache(test=test)
-
-        if args.unified or args.unified_only:
             self.add_download_cache()
             self.clean_up(test=test)
 
@@ -353,6 +351,6 @@ def install():
     """
     args = argparser.parse_args()
     args.unified = not args.no_unified
-
+    expert = os.environ.get('PLOCK_EXPERT', True)
     plock = Installer()
-    plock.install_plone(args)
+    plock.install_plone(args, expert=expert)
