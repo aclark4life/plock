@@ -6,7 +6,7 @@
 from setuptools import find_packages
 from setuptools import setup
 
-VERSION = '0.6.0'
+VERSION = '0.6.1'
 
 setup(author="Alex Clark",
       author_email="aclark@aclark.net",
@@ -25,6 +25,7 @@ setup(author="Alex Clark",
       install_requires=[
           'configparser',
           'sh',
+          'tmp',
           'virtualenv',
           'yolk',
           'zc.buildout',

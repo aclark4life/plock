@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.6.1 (2016-05-12)
+------------------
+
+- Restore PLOCK_EXPERT (set PLOCK_EXPERT to configure --no-cache default)
+
 0.6.0 (2016-04-18)
 ------------------
 

@@ -8,17 +8,13 @@ Pip installs Plock. Plock installs Plone.
 .. image:: https://raw.githubusercontent.com/plock/plock/master/Plocktastic.png
     :align: center
 
-Installation
-------------
-
-Buildout is a tool for software automation, similar to GNU Make, with INI-style configuration & written in Python. Plock uses Buildout to install Plone *without* requiring the user to have Buildout-specific knowledge or expertise, **just cut & paste**:
+Install Plone
+-------------
 
 ::
 
-    pip install plock
-    mkdir plone
-    plock plone
-    plone/bin/plone fg
+    pip install plock; plock `tmp`
+
 
 Now open `localhost <http://localhost:8080>`_ and login with ``admin:admin``.
 

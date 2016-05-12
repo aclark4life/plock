@@ -201,7 +201,7 @@ class Installer():
         pip = self.command_init("pip")
         pip('install', 'zc.buildout')
 
-    def install_plone(self, args, test=False):
+    def install_plone(self, args, test=False, expert=False):
         """
         Install Plone with Buildout
         """
@@ -255,7 +255,7 @@ class Installer():
         if not args.no_buildout:
             self.install_buildout()
 
-        if args.unified or args.unified_only:
+        if (args.unified or args.unified_only) and not expert:
             self.create_cache(test=test)
             self.add_download_cache()
             self.clean_up(test=test)
@@ -351,6 +351,8 @@ def install():
     """
     args = argparser.parse_args()
     args.unified = not args.no_unified
-    expert = os.environ.get('PLOCK_EXPERT', False)
+    expert = False
+    if 'PLOCK_EXPERT' in os.environ:
+        expert = True
     plock = Installer()
     plock.install_plone(args, expert=expert)
