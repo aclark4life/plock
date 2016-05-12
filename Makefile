@@ -65,13 +65,13 @@ release: python-package-release
 releasetest: python-package-release-test
 serve: django-serve
 static: django-static
-test: django-test
+test: python-package-test
 vm: vagrant-up
 vm-down: vagrant-suspend
 
 # Variables to configure defaults 
 COMMIT_MESSAGE="Update"
-PROJECT=plock
+PROJECT=project
 APP=app
 
 # Django
@@ -195,6 +195,8 @@ python-package-release:
 	python setup.py sdist --format=gztar,zip upload
 python-package-release-test:
 	python setup.py sdist --format=gztar,zip upload -r test
+python-package-test:
+	python setup.py test
 
 # Sphinx
 sphinx-start:
