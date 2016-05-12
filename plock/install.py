@@ -351,6 +351,6 @@ def install():
     """
     args = argparser.parse_args()
     args.unified = not args.no_unified
-    expert = os.environ.get('PLOCK_EXPERT', True)
+    expert = os.environ.get('PLOCK_EXPERT', False)
     plock = Installer()
     plock.install_plone(args, expert=expert)
