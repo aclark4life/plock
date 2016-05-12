@@ -63,7 +63,7 @@ test: django-test
 
 # Variables to configure defaults 
 COMMIT_MESSAGE="Update"
-PROJECT=project
+PROJECT=plock
 APP=app
 
 # Django
