@@ -205,16 +205,6 @@ class Installer():
         Install Plone with Buildout
         """
 
-        if args.list_addons:
-            if args.install_dir:
-                print("Usage: plock -l")
-                exit()
-            locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
-            if args.raw:
-                self.list_addons(raw=True)
-            else:
-                self.list_addons()
-            exit()
         if args.raw:
             print("Usage: plock --list-addons --raw")
             exit()

@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.6.3 (2016-07-13)
+------------------
+
+- Fix AttributeError: 'Namespace' object has no attribute 'list_addons'
+
 0.6.2 (2016-07-13)
 ------------------
 

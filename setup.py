@@ -6,7 +6,7 @@
 from setuptools import find_packages
 from setuptools import setup
 
-VERSION = '0.6.2'
+VERSION = '0.6.3'
 
 setup(author="Alex Clark",
       author_email="aclark@aclark.net",
