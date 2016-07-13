@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.6.2 (2016-07-13)
+------------------
+
+- Remove yolk & list addons feature, use pip instead.
+
 0.6.1 (2016-05-12)
 ------------------
 

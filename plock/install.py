@@ -8,7 +8,6 @@ from .config import INSTALLER_URL
 from .config import PLONE_URL
 from .config import argparser
 from .config import cfgparser
-from .config import pypi
 from .config import query
 import collections
 import locale
@@ -290,25 +289,6 @@ class Installer():
         cfg = open(buildout_cfg, 'w')
         cfgparser.write(cfg)
         cfg.close()
-
-    def list_addons(self, raw=False):
-        """
-        List add-ons from PyPI
-        """
-        count = 0
-        results = collections.OrderedDict()
-        for package in pypi.search(query, 'AND'):
-            if 'name' in package and 'summary' in package:
-                name = package['name']
-                summary = package['summary']
-                results[name] = summary
-        for name, summary in results.items():
-            count += 1
-            if raw:
-                print(name)
-            else:
-                print("%s) %s - %s" % (self.locale_format(count),
-                                       name.ljust(40), summary.ljust(40)))
 
     def locale_format(self, num):
         """

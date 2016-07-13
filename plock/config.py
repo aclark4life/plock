@@ -1,4 +1,3 @@
-from yolk.pypi import CheeseShop
 import argparse
 import configparser
 import pkg_resources
@@ -53,12 +52,6 @@ argparser.add_argument("-i",
                        "--install-addon",
                        help="install add-on(s) from PyPI")
 
-argparser.add_argument("-l",
-                       "--list",
-                       action="store_true",
-                       dest="list_addons",
-                       help="list add-ons from PyPI")
-
 argparser.add_argument("-r",
                        "--raw",
                        action="store_true",
@@ -94,5 +87,4 @@ argparser.add_argument("--cache",
                        help="download unified installer cache and exit")
 
 cfgparser = configparser.SafeConfigParser()
-pypi = CheeseShop()
 query = {'description': 'plone', 'keyword': 'plone', 'summary': 'plone'}
