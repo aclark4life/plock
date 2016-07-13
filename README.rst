@@ -3,18 +3,21 @@ plock
 
 .. image:: https://travis-ci.org/aclark4life/plock.png?branch=master
 
-Pip installs Plock. Plock installs Plone.
+"Pip installs Plock. Plock installs Plone."
+
+    —Alex Clark
 
 .. image:: https://raw.githubusercontent.com/plock/plock/master/Plocktastic.png
     :align: center
+
+Plock supports rapid installation of Plone for *experimentation purposes*. **This is not your production Plone installer.**
 
 Install Plone
 -------------
 
 ::
 
-    pip install plock; plock `tmp`
-
+    pip install plock && plock `tmp`
 
 FAQ
 ---
