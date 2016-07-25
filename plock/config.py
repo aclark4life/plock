@@ -9,7 +9,6 @@ BUILDOUT_CFG = """\
 [buildout]
 extends =
     %s
-#    %s
 """
 
 HEROKU_CFG = """\
@@ -30,9 +29,9 @@ RAW_URL = 'https://raw.githubusercontent.com'
 DEV_URL = "%s/plock/pins/master/dev" % RAW_URL
 PLONE_URL = "%s/plock/pins/master/plone-5-0" % RAW_URL
 
-INSTALLER_DIR = "Plone-5.0.4-UnifiedInstaller"
-INSTALLER_URL = "https://launchpad.net/plone/5.0/5.0.4/+download/"
-INSTALLER_URL += "Plone-5.0.4-UnifiedInstaller.tgz"
+INSTALLER_DIR = "Plone-5.0.5-UnifiedInstaller"
+INSTALLER_URL = "https://launchpad.net/plone/5.0/5.0.5/+download/"
+INSTALLER_URL += "Plone-5.0.5-UnifiedInstaller.tgz"
 
 # http://pymotw.com/2/argparse/
 argparser = argparse.ArgumentParser(

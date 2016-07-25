@@ -105,7 +105,7 @@ class Installer():
         """
 
         cfg = open(buildout_cfg, 'w')
-        cfg.write(BUILDOUT_CFG % (PLONE_URL, DEV_URL))
+        cfg.write(BUILDOUT_CFG % PLONE_URL)
         cfg.close()
 
         cfg = open(heroku_cfg, 'w')

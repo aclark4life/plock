@@ -10,10 +10,10 @@ plock
 .. image:: https://raw.githubusercontent.com/plock/plock/master/Plocktastic.png
     :align: center
 
-Plock supports rapid installation of Plone for *experimentation purposes*. **This is not your production Plone installer.**
+Plock installs Plone for *experimentation purposes only*. **This is not your production Plone.**
 
-Install Plone
--------------
+Install
+-------
 
 ::
 

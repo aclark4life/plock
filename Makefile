@@ -44,7 +44,6 @@ migrate: django-migrate
 push: git-push
 plone-start: plone-init
 python-test: python-package-test
-readme: python-package-readme-test
 readme-test: python-package-readme-test
 release: python-package-release
 release-test: python-package-release-test
@@ -212,3 +211,7 @@ vagrant-init:
 	vagrant up --provider virtualbox
 vagrant-up:
 	vagrant up --provision
+
+# Plock
+python-package-readme-test:
+	viewdoc
