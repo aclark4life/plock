@@ -24,9 +24,9 @@
 
 .DEFAULT_GOAL=git-commit-auto-push
 
-APP=app
+APP=install
 MESSAGE="Update"
-PROJECT=project
+PROJECT=plock
 TMP:=$(shell echo `tmp`)
 
 commit: git-commit-auto-push
@@ -215,3 +215,12 @@ vagrant-up:
 # Plock
 python-package-readme-test:
 	viewdoc
+python-yapf:
+	-yapf -i *.py
+	-yapf -i $(PROJECT)/*.py
+python-flake:
+	-flake8 *.py
+	-flake8 $(PROJECT)/*.py
+python-wc:
+	-wc -l *.py
+	-wc -l $(PROJECT)/*.py
