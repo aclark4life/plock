@@ -26,7 +26,7 @@
 
 APP=app
 MESSAGE="Update"
-PROJECT=project
+PROJECT=plock
 PROJECT_EDITOR="Sublime Text"
 TMP:=$(shell echo `tmp`)
 
