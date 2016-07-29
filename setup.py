@@ -6,7 +6,7 @@
 from setuptools import find_packages
 from setuptools import setup
 
-VERSION = '0.6.4'
+VERSION = '0.6.5'
 
 setup(author="Alex Clark",
       author_email="aclark@aclark.net",
@@ -31,8 +31,8 @@ setup(author="Alex Clark",
       ],
       keywords="buildout pip plone virtualenv zope",
       license='Whatever license Plone is',
-      long_description=(open('README.rst').read() + '\n' + open(
-          'CHANGES.rst').read()),
+      long_description=(
+          open('README.rst').read() + '\n' + open('CHANGES.rst').read()),
       name='plock',
       packages=find_packages(),
       test_suite='plock.tests',

@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.6.5 (2016-07-29)
+------------------
+
+- Write requirements.txt containing zc.buildout
+
 0.6.4 (2016-07-25)
 ------------------
 

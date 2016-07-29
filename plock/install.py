@@ -6,6 +6,7 @@ from .config import HEROKU_CFG
 from .config import INSTALLER_DIR
 from .config import INSTALLER_URL
 from .config import PLONE_URL
+from .config import REQUIREMENTS_TXT
 from .config import argparser
 from .config import cfgparser
 from .config import query
@@ -99,7 +100,8 @@ class Installer():
         src_downloads = "%s/downloads" % buildout_cache
         shutil.move(src_downloads, dst_downloads)
 
-    def create_cfg(self, buildout_cfg, heroku_cfg, extends=None):
+    def create_cfg(self, buildout_cfg, heroku_cfg, requirements_txt,
+        extends=None):
         """
         Create buildout.cfg and heroku.cfg files in self.directory.
         """
@@ -110,6 +112,10 @@ class Installer():
 
         cfg = open(heroku_cfg, 'w')
         cfg.write(HEROKU_CFG)
+        cfg.close()
+
+        cfg = open(requirements_txt, 'w')
+        cfg.write(REQUIREMENTS_TXT)
         cfg.close()
 
         if extends:
@@ -221,12 +227,13 @@ class Installer():
 
         buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
         heroku_cfg = os.path.join(self.directory, 'heroku.cfg')
+        requirements_txt = os.path.join(self.directory, 'requirements.txt')
         if not (os.path.exists(buildout_cfg) or
                 os.path.exists(heroku_cfg)) or args.force:
             if args.extends:
-                self.create_cfg(buildout_cfg, heroku_cfg, extends=args.extends)
+                self.create_cfg(buildout_cfg, heroku_cfg, requirements_txt, extends=args.extends)
             else:
-                self.create_cfg(buildout_cfg, heroku_cfg)
+                self.create_cfg(buildout_cfg, heroku_cfg, requirements_txt)
         elif args.use:
             pass
         else:
@@ -235,7 +242,7 @@ class Installer():
             exit(1)
 
         if args.write_only:
-            print("Wrote buildout.cfg:\n  %s\nBye!" % buildout_cfg)
+            print("Wrote files:\n\t%s\n\t%s\n\t%s\nBye!" % (buildout_cfg, heroku_cfg, requirements_txt))
             exit(0)
 
         if not args.no_virtualenv:

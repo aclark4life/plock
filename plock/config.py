@@ -24,6 +24,10 @@ user =
     ${env:USERNAME}:${env:PASSWORD}
 """
 
+REQUIREMENTS_TXT = """\
+zc.buildout
+"""
+
 RAW_URL = 'https://raw.githubusercontent.com'
 
 DEV_URL = "%s/plock/pins/master/dev" % RAW_URL
