@@ -138,8 +138,8 @@ class Installer():
             chars = cfg.read()
             cfg = open(buildout_cfg, 'w')
             for line in chars.split('\n'):
-                cfg.write(line.replace('\t%s' % DEV_URL, '#\t%s' % DEV_URL) +
-                          '\n')
+                cfg.write(
+                    line.replace('\t%s' % DEV_URL, '#\t%s' % DEV_URL) + '\n')
             cfg.close()
 
     def create_virtualenv(self):
@@ -158,9 +158,10 @@ class Installer():
         """
         Download the unified installer
         """
-        return self.download(package_url=INSTALLER_URL,
-                             packagename=INSTALLER_DIR,
-                             to_dir=self.directory)
+        return self.download(
+            package_url=INSTALLER_URL,
+            packagename=INSTALLER_DIR,
+            to_dir=self.directory)
 
     def download(self,
                  package_url=INSTALLER_URL,
@@ -229,13 +230,14 @@ class Installer():
         buildout_cfg = os.path.join(self.directory, 'buildout.cfg')
         heroku_cfg = os.path.join(self.directory, 'heroku.cfg')
         requirements_txt = os.path.join(self.directory, 'requirements.txt')
-        if not (os.path.exists(buildout_cfg) or
-                os.path.exists(heroku_cfg)) or args.force:
+        if not (os.path.exists(buildout_cfg)
+                or os.path.exists(heroku_cfg)) or args.force:
             if args.extends:
-                self.create_cfg(buildout_cfg,
-                                heroku_cfg,
-                                requirements_txt,
-                                extends=args.extends)
+                self.create_cfg(
+                    buildout_cfg,
+                    heroku_cfg,
+                    requirements_txt,
+                    extends=args.extends)
             else:
                 self.create_cfg(buildout_cfg, heroku_cfg, requirements_txt)
         elif args.use:
@@ -309,9 +311,9 @@ class Installer():
             try:
                 buildout = self.command_init("buildout")
                 if args.no_unified:
-                    print "Running buildout... (this may take a while)"
+                    print("Running buildout... (this may take a while)")
                 else:
-                    print "Running buildout..."
+                    print("Running buildout...")
                 buildout("-c", os.path.join(self.directory, "buildout.cfg"))
             except sh.ErrorReturnCode_1:
                 print("Error: buildout run failed, restoring backup.\n")

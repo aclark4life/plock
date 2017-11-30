@@ -385,3 +385,7 @@ webpack-init:
 	echo "module.exports = { entry: './entry.js', output: { filename: 'bundle.js' } }" > webpack.config.js
 webpack:
 	webpack
+
+# Plock
+PROJECT=plock
+APP=
