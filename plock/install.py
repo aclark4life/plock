@@ -14,7 +14,8 @@ import os
 import sh
 import shutil
 import tarfile
-import urllib2
+from urllib.request import urlopen
+
 
 
 class Installer():
@@ -180,7 +181,7 @@ class Installer():
         if not os.path.exists(saveto):  # Avoid repeated downloads
             try:
                 log.warn("Downloading installer (%s)", url)
-                src = urllib2.urlopen(url)
+                src = urlopen(url)
                 # Read/write all in one block, so we don't create a corrupt
                 # file if the download is interrupted.
                 # data = _validate_md5(egg_name, src.read())

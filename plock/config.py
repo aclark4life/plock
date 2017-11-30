@@ -1,9 +1,5 @@
 import argparse
 import configparser
-import pkg_resources
-
-# http://stackoverflow.com/a/2073599/185820
-_VERSION = pkg_resources.require("plock")[0].version
 
 BUILDOUT_CFG = """\
 [buildout]
@@ -39,7 +35,7 @@ INSTALLER_URL += "Plone-5.0.5-UnifiedInstaller.tgz"
 
 # http://pymotw.com/2/argparse/
 argparser = argparse.ArgumentParser(
-    description="Pip installs Plock. Plock installs Plone", version=_VERSION)
+    description="Pip installs Plock. Plock installs Plone")
 
 argparser.add_argument('install_dir', nargs='?')
 
